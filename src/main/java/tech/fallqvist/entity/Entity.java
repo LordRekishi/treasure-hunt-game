@@ -7,8 +7,12 @@ public abstract class Entity {
 
     private int x, y;
     private int speed;
+
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     private String direction;
+
+    private int spriteCounter = 0;
+    private int spriteNumber = 1;
 
     public abstract void update();
     public abstract void draw(Graphics2D graphics2D);
@@ -118,6 +122,24 @@ public abstract class Entity {
 
     public Entity setDirection(String direction) {
         this.direction = direction;
+        return this;
+    }
+
+    public int getSpriteCounter() {
+        return spriteCounter;
+    }
+
+    public Entity setSpriteCounter(int spriteCounter) {
+        this.spriteCounter = spriteCounter;
+        return this;
+    }
+
+    public int getSpriteNumber() {
+        return spriteNumber;
+    }
+
+    public Entity setSpriteNumber(int spriteNumber) {
+        this.spriteNumber = spriteNumber;
         return this;
     }
 }

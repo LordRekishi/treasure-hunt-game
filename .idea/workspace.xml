@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Player entity">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_up_2.png" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Player sprite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
     </list>
@@ -124,7 +117,13 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1654956709880</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Add Player sprite">
+      <created>1654961354483</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1654961354483</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +146,7 @@
     <MESSAGE value="Add FPS counter (sout)" />
     <MESSAGE value="Add abstract Entity superclass" />
     <MESSAGE value="Add Player entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Player entity" />
+    <MESSAGE value="Add Player sprite" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Player sprite" />
   </component>
 </project>

@@ -49,37 +49,74 @@ public class Player extends Entity {
     @Override
     public void update() {
 
-        if (keyHandler.upPressed) {
-            setDirection("up");
-            setY(getY() - getSpeed());
+        if (keyHandler.isUpPressed() || keyHandler.isDownPressed()
+                || keyHandler.isLeftPressed() || keyHandler.isRightPressed()) {
+
+            if (keyHandler.isUpPressed()) {
+                setDirection("up");
+                setY(getY() - getSpeed());
+            } else if (keyHandler.isDownPressed()) {
+                setDirection("down");
+                setY(getY() + getSpeed());
+            } else if (keyHandler.isLeftPressed()) {
+                setDirection("left");
+                setX(getX() - getSpeed());
+            } else if (keyHandler.isRightPressed()) {
+                setDirection("right");
+                setX(getX() + getSpeed());
+            }
+
+            checkAndChangeSpriteAnimation();
         }
-        else if (keyHandler.downPressed) {
-            setDirection("down");
-            setY(getY() + getSpeed());
-        }
-        else if (keyHandler.leftPressed) {
-            setDirection("left");
-            setX(getX() - getSpeed());
-        }
-        else if (keyHandler.rightPressed) {
-            setDirection("right");
-            setX(getX() + getSpeed());
+    }
+
+    private void checkAndChangeSpriteAnimation() {
+        setSpriteCounter(getSpriteCounter() + 1);
+        if (getSpriteCounter() > 12) {
+            if (getSpriteNumber() == 1) {
+                setSpriteNumber(2);
+            } else if (getSpriteNumber() == 2) {
+                setSpriteNumber(1);
+            }
+            setSpriteCounter(0);
         }
     }
 
     @Override
     public void draw(Graphics2D graphics2D) {
+        graphics2D.drawImage(getDirectionalImage(), getX(), getY(), gamePanel.getTileSize(), gamePanel.getTileSize(), null);
 
+    }
+
+    private BufferedImage getDirectionalImage() {
         BufferedImage image = null;
 
         switch (getDirection()) {
-            case "up" -> image = getUp1();
-            case "down" -> image = getDown1();
-            case "left" -> image = getLeft1();
-            case "right" -> image = getRight1();
+            case "up" -> {
+                if (getSpriteNumber() == 1)
+                    image = getUp1();
+                if (getSpriteNumber() == 2)
+                    image = getUp2();
+            }
+            case "down" -> {
+                if (getSpriteNumber() == 1)
+                    image = getDown1();
+                if (getSpriteNumber() == 2)
+                    image = getDown2();
+            }
+            case "left" -> {
+                if (getSpriteNumber() == 1)
+                    image = getLeft1();
+                if (getSpriteNumber() == 2)
+                    image = getLeft2();
+            }
+            case "right" -> {
+                if (getSpriteNumber() == 1)
+                    image = getRight1();
+                if (getSpriteNumber() == 2)
+                    image = getRight2();
+            }
         }
-
-        graphics2D.drawImage(image, getX(), getY(), gamePanel.getTileSize(), gamePanel.getTileSize(), null);
-
+        return image;
     }
 }

@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    private boolean upPressed, downPressed, leftPressed, rightPressed;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -52,5 +52,41 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             rightPressed = false;
         }
+    }
+
+    public boolean isUpPressed() {
+        return upPressed;
+    }
+
+    public KeyHandler setUpPressed(boolean upPressed) {
+        this.upPressed = upPressed;
+        return this;
+    }
+
+    public boolean isDownPressed() {
+        return downPressed;
+    }
+
+    public KeyHandler setDownPressed(boolean downPressed) {
+        this.downPressed = downPressed;
+        return this;
+    }
+
+    public boolean isLeftPressed() {
+        return leftPressed;
+    }
+
+    public KeyHandler setLeftPressed(boolean leftPressed) {
+        this.leftPressed = leftPressed;
+        return this;
+    }
+
+    public boolean isRightPressed() {
+        return rightPressed;
+    }
+
+    public KeyHandler setRightPressed(boolean rightPressed) {
+        this.rightPressed = rightPressed;
+        return this;
     }
 }
