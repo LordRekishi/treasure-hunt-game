@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add map loader">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/earth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/world01.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add camera following character">
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +143,13 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1654969915230</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="Add camera following character">
+      <created>1654979006828</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1654979006828</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +176,7 @@
     <MESSAGE value="Add player animation" />
     <MESSAGE value="Add tiles" />
     <MESSAGE value="Add map loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add map loader" />
+    <MESSAGE value="Add camera following character" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add camera following character" />
   </component>
 </project>
