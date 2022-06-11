@@ -1,5 +1,8 @@
 package tech.fallqvist;
 
+import tech.fallqvist.entity.Entity;
+import tech.fallqvist.entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -18,8 +21,10 @@ public class GamePanel extends JPanel implements Runnable {
     // FPS
     private int FPS = 60;
 
-    KeyHandler keyHandler = new KeyHandler();
+    private KeyHandler keyHandler = new KeyHandler();
     private Thread gameThread;
+    private Entity player = new Player(this, keyHandler);
+
 
     // Set player default position
     private int playerX = 100;
@@ -77,30 +82,20 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
-        if (keyHandler.upPressed) {
-            playerY -= playerSpeed;
-        }
-        else if (keyHandler.downPressed) {
-            playerY += playerSpeed;
-        }
-        else if (keyHandler.leftPressed) {
-            playerX -= playerSpeed;
-        }
-        else if (keyHandler.rightPressed) {
-            playerX += playerSpeed;
-        }
-
+        player.update();
     }
 
     public void paintComponent(Graphics graphics) {
-
         super.paintComponent(graphics);
 
         Graphics2D graphics2D = (Graphics2D) graphics;
 
-        graphics2D.setColor(Color.WHITE);
-        graphics2D.fillRect(playerX, playerY, tileSize, tileSize);
+        player.draw(graphics2D);
+
         graphics2D.dispose();
+    }
+
+    public int getTileSize() {
+        return tileSize;
     }
 }
