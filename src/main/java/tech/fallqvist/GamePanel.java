@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    // SCREEN SETTINGS
     private final int originalTileSize = 16; // 16x16 tile
     private final int scale = 3;
 
@@ -18,12 +19,21 @@ public class GamePanel extends JPanel implements Runnable {
     private final int screenWidth = tileSize * maxScreenColumns; // 768 px
     private final int screenHeight = tileSize * maxScreenRows; // 576 px
 
+    // WORLD SETTINGS
+    private final int maxWorldColumns = 50;
+    private final int maxWorldRows = 50;
+    private final int worldWidth = tileSize * maxWorldColumns;
+    private final int worldHeight = tileSize * maxWorldRows;
+
+    // FPS
     private final int FPS = 60;
 
     private final TileManager tileManager = new TileManager(this);
     private final KeyHandler keyHandler = new KeyHandler();
+
     private Thread gameThread;
-    private final Entity player = new Player(this, keyHandler);
+
+    private final Player player = new Player(this, keyHandler);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -108,5 +118,25 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getScreenHeight() {
         return screenHeight;
+    }
+
+    public int getMaxWorldColumns() {
+        return maxWorldColumns;
+    }
+
+    public int getMaxWorldRows() {
+        return maxWorldRows;
+    }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
+
+    public int getWorldHeight() {
+        return worldHeight;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

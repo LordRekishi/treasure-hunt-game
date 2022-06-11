@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add player animation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/Tile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/grass01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/map01.txt" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add map loader">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/earth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/world01.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +139,19 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1654963224477</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Add tiles">
+      <created>1654969902856</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1654969902856</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Add map loader">
+      <created>1654969915230</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1654969915230</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +176,8 @@
     <MESSAGE value="Add Player entity" />
     <MESSAGE value="Add Player sprite" />
     <MESSAGE value="Add player animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add player animation" />
+    <MESSAGE value="Add tiles" />
+    <MESSAGE value="Add map loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add map loader" />
   </component>
 </project>

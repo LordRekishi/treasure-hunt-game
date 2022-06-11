@@ -14,17 +14,23 @@ public class Player extends Entity {
     private final GamePanel gamePanel;
     private final KeyHandler keyHandler;
 
+    private final int screenX;
+    private final int screenY;
+
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
+
+        this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
+        this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues() {
-        setX(100);
-        setY(100);
+        setWorldX(gamePanel.getTileSize() * 23);
+        setWorldY(gamePanel.getTileSize() * 21);
         setSpeed(4);
         setDirection("down");
     }
@@ -54,16 +60,16 @@ public class Player extends Entity {
 
             if (keyHandler.isUpPressed()) {
                 setDirection("up");
-                setY(getY() - getSpeed());
+                setWorldY(getWorldY() - getSpeed());
             } else if (keyHandler.isDownPressed()) {
                 setDirection("down");
-                setY(getY() + getSpeed());
+                setWorldY(getWorldY() + getSpeed());
             } else if (keyHandler.isLeftPressed()) {
                 setDirection("left");
-                setX(getX() - getSpeed());
+                setWorldX(getWorldX() - getSpeed());
             } else if (keyHandler.isRightPressed()) {
                 setDirection("right");
-                setX(getX() + getSpeed());
+                setWorldX(getWorldX() + getSpeed());
             }
 
             checkAndChangeSpriteAnimation();
@@ -84,7 +90,7 @@ public class Player extends Entity {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.drawImage(getDirectionalImage(), getX(), getY(), gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+        graphics2D.drawImage(getDirectionalImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
 
     }
 
@@ -118,5 +124,13 @@ public class Player extends Entity {
             }
         }
         return image;
+    }
+
+    public int getScreenX() {
+        return screenX;
+    }
+
+    public int getScreenY() {
+        return screenY;
     }
 }

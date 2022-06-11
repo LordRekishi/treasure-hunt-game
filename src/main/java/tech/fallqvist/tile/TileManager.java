@@ -19,10 +19,10 @@ public class TileManager {
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.tiles = new Tile[10];
-        this.mapTileNumbers = new int[gamePanel.getMaxScreenColumns()][gamePanel.getMaxScreenRows()];
+        this.mapTileNumbers = new int[gamePanel.getMaxWorldColumns()][gamePanel.getMaxWorldRows()];
 
         getTileImage();
-        loadMap("/maps/map01.txt");
+        loadMap("/maps/world01.txt");
     }
 
     public void getTileImage() {
@@ -35,6 +35,15 @@ public class TileManager {
 
             tiles[2] = new Tile();
             tiles[2].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/water01.png"))));
+
+            tiles[3] = new Tile();
+            tiles[3].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/earth.png"))));
+
+            tiles[4] = new Tile();
+            tiles[4].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/tree.png"))));
+
+            tiles[5] = new Tile();
+            tiles[5].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/road00.png"))));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,17 +58,17 @@ public class TileManager {
             int column = 0;
             int row = 0;
 
-            while (column < gamePanel.getMaxScreenColumns() && row < gamePanel.getMaxScreenRows()) {
+            while (column < gamePanel.getMaxWorldColumns() && row < gamePanel.getMaxWorldRows()) {
                 String line = bufferedReader.readLine();
 
-                while (column < gamePanel.getMaxScreenColumns()) {
+                while (column < gamePanel.getMaxWorldColumns()) {
                     String[] numbers = line.split(" ");
                     int number = Integer.parseInt(numbers[column]);
 
                     mapTileNumbers[column][row] = number;
                     column++;
                 }
-                if (column == gamePanel.getMaxScreenColumns()) {
+                if (column == gamePanel.getMaxWorldColumns()) {
                     column = 0;
                     row++;
                 }
@@ -73,24 +82,24 @@ public class TileManager {
     }
 
     public void draw(Graphics2D graphics2D) {
-        int column = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
+        int worldColumn = 0;
+        int worldRow = 0;
 
-        while (column < gamePanel.getMaxScreenColumns() && row < gamePanel.getMaxScreenRows()) {
+        while (worldColumn < gamePanel.getMaxWorldColumns() && worldRow < gamePanel.getMaxWorldRows()) {
 
-            int tileNumber = mapTileNumbers[column][row];
+            int tileNumber = mapTileNumbers[worldColumn][worldRow];
 
-            graphics2D.drawImage(tiles[tileNumber].getImage(), x, y, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
-            column++;
-            x += gamePanel.getTileSize();
+            int worldX = worldColumn * gamePanel.getTileSize();
+            int worldY = worldRow * gamePanel.getTileSize();
+            int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX();
+            int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
-            if (column == gamePanel.getMaxScreenColumns()) {
-                column = 0;
-                x = 0;
-                row++;
-                y += gamePanel.getTileSize();
+            graphics2D.drawImage(tiles[tileNumber].getImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+            worldColumn++;
+
+            if (worldColumn == gamePanel.getMaxWorldColumns()) {
+                worldColumn = 0;
+                worldRow++;
             }
         }
     }
