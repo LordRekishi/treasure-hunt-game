@@ -85,7 +85,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1654952323770</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Add delta/accumulator Game loop">
+      <created>1654955062780</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1654955062780</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Add delta/accumulator Game loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add delta/accumulator Game loop" />
   </component>
 </project>
