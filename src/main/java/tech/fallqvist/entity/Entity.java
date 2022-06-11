@@ -7,12 +7,12 @@ public abstract class Entity {
 
     private int worldX, worldY;
     private int speed;
-
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     private String direction;
-
     private int spriteCounter = 0;
     private int spriteNumber = 1;
+    private Rectangle collisionArea;
+    private boolean collisionOn = false;
 
     public abstract void update();
     public abstract void draw(Graphics2D graphics2D);
@@ -140,6 +140,24 @@ public abstract class Entity {
 
     public Entity setSpriteNumber(int spriteNumber) {
         this.spriteNumber = spriteNumber;
+        return this;
+    }
+
+    public Rectangle getCollisionArea() {
+        return collisionArea;
+    }
+
+    public Entity setCollisionArea(Rectangle collisionArea) {
+        this.collisionArea = collisionArea;
+        return this;
+    }
+
+    public boolean isCollisionOn() {
+        return collisionOn;
+    }
+
+    public Entity setCollisionOn(boolean collisionOn) {
+        this.collisionOn = collisionOn;
         return this;
     }
 }

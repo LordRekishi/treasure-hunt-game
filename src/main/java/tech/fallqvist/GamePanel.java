@@ -33,6 +33,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread gameThread;
 
+    private final CollisionChecker collisionChecker = new CollisionChecker(this);
+
     private final Player player = new Player(this, keyHandler);
 
     public GamePanel() {
@@ -134,6 +136,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getWorldHeight() {
         return worldHeight;
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
+    }
+
+    public CollisionChecker getCollisionChecker() {
+        return collisionChecker;
     }
 
     public Player getPlayer() {

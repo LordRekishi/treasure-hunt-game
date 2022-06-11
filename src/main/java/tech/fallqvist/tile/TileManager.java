@@ -32,15 +32,18 @@ public class TileManager {
 
             tiles[1] = new Tile();
             tiles[1].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/wall.png"))));
+            tiles[1].setCollision(true);
 
             tiles[2] = new Tile();
             tiles[2].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/water01.png"))));
+            tiles[2].setCollision(true);
 
             tiles[3] = new Tile();
             tiles[3].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/earth.png"))));
 
             tiles[4] = new Tile();
             tiles[4].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/tree.png"))));
+            tiles[4].setCollision(true);
 
             tiles[5] = new Tile();
             tiles[5].setImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/tiles/road00.png"))));
@@ -109,5 +112,13 @@ public class TileManager {
                 worldRow++;
             }
         }
+    }
+
+    public Tile[] getTiles() {
+        return tiles;
+    }
+
+    public int[][] getMapTileNumbers() {
+        return mapTileNumbers;
     }
 }

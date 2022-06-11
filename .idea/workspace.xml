@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add camera following character">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add performance improvements">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/CollisionChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +154,13 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1654979006828</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="Add performance improvements">
+      <created>1654979584921</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1654979584921</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +188,7 @@
     <MESSAGE value="Add tiles" />
     <MESSAGE value="Add map loader" />
     <MESSAGE value="Add camera following character" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add camera following character" />
+    <MESSAGE value="Add performance improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add performance improvements" />
   </component>
 </project>

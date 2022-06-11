@@ -24,6 +24,8 @@ public class Player extends Entity {
         this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
         this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
+        setCollisionArea(new Rectangle(8, 16, 32, 32));
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -60,19 +62,33 @@ public class Player extends Entity {
 
             if (keyHandler.isUpPressed()) {
                 setDirection("up");
-                setWorldY(getWorldY() - getSpeed());
             } else if (keyHandler.isDownPressed()) {
                 setDirection("down");
-                setWorldY(getWorldY() + getSpeed());
             } else if (keyHandler.isLeftPressed()) {
                 setDirection("left");
-                setWorldX(getWorldX() - getSpeed());
             } else if (keyHandler.isRightPressed()) {
                 setDirection("right");
-                setWorldX(getWorldX() + getSpeed());
             }
 
+            checkCollision();
+            moveIfCollisionNotDetected();
             checkAndChangeSpriteAnimation();
+        }
+    }
+
+    private void checkCollision() {
+        setCollisionOn(false);
+        gamePanel.getCollisionChecker().checkTile(this);
+    }
+
+    private void moveIfCollisionNotDetected() {
+        if (!isCollisionOn()) {
+            switch (getDirection()) {
+                case "up" -> setWorldY(getWorldY() - getSpeed());
+                case "down" -> setWorldY(getWorldY() + getSpeed());
+                case "left" -> setWorldX(getWorldX() - getSpeed());
+                case "right" -> setWorldX(getWorldX() + getSpeed());
+            }
         }
     }
 
