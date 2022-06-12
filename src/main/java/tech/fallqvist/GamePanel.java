@@ -1,8 +1,11 @@
 package tech.fallqvist;
 
-import tech.fallqvist.entity.Entity;
 import tech.fallqvist.entity.Player;
+import tech.fallqvist.object.ObjectManager;
+import tech.fallqvist.object.SuperObject;
 import tech.fallqvist.tile.TileManager;
+import tech.fallqvist.util.CollisionChecker;
+import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,14 +31,18 @@ public class GamePanel extends JPanel implements Runnable {
     // FPS
     private final int FPS = 60;
 
-    private final TileManager tileManager = new TileManager(this);
+    // INITIALIZE UTILS
     private final KeyHandler keyHandler = new KeyHandler();
+    private final CollisionChecker collisionChecker = new CollisionChecker(this);
+    private final TileManager tileManager = new TileManager(this);
+    private final ObjectManager objectManager = new ObjectManager(this);
 
+    // GAME THREAD
     private Thread gameThread;
 
-    private final CollisionChecker collisionChecker = new CollisionChecker(this);
-
+    // IN-GAMES ENTITIES
     private final Player player = new Player(this, keyHandler);
+    private final SuperObject[] objects = new SuperObject[10];
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -45,6 +52,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
+    public void setUpGame() {
+        objectManager.setObjects();
+    }
+
     public void startGameThread() {
         this.gameThread = new Thread(this);
         gameThread.start();
@@ -52,39 +63,23 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        double drawInterval = 1000000000 / FPS;
+        double drawInterval = 1_000_000_000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
 
-        long timer = 0;
-        int drawCount = 0;
-
         while (gameThread != null) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
-            timer += (currentTime - lastTime);
             lastTime = currentTime;
 
             if (delta >= 1) {
-                // 1: Update information, such as character position
                 update();
-
-                // 2: Draw the screen with updated information
-                repaint(); // Calls the paintComponent() method
+                repaint();
 
                 delta--;
-                drawCount++;
             }
-
-            if (timer >= 1000000000) {
-                System.out.println("FPS: " + drawCount);
-                drawCount = 0;
-                timer = 0;
-            }
-
         }
-
     }
 
     public void update() {
@@ -93,10 +88,19 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-
         Graphics2D graphics2D = (Graphics2D) graphics;
 
+        // TILES
         tileManager.draw(graphics2D);
+
+        // OBJECTS
+        for (SuperObject object : objects) {
+            if (object != null) {
+                object.draw(graphics2D, this);
+            }
+        }
+
+        // ENTITIES
         player.draw(graphics2D);
 
         graphics2D.dispose();
@@ -146,7 +150,15 @@ public class GamePanel extends JPanel implements Runnable {
         return collisionChecker;
     }
 
+    public ObjectManager getObjectManager() {
+        return objectManager;
+    }
+
     public Player getPlayer() {
         return player;
+    }
+
+    public SuperObject[] getObjects() {
+        return objects;
     }
 }

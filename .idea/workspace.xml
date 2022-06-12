@@ -4,13 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add performance improvements">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/CollisionChecker.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add collision detection">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/boots.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/chest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/key.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/world01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/world01.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +61,14 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/maps"
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/objects"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles" />
     </key>
@@ -67,7 +83,7 @@
       <module name="treasure-hunt-game" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.fallqvist.*" />
+          <option name="PATTERN" value="tech.fallqvist.object.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,8 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -93,6 +109,7 @@
       <workItem from="1654945481202" duration="401000" />
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
+      <workItem from="1655060101437" duration="4779000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -160,7 +177,13 @@
       <option name="presentableId" value="LOCAL−00011" />
       <updated>1654979584921</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="Add collision detection">
+      <created>1654982198514</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1654982198514</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +212,7 @@
     <MESSAGE value="Add map loader" />
     <MESSAGE value="Add camera following character" />
     <MESSAGE value="Add performance improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add performance improvements" />
+    <MESSAGE value="Add collision detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add collision detection" />
   </component>
 </project>

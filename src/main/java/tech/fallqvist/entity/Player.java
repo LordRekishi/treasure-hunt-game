@@ -1,7 +1,7 @@
 package tech.fallqvist.entity;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.KeyHandler;
+import tech.fallqvist.util.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,9 +13,9 @@ public class Player extends Entity {
 
     private final GamePanel gamePanel;
     private final KeyHandler keyHandler;
-
     private final int screenX;
     private final int screenY;
+    private int numberOfKeys = 0;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -24,10 +24,15 @@ public class Player extends Entity {
         this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
         this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
-        setCollisionArea(new Rectangle(8, 16, 32, 32));
-
+        setCollision();
         setDefaultValues();
         getPlayerImage();
+    }
+
+    private void setCollision() {
+        setCollisionArea(new Rectangle(8, 16, 32, 32));
+        setCollisionDefaultX(getCollisionArea().x);
+        setCollisionDefaultY(getCollisionArea().y);
     }
 
     public void setDefaultValues() {
@@ -72,13 +77,37 @@ public class Player extends Entity {
 
             checkCollision();
             moveIfCollisionNotDetected();
-            checkAndChangeSpriteAnimation();
+            checkAndChangeSpriteAnimationImage();
         }
     }
 
     private void checkCollision() {
         setCollisionOn(false);
         gamePanel.getCollisionChecker().checkTile(this);
+        int objectIndex = gamePanel.getCollisionChecker().checkObject(this, true);
+        pickUpObject(objectIndex);
+    }
+
+    private void pickUpObject(int index) {
+
+        if (index != 999) {
+            String objectName = gamePanel.getObjects()[index].getName();
+
+            switch (objectName) {
+                case "Key" -> {
+                    gamePanel.getObjects()[index] = null;
+                    numberOfKeys++;
+                    System.out.println("Keys: " + numberOfKeys);
+                }
+                case "Door" -> {
+                    if (numberOfKeys > 0) {
+                        gamePanel.getObjects()[index] = null;
+                        numberOfKeys--;
+                        System.out.println("Keys: " + numberOfKeys);
+                    }
+                }
+            }
+        }
     }
 
     private void moveIfCollisionNotDetected() {
@@ -92,7 +121,7 @@ public class Player extends Entity {
         }
     }
 
-    private void checkAndChangeSpriteAnimation() {
+    private void checkAndChangeSpriteAnimationImage() {
         setSpriteCounter(getSpriteCounter() + 1);
         if (getSpriteCounter() > 12) {
             if (getSpriteNumber() == 1) {
@@ -106,11 +135,11 @@ public class Player extends Entity {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.drawImage(getDirectionalImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+        graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
 
     }
 
-    private BufferedImage getDirectionalImage() {
+    private BufferedImage getDirectionalAnimationImage() {
         BufferedImage image = null;
 
         switch (getDirection()) {
@@ -148,5 +177,14 @@ public class Player extends Entity {
 
     public int getScreenY() {
         return screenY;
+    }
+
+    public int getNumberOfKeys() {
+        return numberOfKeys;
+    }
+
+    public Player setNumberOfKeys(int numberOfKeys) {
+        this.numberOfKeys = numberOfKeys;
+        return this;
     }
 }

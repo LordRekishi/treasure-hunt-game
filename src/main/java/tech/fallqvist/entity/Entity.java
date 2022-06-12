@@ -12,6 +12,7 @@ public abstract class Entity {
     private int spriteCounter = 0;
     private int spriteNumber = 1;
     private Rectangle collisionArea;
+    private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
 
     public abstract void update();
@@ -149,6 +150,24 @@ public abstract class Entity {
 
     public Entity setCollisionArea(Rectangle collisionArea) {
         this.collisionArea = collisionArea;
+        return this;
+    }
+
+    public int getCollisionDefaultX() {
+        return collisionDefaultX;
+    }
+
+    public Entity setCollisionDefaultX(int collisionDefaultX) {
+        this.collisionDefaultX = collisionDefaultX;
+        return this;
+    }
+
+    public int getCollisionDefaultY() {
+        return collisionDefaultY;
+    }
+
+    public Entity setCollisionDefaultY(int collisionDefaultY) {
+        this.collisionDefaultY = collisionDefaultY;
         return this;
     }
 
