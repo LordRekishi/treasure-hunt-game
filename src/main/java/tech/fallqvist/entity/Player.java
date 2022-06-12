@@ -95,16 +95,21 @@ public class Player extends Entity {
 
             switch (objectName) {
                 case "Key" -> {
-                    gamePanel.getObjects()[index] = null;
                     numberOfKeys++;
+                    gamePanel.getObjects()[index] = null;
                     System.out.println("Keys: " + numberOfKeys);
                 }
                 case "Door" -> {
                     if (numberOfKeys > 0) {
-                        gamePanel.getObjects()[index] = null;
                         numberOfKeys--;
+                        gamePanel.getObjects()[index] = null;
                         System.out.println("Keys: " + numberOfKeys);
                     }
+                }
+                case "Boots" -> {
+                    setSpeed(getSpeed() + 2);
+                    gamePanel.getObjects()[index] = null;
+                    System.out.println("Player speed increased!!");
                 }
             }
         }

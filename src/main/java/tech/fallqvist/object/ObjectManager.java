@@ -50,5 +50,11 @@ public class ObjectManager {
         gamePanel.getObjects()[6].setWorldY(7 * gamePanel.getTileSize());
         gamePanel.getObjects()[6].setIndex(6);
 
+        // BOOTS
+        gamePanel.getObjects()[7] = new OBJ_Boots();
+        gamePanel.getObjects()[7].setWorldX(37 * gamePanel.getTileSize());
+        gamePanel.getObjects()[7].setWorldY(42 * gamePanel.getTileSize());
+        gamePanel.getObjects()[7].setIndex(7);
+
     }
 }
