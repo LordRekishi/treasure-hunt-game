@@ -98,21 +98,29 @@ public class Player extends Entity {
                     gamePanel.playSoundEffect(1);
                     numberOfKeys++;
                     gamePanel.getObjects()[index] = null;
-                    System.out.println("Keys: " + numberOfKeys);
+                    gamePanel.getUi().showMessage("You got a key!");
                 }
                 case "Door" -> {
                     if (numberOfKeys > 0) {
                         gamePanel.playSoundEffect(3);
                         numberOfKeys--;
                         gamePanel.getObjects()[index] = null;
-                        System.out.println("Keys: " + numberOfKeys);
+                        gamePanel.getUi().showMessage("You opened the door!");
+                    } else {
+                        gamePanel.getUi().showMessage("You need a key!");
                     }
                 }
                 case "Boots" -> {
                     gamePanel.playSoundEffect(2);
                     setSpeed(getSpeed() + 2);
                     gamePanel.getObjects()[index] = null;
-                    System.out.println("Player speed increased!!");
+                    gamePanel.getUi().showMessage("Speed Up!");
+                }
+
+                case "Chest" -> {
+                    gamePanel.getUi().setGameFinished(true);
+                    gamePanel.stopMusic();
+                    gamePanel.playSoundEffect(4);
                 }
             }
         }

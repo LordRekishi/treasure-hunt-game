@@ -5,6 +5,7 @@ import tech.fallqvist.object.ObjectManager;
 import tech.fallqvist.object.SuperObject;
 import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.tile.TileManager;
+import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
 import tech.fallqvist.util.KeyHandler;
 
@@ -35,7 +36,9 @@ public class GamePanel extends JPanel implements Runnable {
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
     private final TileManager tileManager = new TileManager(this);
     private final ObjectManager objectManager = new ObjectManager(this);
-    private final SoundManager soundManager = new SoundManager();
+    private final SoundManager music = new SoundManager();
+    private final SoundManager soundEffect = new SoundManager();
+    private final UI ui = new UI(this);
 
     // GAME THREAD
     private Thread gameThread;
@@ -104,23 +107,26 @@ public class GamePanel extends JPanel implements Runnable {
         // ENTITIES
         player.draw(graphics2D);
 
+        // UI
+        ui.draw(graphics2D);
+
         // CLOSE
         graphics2D.dispose();
     }
 
     public void playMusic(int index) {
-        soundManager.setFile(index);
-        soundManager.play();
-        soundManager.loop();
+        music.setFile(index);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic() {
-        soundManager.stop();
+        music.stop();
     }
 
     public void playSoundEffect(int index) {
-        soundManager.setFile(index);
-        soundManager.play();
+        soundEffect.setFile(index);
+        soundEffect.play();
     }
 
     public int getTileSize() {
@@ -163,11 +169,24 @@ public class GamePanel extends JPanel implements Runnable {
         return objectManager;
     }
 
+    public Thread getGameThread() {
+        return gameThread;
+    }
+
+    public GamePanel setGameThread(Thread gameThread) {
+        this.gameThread = gameThread;
+        return this;
+    }
+
     public Player getPlayer() {
         return player;
     }
 
     public SuperObject[] getObjects() {
         return objects;
+    }
+
+    public UI getUi() {
+        return ui;
     }
 }
