@@ -3,6 +3,7 @@ package tech.fallqvist;
 import tech.fallqvist.entity.Player;
 import tech.fallqvist.object.ObjectManager;
 import tech.fallqvist.object.SuperObject;
+import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.tile.TileManager;
 import tech.fallqvist.util.CollisionChecker;
 import tech.fallqvist.util.KeyHandler;
@@ -25,8 +26,6 @@ public class GamePanel extends JPanel implements Runnable {
     // WORLD SETTINGS
     private final int maxWorldColumns = 50;
     private final int maxWorldRows = 50;
-    private final int worldWidth = tileSize * maxWorldColumns;
-    private final int worldHeight = tileSize * maxWorldRows;
 
     // FPS
     private final int FPS = 60;
@@ -36,11 +35,12 @@ public class GamePanel extends JPanel implements Runnable {
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
     private final TileManager tileManager = new TileManager(this);
     private final ObjectManager objectManager = new ObjectManager(this);
+    private final SoundManager soundManager = new SoundManager();
 
     // GAME THREAD
     private Thread gameThread;
 
-    // IN-GAMES ENTITIES
+    // IN-GAMES ENTITIES & OBJECTS
     private final Player player = new Player(this, keyHandler);
     private final SuperObject[] objects = new SuperObject[10];
 
@@ -54,10 +54,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setUpGame() {
         objectManager.setObjects();
+        playMusic(0);
     }
 
     public void startGameThread() {
-        this.gameThread = new Thread(this);
+        gameThread = new Thread(this);
         gameThread.start();
     }
 
@@ -103,7 +104,23 @@ public class GamePanel extends JPanel implements Runnable {
         // ENTITIES
         player.draw(graphics2D);
 
+        // CLOSE
         graphics2D.dispose();
+    }
+
+    public void playMusic(int index) {
+        soundManager.setFile(index);
+        soundManager.play();
+        soundManager.loop();
+    }
+
+    public void stopMusic() {
+        soundManager.stop();
+    }
+
+    public void playSoundEffect(int index) {
+        soundManager.setFile(index);
+        soundManager.play();
     }
 
     public int getTileSize() {
@@ -132,14 +149,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getMaxWorldRows() {
         return maxWorldRows;
-    }
-
-    public int getWorldWidth() {
-        return worldWidth;
-    }
-
-    public int getWorldHeight() {
-        return worldHeight;
     }
 
     public TileManager getTileManager() {

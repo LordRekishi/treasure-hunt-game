@@ -4,10 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Objects, object collision &amp; pickup">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Boots">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/BlueBoyAdventure.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/burning.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/coin.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/cursor.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/cuttree.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/fanfare.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/gameover.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/hitmonster.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/levelup.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/powerup.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/receivedamage.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/stairs.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/unlock.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +59,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/objects"
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/sounds",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\sounds" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles" />
@@ -92,7 +107,7 @@
       <workItem from="1654945481202" duration="401000" />
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
-      <workItem from="1655060101437" duration="5117000" />
+      <workItem from="1655060101437" duration="6249000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -172,7 +187,13 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1655065046287</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="Add Boots">
+      <created>1655065415813</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1655065415813</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +224,7 @@
     <MESSAGE value="Add performance improvements" />
     <MESSAGE value="Add collision detection" />
     <MESSAGE value="Add Objects, object collision &amp; pickup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Objects, object collision &amp; pickup" />
+    <MESSAGE value="Add Boots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Boots" />
   </component>
 </project>
