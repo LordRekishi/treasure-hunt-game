@@ -16,6 +16,7 @@ public class Player extends Entity {
     private final int screenX;
     private final int screenY;
     private int numberOfKeys = 0;
+    private int resetTimer;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -78,6 +79,8 @@ public class Player extends Entity {
             checkCollision();
             moveIfCollisionNotDetected();
             checkAndChangeSpriteAnimationImage();
+        } else {
+            resetSpriteToDefault();
         }
     }
 
@@ -146,6 +149,14 @@ public class Player extends Entity {
                 setSpriteNumber(1);
             }
             setSpriteCounter(0);
+        }
+    }
+
+    private void resetSpriteToDefault() {
+        resetTimer++;
+        if (resetTimer == 20) {
+            setSpriteNumber(1);
+            resetTimer = 0;
         }
     }
 
