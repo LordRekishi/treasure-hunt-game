@@ -25,7 +25,7 @@ public class UI {
         this.gamePanel = gamePanel;
         this.arial_40 = new Font("Arial", Font.PLAIN, 40);
         this.arial_80B = new Font("Arial", Font.BOLD, 80);
-        OBJ_Key key = new OBJ_Key();
+        OBJ_Key key = new OBJ_Key(gamePanel);
         this.keyImage = key.getImage();
         this.decimalFormat = new DecimalFormat("#0.00", new DecimalFormatSymbols(Locale.ENGLISH));
     }

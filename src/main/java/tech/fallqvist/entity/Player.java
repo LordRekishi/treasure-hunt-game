@@ -2,6 +2,7 @@ package tech.fallqvist.entity;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.KeyHandler;
+import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -44,20 +45,28 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
+            setUp1(setup("boy_up_1"));
+            setUp2(setup("boy_up_2"));
+            setDown1(setup("boy_down_1"));
+            setDown2(setup("boy_down_2"));
+            setLeft1(setup("boy_left_1"));
+            setLeft2(setup("boy_left_2"));
+            setRight1(setup("boy_right_1"));
+            setRight2(setup("boy_right_2"));
+
+    }
+
+    public BufferedImage setup(String imageName) {
+        BufferedImage image = null;
 
         try {
-            setUp1(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_up_1.png"))));
-            setUp2(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_up_2.png"))));
-            setDown1(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_down_1.png"))));
-            setDown2(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_down_2.png"))));
-            setLeft1(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_left_1.png"))));
-            setLeft2(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_left_2.png"))));
-            setRight1(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_right_1.png"))));
-            setRight2(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/boy_right_2.png"))));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/" + imageName + ".png")));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize());
     }
 
     @Override
@@ -162,7 +171,7 @@ public class Player extends Entity {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+        graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, null);
 
     }
 
