@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Prepare game for advanced functions">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add stop camera at edge functionality">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/NPC_OldMan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/merchant_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/merchant_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/npc/oldman_up_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/AssetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +65,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/maps",
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/npc",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\npc" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\sounds" />
@@ -71,7 +88,7 @@
       <module name="treasure-hunt-game" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.fallqvist.object.*" />
+          <option name="PATTERN" value="tech.fallqvist.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -81,8 +98,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -98,7 +115,7 @@
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
       <workItem from="1655060101437" duration="10549000" />
-      <workItem from="1655746242686" duration="8146000" />
+      <workItem from="1655746242686" duration="12770000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -220,7 +237,13 @@
       <option name="presentableId" value="LOCAL−00020" />
       <updated>1655751542218</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL−00021" summary="Add stop camera at edge functionality">
+      <created>1655755255062</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1655755255062</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,6 +281,7 @@
     <MESSAGE value="Improve scaling draw time" />
     <MESSAGE value="Add new tiles and map V2" />
     <MESSAGE value="Prepare game for advanced functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepare game for advanced functions" />
+    <MESSAGE value="Add stop camera at edge functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add stop camera at edge functionality" />
   </component>
 </project>

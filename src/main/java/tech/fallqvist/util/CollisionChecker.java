@@ -2,7 +2,7 @@ package tech.fallqvist.util;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.entity.Entity;
-import tech.fallqvist.object.SuperObject;
+import tech.fallqvist.object.Object;
 
 public class CollisionChecker {
 
@@ -72,7 +72,7 @@ public class CollisionChecker {
     public int checkObject(Entity entity, boolean isPlayer) {
         int index = 999;
 
-        for (SuperObject object : gamePanel.getObjects()) {
+        for (Object object : gamePanel.getObjects()) {
 
             if (object != null) {
                 entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
@@ -144,5 +144,107 @@ public class CollisionChecker {
         }
 
         return index;
+    }
+
+    public int checkEntity(Entity entity, Entity[] targets) {
+
+        int index = 999;
+
+        for (Entity target : targets) {
+
+            if (target != null) {
+                entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
+                entity.getCollisionArea().y = entity.getWorldY() + entity.getCollisionArea().y;
+
+                target.getCollisionArea().x = target.getWorldX() + target.getCollisionArea().x;
+                target.getCollisionArea().y = target.getWorldY() + target.getCollisionArea().y;
+
+                switch (entity.getDirection()) {
+                    case "up" -> {
+                        entity.getCollisionArea().y -= entity.getSpeed();
+
+                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
+                            entity.setCollisionOn(true);
+                            index = target.getIndex();
+                        }
+                    }
+                    case "down" -> {
+                        entity.getCollisionArea().y += entity.getSpeed();
+
+                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
+                            entity.setCollisionOn(true);
+                            index = target.getIndex();
+                        }
+                    }
+                    case "left" -> {
+                        entity.getCollisionArea().x -= entity.getSpeed();
+
+                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
+                            entity.setCollisionOn(true);
+                            index = target.getIndex();
+                        }
+                    }
+                    case "right" -> {
+                        entity.getCollisionArea().x += entity.getSpeed();
+
+                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
+                            entity.setCollisionOn(true);
+                            index = target.getIndex();
+                        }
+                    }
+                }
+
+                entity.getCollisionArea().x = entity.getCollisionDefaultX();
+                entity.getCollisionArea().y = entity.getCollisionDefaultY();
+                target.getCollisionArea().x = target.getCollisionDefaultX();
+                target.getCollisionArea().y = target.getCollisionDefaultY();
+            }
+        }
+
+        return index;
+    }
+
+    public void checkPlayer(Entity entity) {
+        entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
+        entity.getCollisionArea().y = entity.getWorldY() + entity.getCollisionArea().y;
+
+        gamePanel.getPlayer().getCollisionArea().x = gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getCollisionArea().x;
+        gamePanel.getPlayer().getCollisionArea().y = gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getCollisionArea().y;
+
+        switch (entity.getDirection()) {
+            case "up" -> {
+                entity.getCollisionArea().y -= entity.getSpeed();
+
+                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
+                    entity.setCollisionOn(true);
+                }
+            }
+            case "down" -> {
+                entity.getCollisionArea().y += entity.getSpeed();
+
+                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
+                    entity.setCollisionOn(true);
+                }
+            }
+            case "left" -> {
+                entity.getCollisionArea().x -= entity.getSpeed();
+
+                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
+                    entity.setCollisionOn(true);
+                }
+            }
+            case "right" -> {
+                entity.getCollisionArea().x += entity.getSpeed();
+
+                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
+                    entity.setCollisionOn(true);
+                }
+            }
+        }
+
+        entity.getCollisionArea().x = entity.getCollisionDefaultX();
+        entity.getCollisionArea().y = entity.getCollisionDefaultY();
+        gamePanel.getPlayer().getCollisionArea().x = gamePanel.getPlayer().getCollisionDefaultX();
+        gamePanel.getPlayer().getCollisionArea().y = gamePanel.getPlayer().getCollisionDefaultY();
     }
 }

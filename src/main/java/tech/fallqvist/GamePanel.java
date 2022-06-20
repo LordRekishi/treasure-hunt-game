@@ -1,8 +1,9 @@
 package tech.fallqvist;
 
+import tech.fallqvist.entity.Entity;
 import tech.fallqvist.entity.Player;
-import tech.fallqvist.object.ObjectManager;
-import tech.fallqvist.object.SuperObject;
+import tech.fallqvist.util.AssetManager;
+import tech.fallqvist.object.Object;
 import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.tile.TileManager;
 import tech.fallqvist.ui.UI;
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final KeyHandler keyHandler = new KeyHandler(this);
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
     private final TileManager tileManager = new TileManager(this);
-    private final ObjectManager objectManager = new ObjectManager(this);
+    private final AssetManager assetManager = new AssetManager(this);
     private final SoundManager music = new SoundManager();
     private final SoundManager soundEffect = new SoundManager();
     private final UI ui = new UI(this);
@@ -51,7 +52,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITIES & OBJECTS
     private final Player player = new Player(this, keyHandler);
-    private final SuperObject[] objects = new SuperObject[10];
+    private final Object[] objects = new Object[10];
+    private final Entity[] npcs = new Entity[10];
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -62,7 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setUpGame() {
-        objectManager.setObjects();
+        assetManager.setObjects();
+        assetManager.setNPCs();
         playMusic(0);
         gameState = playState;
     }
@@ -97,6 +100,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (gameState == playState) {
             player.update();
+            for (Entity npc : npcs) {
+                if (npc != null) {
+                    npc.update();
+                }
+            }
         }
 
         if (gameState == pauseState) {
@@ -118,13 +126,20 @@ public class GamePanel extends JPanel implements Runnable {
         tileManager.draw(graphics2D);
 
         // OBJECTS
-        for (SuperObject object : objects) {
+        for (Object object : objects) {
             if (object != null) {
                 object.draw(graphics2D, this);
             }
         }
 
-        // ENTITIES
+        // NPCS
+        for (Entity npc : npcs) {
+            if (npc != null) {
+                npc.draw(graphics2D);
+            }
+        }
+
+        // PLAYER
         player.draw(graphics2D);
 
         // UI
@@ -203,8 +218,8 @@ public class GamePanel extends JPanel implements Runnable {
         return collisionChecker;
     }
 
-    public ObjectManager getObjectManager() {
-        return objectManager;
+    public AssetManager getObjectManager() {
+        return assetManager;
     }
 
     public Thread getGameThread() {
@@ -220,8 +235,12 @@ public class GamePanel extends JPanel implements Runnable {
         return player;
     }
 
-    public SuperObject[] getObjects() {
+    public Object[] getObjects() {
         return objects;
+    }
+
+    public Entity[] getNpcs() {
+        return npcs;
     }
 
     public UI getUi() {

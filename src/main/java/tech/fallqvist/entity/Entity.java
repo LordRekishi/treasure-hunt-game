@@ -1,22 +1,127 @@
 package tech.fallqvist.entity;
 
+import tech.fallqvist.GamePanel;
+import tech.fallqvist.util.UtilityTool;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 public abstract class Entity {
 
+    private int index;
+    private final GamePanel gamePanel;
     private int worldX, worldY;
     private int speed;
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     private String direction;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
-    private Rectangle collisionArea;
+    private Rectangle collisionArea = new Rectangle(8, 16, 32, 32);
     private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
+    private int actionLockCounter = 0;
 
-    public abstract void update();
-    public abstract void draw(Graphics2D graphics2D);
+    public Entity(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public void setAction(){};
+
+    public void update() {
+        setAction();
+
+        collisionOn = false;
+        gamePanel.getCollisionChecker().checkTile(this);
+        gamePanel.getCollisionChecker().checkObject(this, false);
+        gamePanel.getCollisionChecker().checkPlayer(this);
+
+        moveIfCollisionNotDetected();
+        checkAndChangeSpriteAnimationImage();
+    }
+
+    public void moveIfCollisionNotDetected() {
+        if (!isCollisionOn()) {
+            switch (getDirection()) {
+                case "up" -> setWorldY(getWorldY() - getSpeed());
+                case "down" -> setWorldY(getWorldY() + getSpeed());
+                case "left" -> setWorldX(getWorldX() - getSpeed());
+                case "right" -> setWorldX(getWorldX() + getSpeed());
+            }
+        }
+    }
+
+    public void checkAndChangeSpriteAnimationImage() {
+        spriteCounter++;
+        if (spriteCounter > 12) {
+            if (spriteNumber == 1) {
+                setSpriteNumber(2);
+            } else if (spriteNumber == 2) {
+                setSpriteNumber(1);
+            }
+            setSpriteCounter(0);
+        }
+    }
+
+    public void draw(Graphics2D graphics2D) {
+        int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX();
+        int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
+
+        if (UtilityTool.isInsidePlayerView(worldX, worldY, gamePanel)) {
+            graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+        }
+    }
+
+    public BufferedImage getDirectionalAnimationImage() {
+        BufferedImage image = null;
+
+        switch (getDirection()) {
+            case "up" -> {
+                if (getSpriteNumber() == 1)
+                    image = getUp1();
+                if (getSpriteNumber() == 2)
+                    image = getUp2();
+            }
+            case "down" -> {
+                if (getSpriteNumber() == 1)
+                    image = getDown1();
+                if (getSpriteNumber() == 2)
+                    image = getDown2();
+            }
+            case "left" -> {
+                if (getSpriteNumber() == 1)
+                    image = getLeft1();
+                if (getSpriteNumber() == 2)
+                    image = getLeft2();
+            }
+            case "right" -> {
+                if (getSpriteNumber() == 1)
+                    image = getRight1();
+                if (getSpriteNumber() == 2)
+                    image = getRight2();
+            }
+        }
+        return image;
+    }
+
+    public BufferedImage setup(String imagePath) {
+        BufferedImage image = null;
+
+        try {
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return UtilityTool.scaleImage(image, getGamePanel().getTileSize(), getGamePanel().getTileSize());
+    }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
 
     public int getWorldX() {
         return worldX;
@@ -177,6 +282,24 @@ public abstract class Entity {
 
     public Entity setCollisionOn(boolean collisionOn) {
         this.collisionOn = collisionOn;
+        return this;
+    }
+
+    public int getActionLockCounter() {
+        return actionLockCounter;
+    }
+
+    public Entity setActionLockCounter(int actionLockCounter) {
+        this.actionLockCounter = actionLockCounter;
+        return this;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public Entity setIndex(int index) {
+        this.index = index;
         return this;
     }
 }

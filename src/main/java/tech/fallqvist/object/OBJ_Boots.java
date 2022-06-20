@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class OBJ_Boots extends SuperObject {
+public class OBJ_Boots extends Object {
 
     public OBJ_Boots(GamePanel gamePanel) {
         setName("Boots");

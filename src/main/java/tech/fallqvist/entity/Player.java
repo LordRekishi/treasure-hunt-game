@@ -2,24 +2,18 @@ package tech.fallqvist.entity;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.KeyHandler;
-import tech.fallqvist.util.UtilityTool;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 public class Player extends Entity {
 
-    private final GamePanel gamePanel;
     private final KeyHandler keyHandler;
     private final int screenX;
     private final int screenY;
     private int resetTimer;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
-        this.gamePanel = gamePanel;
+        super(gamePanel);
         this.keyHandler = keyHandler;
 
         this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
@@ -27,45 +21,30 @@ public class Player extends Entity {
 
         setCollision();
         setDefaultValues();
-        getPlayerImage();
+        getAnimationImages();
     }
 
     private void setCollision() {
-        setCollisionArea(new Rectangle(8, 16, 32, 32));
         setCollisionDefaultX(getCollisionArea().x);
         setCollisionDefaultY(getCollisionArea().y);
     }
 
     public void setDefaultValues() {
-        setWorldX(gamePanel.getTileSize() * 23);
-        setWorldY(gamePanel.getTileSize() * 21);
+        setWorldX(getGamePanel().getTileSize() * 23);
+        setWorldY(getGamePanel().getTileSize() * 21);
         setSpeed(4);
         setDirection("down");
     }
 
-    public void getPlayerImage() {
-            setUp1(setup("boy_up_1"));
-            setUp2(setup("boy_up_2"));
-            setDown1(setup("boy_down_1"));
-            setDown2(setup("boy_down_2"));
-            setLeft1(setup("boy_left_1"));
-            setLeft2(setup("boy_left_2"));
-            setRight1(setup("boy_right_1"));
-            setRight2(setup("boy_right_2"));
-
-    }
-
-    public BufferedImage setup(String imageName) {
-        BufferedImage image = null;
-
-        try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/player/" + imageName + ".png")));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize());
+    public void getAnimationImages() {
+            setUp1(setup("/images/player/boy_up_1"));
+            setUp2(setup("/images/player/boy_up_2"));
+            setDown1(setup("/images/player/boy_down_1"));
+            setDown2(setup("/images/player/boy_down_2"));
+            setLeft1(setup("/images/player/boy_left_1"));
+            setLeft2(setup("/images/player/boy_left_2"));
+            setRight1(setup("/images/player/boy_right_1"));
+            setRight2(setup("/images/player/boy_right_2"));
     }
 
     @Override
@@ -94,38 +73,25 @@ public class Player extends Entity {
 
     private void checkCollision() {
         setCollisionOn(false);
-        gamePanel.getCollisionChecker().checkTile(this);
-        int objectIndex = gamePanel.getCollisionChecker().checkObject(this, true);
+
+        getGamePanel().getCollisionChecker().checkTile(this);
+
+        int objectIndex = getGamePanel().getCollisionChecker().checkObject(this, true);
         pickUpObject(objectIndex);
+
+        int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpcs());
+        interactWithNPC(npcIndex);
     }
 
     private void pickUpObject(int index) {
-
         if (index != 999) {
 
         }
     }
 
-    private void moveIfCollisionNotDetected() {
-        if (!isCollisionOn()) {
-            switch (getDirection()) {
-                case "up" -> setWorldY(getWorldY() - getSpeed());
-                case "down" -> setWorldY(getWorldY() + getSpeed());
-                case "left" -> setWorldX(getWorldX() - getSpeed());
-                case "right" -> setWorldX(getWorldX() + getSpeed());
-            }
-        }
-    }
-
-    private void checkAndChangeSpriteAnimationImage() {
-        setSpriteCounter(getSpriteCounter() + 1);
-        if (getSpriteCounter() > 12) {
-            if (getSpriteNumber() == 1) {
-                setSpriteNumber(2);
-            } else if (getSpriteNumber() == 2) {
-                setSpriteNumber(1);
-            }
-            setSpriteCounter(0);
+    private void interactWithNPC(int index) {
+        if (index != 999) {
+            System.out.println("You are hitting an NPC");
         }
     }
 
@@ -139,23 +105,23 @@ public class Player extends Entity {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        int rightOffset = gamePanel.getScreenWidth() - screenX;
-        int x = checlIfAtEdgeOfXAxis(rightOffset);
+        int rightOffset = getGamePanel().getScreenWidth() - screenX;
+        int x = checkIfAtEdgeOfXAxis(rightOffset);
 
-        int bottomOffset = gamePanel.getScreenHeight() - screenY;
+        int bottomOffset = getGamePanel().getScreenHeight() - screenY;
         int y = checkIfAtEdgeOfYAxis(bottomOffset);
 
         graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
 
     }
 
-    private int checlIfAtEdgeOfXAxis(int rightOffset) {
+    private int checkIfAtEdgeOfXAxis(int rightOffset) {
         if (screenX > getWorldX()) {
             return getWorldX();
         }
 
-        if (rightOffset > gamePanel.getWorldWidth() - getWorldX()) {
-            return gamePanel.getScreenWidth() - (gamePanel.getWorldWidth() - getWorldX());
+        if (rightOffset > getGamePanel().getWorldWidth() - getWorldX()) {
+            return getGamePanel().getScreenWidth() - (getGamePanel().getWorldWidth() - getWorldX());
         }
 
         return screenX;
@@ -166,43 +132,11 @@ public class Player extends Entity {
             return getWorldY();
         }
 
-        if (bottomOffset > gamePanel.getWorldHeight() - getWorldY()) {
-            return gamePanel.getScreenHeight() - (gamePanel.getWorldHeight() - getWorldY());
+        if (bottomOffset > getGamePanel().getWorldHeight() - getWorldY()) {
+            return getGamePanel().getScreenHeight() - (getGamePanel().getWorldHeight() - getWorldY());
         }
 
         return screenY;
-    }
-
-    private BufferedImage getDirectionalAnimationImage() {
-        BufferedImage image = null;
-
-        switch (getDirection()) {
-            case "up" -> {
-                if (getSpriteNumber() == 1)
-                    image = getUp1();
-                if (getSpriteNumber() == 2)
-                    image = getUp2();
-            }
-            case "down" -> {
-                if (getSpriteNumber() == 1)
-                    image = getDown1();
-                if (getSpriteNumber() == 2)
-                    image = getDown2();
-            }
-            case "left" -> {
-                if (getSpriteNumber() == 1)
-                    image = getLeft1();
-                if (getSpriteNumber() == 2)
-                    image = getLeft2();
-            }
-            case "right" -> {
-                if (getSpriteNumber() == 1)
-                    image = getRight1();
-                if (getSpriteNumber() == 2)
-                    image = getRight2();
-            }
-        }
-        return image;
     }
 
     public int getScreenX() {

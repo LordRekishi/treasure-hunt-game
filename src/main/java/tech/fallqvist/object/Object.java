@@ -6,7 +6,7 @@ import tech.fallqvist.util.UtilityTool;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SuperObject {
+public class Object {
 
     private int index;
     private BufferedImage image;
@@ -30,7 +30,7 @@ public class SuperObject {
         return index;
     }
 
-    public SuperObject setIndex(int index) {
+    public Object setIndex(int index) {
         this.index = index;
         return this;
     }
@@ -39,7 +39,7 @@ public class SuperObject {
         return image;
     }
 
-    public SuperObject setImage(BufferedImage image) {
+    public Object setImage(BufferedImage image) {
         this.image = image;
         return this;
     }
@@ -48,7 +48,7 @@ public class SuperObject {
         return name;
     }
 
-    public SuperObject setName(String name) {
+    public Object setName(String name) {
         this.name = name;
         return this;
     }
@@ -57,7 +57,7 @@ public class SuperObject {
         return collision;
     }
 
-    public SuperObject setCollision(boolean collision) {
+    public Object setCollision(boolean collision) {
         this.collision = collision;
         return this;
     }
@@ -66,7 +66,7 @@ public class SuperObject {
         return worldX;
     }
 
-    public SuperObject setWorldX(int worldX) {
+    public Object setWorldX(int worldX) {
         this.worldX = worldX;
         return this;
     }
@@ -75,7 +75,7 @@ public class SuperObject {
         return worldY;
     }
 
-    public SuperObject setWorldY(int worldY) {
+    public Object setWorldY(int worldY) {
         this.worldY = worldY;
         return this;
     }
