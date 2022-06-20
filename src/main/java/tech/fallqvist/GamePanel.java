@@ -24,15 +24,14 @@ public class GamePanel extends JPanel implements Runnable {
     private final int screenWidth = tileSize * maxScreenColumns; // 768 px
     private final int screenHeight = tileSize * maxScreenRows; // 576 px
 
+    private final int FPS = 60;
+
     // WORLD SETTINGS
     private final int maxWorldColumns = 50;
     private final int maxWorldRows = 50;
 
-    // FPS
-    private final int FPS = 60;
-
-    // INITIALIZE UTILS
-    private final KeyHandler keyHandler = new KeyHandler();
+    // SYSTEM
+    private final KeyHandler keyHandler = new KeyHandler(this);
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
     private final TileManager tileManager = new TileManager(this);
     private final ObjectManager objectManager = new ObjectManager(this);
@@ -40,10 +39,15 @@ public class GamePanel extends JPanel implements Runnable {
     private final SoundManager soundEffect = new SoundManager();
     private final UI ui = new UI(this);
 
+    // GAME STATE
+    private int gameState;
+    private final int playState = 1;
+    private final int pauseState = 2;
+
     // GAME THREAD
     private Thread gameThread;
 
-    // IN-GAMES ENTITIES & OBJECTS
+    // ENTITIES & OBJECTS
     private final Player player = new Player(this, keyHandler);
     private final SuperObject[] objects = new SuperObject[10];
 
@@ -58,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
         objectManager.setObjects();
         playMusic(0);
+        gameState = playState;
     }
 
     public void startGameThread() {
@@ -87,7 +92,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+
+        if (gameState == playState) {
+            player.update();
+        }
+
+        if (gameState == pauseState) {
+            // later update
+        }
     }
 
     public void paintComponent(Graphics graphics) {
@@ -204,5 +216,22 @@ public class GamePanel extends JPanel implements Runnable {
 
     public UI getUi() {
         return ui;
+    }
+
+    public int getGameState() {
+        return gameState;
+    }
+
+    public GamePanel setGameState(int gameState) {
+        this.gameState = gameState;
+        return this;
+    }
+
+    public int getPlayState() {
+        return playState;
+    }
+
+    public int getPauseState() {
+        return pauseState;
     }
 }

@@ -4,40 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Improve scaling draw time">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/floor01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/grass00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/hut.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/table01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add new tiles and map V2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +98,7 @@
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
       <workItem from="1655060101437" duration="10549000" />
-      <workItem from="1655746242686" duration="2262000" />
+      <workItem from="1655746242686" duration="4464000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -235,7 +208,13 @@
       <option name="presentableId" value="LOCAL−00018" />
       <updated>1655152193414</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL−00019" summary="Add new tiles and map V2">
+      <created>1655749110593</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1655749110593</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +250,7 @@
     <MESSAGE value="Add Sound effects" />
     <MESSAGE value="Add Finish game mechanic" />
     <MESSAGE value="Improve scaling draw time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve scaling draw time" />
+    <MESSAGE value="Add new tiles and map V2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new tiles and map V2" />
   </component>
 </project>

@@ -1,14 +1,21 @@
 package tech.fallqvist.util;
 
+import tech.fallqvist.GamePanel;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
     private boolean upPressed, downPressed, leftPressed, rightPressed;
+    private final GamePanel gamePanel;
 
     // DEBUG
     private boolean checkDrawTime = false;
+
+    public KeyHandler(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -33,6 +40,14 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_D) {
             rightPressed = true;
+        }
+
+        if (code == KeyEvent.VK_P) {
+            if (gamePanel.getGameState() == gamePanel.getPlayState()) {
+                gamePanel.setGameState(gamePanel.getPauseState());
+            } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+            }
         }
 
         // DEBUG

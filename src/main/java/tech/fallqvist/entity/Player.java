@@ -16,7 +16,6 @@ public class Player extends Entity {
     private final KeyHandler keyHandler;
     private final int screenX;
     private final int screenY;
-    private int numberOfKeys = 0;
     private int resetTimer;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
@@ -103,38 +102,7 @@ public class Player extends Entity {
     private void pickUpObject(int index) {
 
         if (index != 999) {
-            String objectName = gamePanel.getObjects()[index].getName();
 
-            switch (objectName) {
-                case "Key" -> {
-                    gamePanel.playSoundEffect(1);
-                    numberOfKeys++;
-                    gamePanel.getObjects()[index] = null;
-                    gamePanel.getUi().showMessage("You got a key!");
-                }
-                case "Door" -> {
-                    if (numberOfKeys > 0) {
-                        gamePanel.playSoundEffect(3);
-                        numberOfKeys--;
-                        gamePanel.getObjects()[index] = null;
-                        gamePanel.getUi().showMessage("You opened the door!");
-                    } else {
-                        gamePanel.getUi().showMessage("You need a key!");
-                    }
-                }
-                case "Boots" -> {
-                    gamePanel.playSoundEffect(2);
-                    setSpeed(getSpeed() + 2);
-                    gamePanel.getObjects()[index] = null;
-                    gamePanel.getUi().showMessage("Speed Up!");
-                }
-
-                case "Chest" -> {
-                    gamePanel.getUi().setGameFinished(true);
-                    gamePanel.stopMusic();
-                    gamePanel.playSoundEffect(4);
-                }
-            }
         }
     }
 
@@ -213,14 +181,5 @@ public class Player extends Entity {
 
     public int getScreenY() {
         return screenY;
-    }
-
-    public int getNumberOfKeys() {
-        return numberOfKeys;
-    }
-
-    public Player setNumberOfKeys(int numberOfKeys) {
-        this.numberOfKeys = numberOfKeys;
-        return this;
     }
 }
