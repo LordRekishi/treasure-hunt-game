@@ -31,7 +31,7 @@ public class ObjectManager {
         // DOORS
         gamePanel.getObjects()[3] = new OBJ_Door(gamePanel);
         gamePanel.getObjects()[3].setWorldX(10 * gamePanel.getTileSize());
-        gamePanel.getObjects()[3].setWorldY(11 * gamePanel.getTileSize());
+        gamePanel.getObjects()[3].setWorldY(12 * gamePanel.getTileSize());
         gamePanel.getObjects()[3].setIndex(3);
 
         gamePanel.getObjects()[4] = new OBJ_Door(gamePanel);
@@ -41,13 +41,13 @@ public class ObjectManager {
 
         gamePanel.getObjects()[5] = new OBJ_Door(gamePanel);
         gamePanel.getObjects()[5].setWorldX(12 * gamePanel.getTileSize());
-        gamePanel.getObjects()[5].setWorldY(22 * gamePanel.getTileSize());
+        gamePanel.getObjects()[5].setWorldY(23 * gamePanel.getTileSize());
         gamePanel.getObjects()[5].setIndex(5);
 
         // CHESTS
         gamePanel.getObjects()[6] = new OBJ_Chest(gamePanel);
         gamePanel.getObjects()[6].setWorldX(10 * gamePanel.getTileSize());
-        gamePanel.getObjects()[6].setWorldY(7 * gamePanel.getTileSize());
+        gamePanel.getObjects()[6].setWorldY(8 * gamePanel.getTileSize());
         gamePanel.getObjects()[6].setIndex(6);
 
         // BOOTS

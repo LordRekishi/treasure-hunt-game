@@ -4,19 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Finish game mechanic">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Improve scaling draw time">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/floor01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/grass00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/hut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/road12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/table01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/water13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/ObjectManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,22 +70,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/sounds&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/maps",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\sounds" />
-      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles" />
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\sounds" />
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images" />
@@ -104,6 +125,7 @@
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
       <workItem from="1655060101437" duration="10549000" />
+      <workItem from="1655746242686" duration="2262000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -207,7 +229,13 @@
       <option name="presentableId" value="LOCAL−00017" />
       <updated>1655069797816</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL−00018" summary="Improve scaling draw time">
+      <created>1655152193414</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1655152193414</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +270,7 @@
     <MESSAGE value="Add Sounds" />
     <MESSAGE value="Add Sound effects" />
     <MESSAGE value="Add Finish game mechanic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Finish game mechanic" />
+    <MESSAGE value="Improve scaling draw time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve scaling draw time" />
   </component>
 </project>
