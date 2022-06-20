@@ -139,8 +139,38 @@ public class Player extends Entity {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, null);
+        int rightOffset = gamePanel.getScreenWidth() - screenX;
+        int x = checlIfAtEdgeOfXAxis(rightOffset);
 
+        int bottomOffset = gamePanel.getScreenHeight() - screenY;
+        int y = checkIfAtEdgeOfYAxis(bottomOffset);
+
+        graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
+
+    }
+
+    private int checlIfAtEdgeOfXAxis(int rightOffset) {
+        if (screenX > getWorldX()) {
+            return getWorldX();
+        }
+
+        if (rightOffset > gamePanel.getWorldWidth() - getWorldX()) {
+            return gamePanel.getScreenWidth() - (gamePanel.getWorldWidth() - getWorldX());
+        }
+
+        return screenX;
+    }
+
+    private int checkIfAtEdgeOfYAxis(int bottomOffset) {
+        if (screenY > getWorldY()) {
+            return getWorldY();
+        }
+
+        if (bottomOffset > gamePanel.getWorldHeight() - getWorldY()) {
+            return gamePanel.getScreenHeight() - (gamePanel.getWorldHeight() - getWorldY());
+        }
+
+        return screenY;
     }
 
     private BufferedImage getDirectionalAnimationImage() {

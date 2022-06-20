@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add new tiles and map V2">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Prepare game for advanced functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/SuperObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/tile/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/UtilityTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +98,7 @@
       <workItem from="1654946231815" duration="27000" />
       <workItem from="1654950314383" duration="2953000" />
       <workItem from="1655060101437" duration="10549000" />
-      <workItem from="1655746242686" duration="4464000" />
+      <workItem from="1655746242686" duration="8146000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -214,7 +214,13 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1655749110593</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Prepare game for advanced functions">
+      <created>1655751542218</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1655751542218</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +257,7 @@
     <MESSAGE value="Add Finish game mechanic" />
     <MESSAGE value="Improve scaling draw time" />
     <MESSAGE value="Add new tiles and map V2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new tiles and map V2" />
+    <MESSAGE value="Prepare game for advanced functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepare game for advanced functions" />
   </component>
 </project>

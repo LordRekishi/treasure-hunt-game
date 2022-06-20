@@ -29,6 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
     // WORLD SETTINGS
     private final int maxWorldColumns = 50;
     private final int maxWorldRows = 50;
+    private final int worldWidth = tileSize * maxWorldColumns;
+    private final int worldHeight = tileSize * maxWorldRows;
 
     // SYSTEM
     private final KeyHandler keyHandler = new KeyHandler(this);
@@ -167,6 +169,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getMaxScreenRows() {
         return maxScreenRows;
+    }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
+
+    public int getWorldHeight() {
+        return worldHeight;
     }
 
     public int getScreenWidth() {

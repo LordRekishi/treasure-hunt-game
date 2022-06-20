@@ -1,6 +1,7 @@
 package tech.fallqvist.object;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,11 +21,7 @@ public class SuperObject {
         int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX();
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
-        if (worldX + gamePanel.getTileSize() > gamePanel.getPlayer().getWorldX() - gamePanel.getPlayer().getScreenX() &&
-                worldX - gamePanel.getTileSize() < gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX() &&
-                worldY + gamePanel.getTileSize() > gamePanel.getPlayer().getWorldY() - gamePanel.getPlayer().getScreenY() &&
-                worldY - gamePanel.getTileSize() < gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY()) {
-
+        if (UtilityTool.isInsidePlayerView(worldX, worldY, gamePanel)) {
             graphics2D.drawImage(image, screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
         }
     }
