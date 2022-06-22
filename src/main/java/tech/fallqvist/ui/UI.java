@@ -4,12 +4,15 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
 public class UI {
 
     private final GamePanel gamePanel;
     private Graphics2D graphics2D;
-    private final Font arial_40, arial_80B;
+    private Font maruMonica, purisaB;
     private boolean messageOn = false;
     private String message;
     private int messageCounter;
@@ -18,8 +21,15 @@ public class UI {
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        this.arial_40 = new Font("Arial", Font.PLAIN, 40);
-        this.arial_80B = new Font("Arial", Font.BOLD, 80);
+
+        try {
+            InputStream inputStream = getClass().getResourceAsStream("/fonts/x12y16pxMaruMonica.ttf");
+            this.maruMonica = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
+            inputStream = getClass().getResourceAsStream("/fonts/Purisa Bold.ttf");
+            this.purisaB = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showMessage(String text) {
@@ -35,7 +45,8 @@ public class UI {
     public void draw(Graphics2D graphics2D) {
         this.graphics2D = graphics2D;
 
-        graphics2D.setFont(arial_40);
+        graphics2D.setFont(maruMonica);
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         graphics2D.setColor(Color.WHITE);
 
         if (gamePanel.getGameState() == gamePanel.getPlayState()) {
@@ -69,7 +80,7 @@ public class UI {
 
         drawSubWindow(x, y, width, height);
 
-        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN, 28F));
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN, 32F));
         x += gamePanel.getTileSize();
         y += gamePanel.getTileSize();
 
