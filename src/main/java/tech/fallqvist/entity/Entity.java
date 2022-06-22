@@ -23,12 +23,30 @@ public abstract class Entity {
     private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
     private int actionLockCounter = 0;
+    private String[] dialogues = new String[20];
+    private int dialogueIndex;
 
     public Entity(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
-    public void setAction(){};
+    public void setAction() {}
+
+    public void speak() {
+        if (dialogues[dialogueIndex] == null) {
+            setDialogueIndex(0);
+        }
+
+        gamePanel.getUi().setCurrentDialogue(getDialogues()[dialogueIndex]);
+        dialogueIndex++;
+
+        switch (gamePanel.getPlayer().getDirection()) {
+            case "up" -> setDirection("down");
+            case "down" -> setDirection("up");
+            case "left" -> setDirection("right");
+            case "right" -> setDirection("left");
+        }
+    }
 
     public void update() {
         setAction();
@@ -300,6 +318,24 @@ public abstract class Entity {
 
     public Entity setIndex(int index) {
         this.index = index;
+        return this;
+    }
+
+    public String[] getDialogues() {
+        return dialogues;
+    }
+
+    public Entity setDialogues(String[] dialogues) {
+        this.dialogues = dialogues;
+        return this;
+    }
+
+    public int getDialogueIndex() {
+        return dialogueIndex;
+    }
+
+    public Entity setDialogueIndex(int dialogueIndex) {
+        this.dialogueIndex = dialogueIndex;
         return this;
     }
 }

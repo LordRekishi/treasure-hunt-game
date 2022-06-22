@@ -4,9 +4,6 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 public class UI {
 
@@ -17,14 +14,12 @@ public class UI {
     private String message;
     private int messageCounter;
     private boolean gameFinished = false;
-    private double playTime;
-    private final DecimalFormat decimalFormat;
+    private String currentDialogue;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         this.arial_40 = new Font("Arial", Font.PLAIN, 40);
         this.arial_80B = new Font("Arial", Font.BOLD, 80);
-        this.decimalFormat = new DecimalFormat("#0.00", new DecimalFormatSymbols(Locale.ENGLISH));
     }
 
     public void showMessage(String text) {
@@ -50,6 +45,10 @@ public class UI {
         if (gamePanel.getGameState() == gamePanel.getPauseState()) {
             drawPauseScreen();
         }
+
+        if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
+            drawDialogueScreen();
+        }
     }
 
     private void drawPauseScreen() {
@@ -60,5 +59,43 @@ public class UI {
         int y = gamePanel.getScreenHeight() / 2;
 
         graphics2D.drawString(text, x, y);
+    }
+
+    private void drawDialogueScreen() {
+        int x = gamePanel.getTileSize() * 2;
+        int y = gamePanel.getTileSize() / 2;
+        int width = gamePanel.getScreenWidth() - (gamePanel.getTileSize() * 4);
+        int height = gamePanel.getTileSize() * 4;
+
+        drawSubWindow(x, y, width, height);
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN, 28F));
+        x += gamePanel.getTileSize();
+        y += gamePanel.getTileSize();
+
+        for (String line : currentDialogue.split("\n")) {
+            graphics2D.drawString(line, x, y);
+            y += 40;
+        }
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height) {
+        Color color = new Color(0, 0, 0, 210);
+        graphics2D.setColor(color);
+        graphics2D.fillRoundRect(x, y, width, height, 35, 35);
+
+        color = new Color(255, 255, 255);
+        graphics2D.setColor(color);
+        graphics2D.setStroke(new BasicStroke(5));
+        graphics2D.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+    }
+
+    public String getCurrentDialogue() {
+        return currentDialogue;
+    }
+
+    public UI setCurrentDialogue(String currentDialogue) {
+        this.currentDialogue = currentDialogue;
+        return this;
     }
 }

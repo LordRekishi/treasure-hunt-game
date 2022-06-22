@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     private int gameState;
     private final int playState = 1;
     private final int pauseState = 2;
+    private final int dialogueState = 3;
 
     // GAME THREAD
     private Thread gameThread;
@@ -210,6 +211,10 @@ public class GamePanel extends JPanel implements Runnable {
         return maxWorldRows;
     }
 
+    public KeyHandler getKeyHandler() {
+        return keyHandler;
+    }
+
     public TileManager getTileManager() {
         return tileManager;
     }
@@ -262,5 +267,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getPauseState() {
         return pauseState;
+    }
+
+    public int getDialogueState() {
+        return dialogueState;
     }
 }

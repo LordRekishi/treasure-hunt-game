@@ -91,8 +91,12 @@ public class Player extends Entity {
 
     private void interactWithNPC(int index) {
         if (index != 999) {
-            System.out.println("You are hitting an NPC");
+            if (getGamePanel().getKeyHandler().isEnterPressed()) {
+                getGamePanel().setGameState(getGamePanel().getDialogueState());
+                getGamePanel().getNpcs()[index].speak();
+            }
         }
+        getGamePanel().getKeyHandler().setEnterPressed(false);
     }
 
     private void resetSpriteToDefault() {
