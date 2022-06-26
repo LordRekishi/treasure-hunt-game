@@ -28,9 +28,8 @@ public class KeyHandler implements KeyListener {
 
         if (gamePanel.getGameState() == gamePanel.getTitleState()) {
             checkTitleScreenKeyPressed(code);
-        }
 
-        if (gamePanel.getGameState() == gamePanel.getPlayState()) {
+        } else if (gamePanel.getGameState() == gamePanel.getPlayState()) {
             checkGameScreenKeyPressed(code);
 
         } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
@@ -39,11 +38,18 @@ public class KeyHandler implements KeyListener {
         } else if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
             checkDialogeScreenKeyPressed(code);
         }
-
-
     }
 
     private void checkTitleScreenKeyPressed(int code) {
+        if (gamePanel.getUi().getTitleScreenState() == 0) {
+            checkMainTitleScreenKeyPressed(code);
+
+        } else if (gamePanel.getUi().getTitleScreenState() == 1) {
+            checkCharacterSelectionScreenKeyPressed(code);
+        }
+    }
+
+    private void checkMainTitleScreenKeyPressed(int code) {
         if (code == KeyEvent.VK_W) {
             gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() - 1);
             if (gamePanel.getUi().getCommandNumber() < 0) {
@@ -60,8 +66,7 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_ENTER) {
             if (gamePanel.getUi().getCommandNumber() == 0) {
-                gamePanel.setGameState(gamePanel.getPlayState());
-                gamePanel.playMusic(0);
+                gamePanel.getUi().setTitleScreenState(1);
             }
 
             if (gamePanel.getUi().getCommandNumber() == 1) {
@@ -70,6 +75,46 @@ public class KeyHandler implements KeyListener {
 
             if (gamePanel.getUi().getCommandNumber() == 2) {
                 System.exit(0);
+            }
+        }
+    }
+
+    private void checkCharacterSelectionScreenKeyPressed(int code) {
+        if (code == KeyEvent.VK_W) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() - 1);
+            if (gamePanel.getUi().getCommandNumber() < 0) {
+                gamePanel.getUi().setCommandNumber(3);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() + 1);
+            if (gamePanel.getUi().getCommandNumber() > 3) {
+                gamePanel.getUi().setCommandNumber(0);
+            }
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+            if (gamePanel.getUi().getCommandNumber() == 0) {
+                System.out.println("Fighter selected!");
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+            }
+
+            if (gamePanel.getUi().getCommandNumber() == 1) {
+                System.out.println("Rogue selected!");
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+            }
+
+            if (gamePanel.getUi().getCommandNumber() == 2) {
+                System.out.println("Sorcerer selected!");
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+            }
+
+            if (gamePanel.getUi().getCommandNumber() == 3) {
+                gamePanel.getUi().setTitleScreenState(0);
             }
         }
     }

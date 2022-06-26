@@ -19,6 +19,7 @@ public class UI {
     private boolean gameFinished = false;
     private String currentDialogue;
     private int commandNumber;
+    private int titleScreenState;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -68,52 +69,95 @@ public class UI {
     }
 
     private void drawTitleScreen() {
-        // TITLE TEXT
-        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 96F));
+        if (titleScreenState == 0) {
+            // TITLE TEXT
+            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 96F));
 
-        String text = "Blue Boy Adventure";
-        int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-        int y = gamePanel.getTileSize() * 3;
+            String text = "Blue Boy Adventure";
+            int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            int y = gamePanel.getTileSize() * 3;
 
-        // Shadow
-        graphics2D.setColor(Color.GRAY);
-        graphics2D.drawString(text, x + 5, y + 5);
+            // Shadow
+            graphics2D.setColor(Color.GRAY);
+            graphics2D.drawString(text, x + 5, y + 5);
 
-        // Text
-        graphics2D.setColor(Color.WHITE);
-        graphics2D.drawString(text, x, y);
+            // Text
+            graphics2D.setColor(Color.WHITE);
+            graphics2D.drawString(text, x, y);
 
-        // GAME IMAGE
-        x = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() * 2) / 2;
-        y += gamePanel.getTileSize() * 2;
-        graphics2D.drawImage(gamePanel.getPlayer().getDown1(), x, y, gamePanel.getTileSize() * 2, gamePanel.getTileSize() * 2, null);
+            // GAME IMAGE
+            x = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() * 2) / 2;
+            y += gamePanel.getTileSize() * 2;
+            graphics2D.drawImage(gamePanel.getPlayer().getDown1(), x, y, gamePanel.getTileSize() * 2, gamePanel.getTileSize() * 2, null);
 
-        // MENU
-        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 48F));
+            // MENU
+            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 48F));
 
-        text = "NEW GAME";
-        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-        y += gamePanel.getTileSize() * 3.5;
-        graphics2D.drawString(text, x, y);
-        if (commandNumber == 0) {
-            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            text = "NEW GAME";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize() * 3.5;
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 0) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+
+            text = "LOAD GAME";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize();
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 1) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+
+            text = "QUIT";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize();
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 2) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+        } else if (titleScreenState == 1) {
+            graphics2D.setColor(Color.WHITE);
+            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 42F));
+
+            String text = "Select your class!";
+            int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            int y = gamePanel.getTileSize() * 3;
+            graphics2D.drawString(text, x, y);
+
+            text = "Fighter";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize() * 3;
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 0) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+
+            text = "Rogue";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize();
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 1) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+
+            text = "Sorcerer";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize();
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 2) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
+
+            text = "Cancel";
+            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+            y += gamePanel.getTileSize() * 2;
+            graphics2D.drawString(text, x, y);
+            if (commandNumber == 3) {
+                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            }
         }
 
-        text = "LOAD GAME";
-        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-        y += gamePanel.getTileSize();
-        graphics2D.drawString(text, x, y);
-        if (commandNumber == 1) {
-            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-        }
-
-        text = "QUIT";
-        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-        y += gamePanel.getTileSize();
-        graphics2D.drawString(text, x, y);
-        if (commandNumber == 2) {
-            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-        }
     }
 
     private void drawPauseScreen() {
@@ -170,6 +214,15 @@ public class UI {
 
     public UI setCommandNumber(int commandNumber) {
         this.commandNumber = commandNumber;
+        return this;
+    }
+
+    public int getTitleScreenState() {
+        return titleScreenState;
+    }
+
+    public UI setTitleScreenState(int titleScreenState) {
+        this.titleScreenState = titleScreenState;
         return this;
     }
 }

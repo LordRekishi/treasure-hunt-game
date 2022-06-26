@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Title screen">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor KeyHandler">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +98,7 @@
       <workItem from="1655746242686" duration="13435000" />
       <workItem from="1655837448463" duration="993000" />
       <workItem from="1655921548656" duration="4322000" />
-      <workItem from="1656259142120" duration="2626000" />
+      <workItem from="1656259142120" duration="3560000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -248,7 +250,13 @@
       <option name="presentableId" value="LOCAL−00025" />
       <updated>1656261461591</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL−00026" summary="Refactor KeyHandler">
+      <created>1656261828466</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1656261828466</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +274,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Add delta/accumulator Game loop" />
     <MESSAGE value="Add FPS counter (sout)" />
     <MESSAGE value="Add abstract Entity superclass" />
@@ -291,6 +298,7 @@
     <MESSAGE value="Add NPC_OldMan dialogue" />
     <MESSAGE value="Add custom fonts" />
     <MESSAGE value="Add Title screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Title screen" />
+    <MESSAGE value="Refactor KeyHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor KeyHandler" />
   </component>
 </project>
