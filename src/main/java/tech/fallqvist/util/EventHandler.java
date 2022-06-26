@@ -27,6 +27,10 @@ public class EventHandler {
             healingPool(gamePanel.getDialogueState());
         }
 
+        if (hit(25, 12, "any")) {
+            teleport(gamePanel.getDialogueState());
+        }
+
     }
 
     public boolean hit(int eventCol, int eventRow, String requiredDirection) {
@@ -65,5 +69,12 @@ public class EventHandler {
             gamePanel.getUi().setCurrentDialogue("You drink the water. \nYour life has been restored.");
             gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getMaxLife());
         }
+    }
+
+    private void teleport(int gameState) {
+        gamePanel.setGameState(gameState);
+        gamePanel.getUi().setCurrentDialogue("You teleport!");
+        gamePanel.getPlayer().setWorldX(gamePanel.getTileSize() * 37);
+        gamePanel.getPlayer().setWorldY(gamePanel.getTileSize() * 10);
     }
 }
