@@ -27,78 +27,94 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
 
         if (gamePanel.getGameState() == gamePanel.getTitleState()) {
-            if (code == KeyEvent.VK_W) {
-                gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() - 1);
-                if (gamePanel.getUi().getCommandNumber() < 0) {
-                    gamePanel.getUi().setCommandNumber(2);
-                }
-            }
-
-            if (code == KeyEvent.VK_S) {
-                gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() + 1);
-                if (gamePanel.getUi().getCommandNumber() > 2) {
-                    gamePanel.getUi().setCommandNumber(0);
-                }
-            }
-
-            if (code == KeyEvent.VK_ENTER) {
-                if (gamePanel.getUi().getCommandNumber() == 0) {
-                    gamePanel.setGameState(gamePanel.getPlayState());
-                    gamePanel.playMusic(0);
-                }
-
-                if (gamePanel.getUi().getCommandNumber() == 1) {
-                    // load game
-                }
-
-                if (gamePanel.getUi().getCommandNumber() == 2) {
-                    System.exit(0);
-                }
-            }
+            checkTitleScreenKeyPressed(code);
         }
 
         if (gamePanel.getGameState() == gamePanel.getPlayState()) {
-            if (code == KeyEvent.VK_W) {
-                upPressed = true;
-            }
-
-            if (code == KeyEvent.VK_S) {
-                downPressed = true;
-            }
-
-            if (code == KeyEvent.VK_A) {
-                leftPressed = true;
-            }
-
-            if (code == KeyEvent.VK_D) {
-                rightPressed = true;
-            }
-
-            if (code == KeyEvent.VK_P) {
-                gamePanel.setGameState(gamePanel.getPauseState());
-            }
-
-            if (code == KeyEvent.VK_ENTER) {
-                enterPressed = true;
-            }
-
-            // DEBUG
-            if (code == KeyEvent.VK_T) {
-                checkDrawTime = !checkDrawTime;
-            }
+            checkGameScreenKeyPressed(code);
 
         } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
-            if (code == KeyEvent.VK_P) {
-                gamePanel.setGameState(gamePanel.getPlayState());
-            }
+            checkPauseScreenKeyPressed(code);
 
         } else if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
-            if (code == KeyEvent.VK_ENTER) {
-                gamePanel.setGameState(gamePanel.getPlayState());
-            }
+            checkDialogeScreenKeyPressed(code);
         }
 
 
+    }
+
+    private void checkTitleScreenKeyPressed(int code) {
+        if (code == KeyEvent.VK_W) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() - 1);
+            if (gamePanel.getUi().getCommandNumber() < 0) {
+                gamePanel.getUi().setCommandNumber(2);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() + 1);
+            if (gamePanel.getUi().getCommandNumber() > 2) {
+                gamePanel.getUi().setCommandNumber(0);
+            }
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+            if (gamePanel.getUi().getCommandNumber() == 0) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+            }
+
+            if (gamePanel.getUi().getCommandNumber() == 1) {
+                // load game
+            }
+
+            if (gamePanel.getUi().getCommandNumber() == 2) {
+                System.exit(0);
+            }
+        }
+    }
+
+    private void checkGameScreenKeyPressed(int code) {
+        if (code == KeyEvent.VK_W) {
+            upPressed = true;
+        }
+
+        if (code == KeyEvent.VK_S) {
+            downPressed = true;
+        }
+
+        if (code == KeyEvent.VK_A) {
+            leftPressed = true;
+        }
+
+        if (code == KeyEvent.VK_D) {
+            rightPressed = true;
+        }
+
+        if (code == KeyEvent.VK_P) {
+            gamePanel.setGameState(gamePanel.getPauseState());
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+
+        // DEBUG
+        if (code == KeyEvent.VK_T) {
+            checkDrawTime = !checkDrawTime;
+        }
+    }
+
+    private void checkPauseScreenKeyPressed(int code) {
+        if (code == KeyEvent.VK_P) {
+            gamePanel.setGameState(gamePanel.getPlayState());
+        }
+    }
+
+    private void checkDialogeScreenKeyPressed(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            gamePanel.setGameState(gamePanel.getPlayState());
+        }
     }
 
     @Override
