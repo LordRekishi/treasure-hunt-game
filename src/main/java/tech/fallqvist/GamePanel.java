@@ -8,7 +8,7 @@ import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.tile.TileManager;
 import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
-import tech.fallqvist.util.EventHandler;
+import tech.fallqvist.event.EventHandler;
 import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;

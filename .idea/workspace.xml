@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Event to hurt and heal player">
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/EventHandler.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Teleport event">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +65,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="tech.fallqvist.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tech.fallqvist.Main" />
       <module name="treasure-hunt-game" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tech.fallqvist.util.*" />
+          <option name="PATTERN" value="tech.fallqvist.event.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,7 +80,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -96,7 +99,7 @@
       <workItem from="1655746242686" duration="13435000" />
       <workItem from="1655837448463" duration="993000" />
       <workItem from="1655921548656" duration="4322000" />
-      <workItem from="1656259142120" duration="8295000" />
+      <workItem from="1656259142120" duration="11530000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -278,7 +281,13 @@
       <option name="presentableId" value="LOCAL−00030" />
       <updated>1656267275842</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL−00031" summary="Add Teleport event">
+      <created>1656267560083</created>
+      <option name="number" value="LOCAL−00031" />
+      <option name="presentableId" value="LOCAL−00031" />
+      <updated>1656267560083</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +305,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Player sprite" />
     <MESSAGE value="Add player animation" />
     <MESSAGE value="Add tiles" />
     <MESSAGE value="Add map loader" />
@@ -321,6 +329,7 @@
     <MESSAGE value="Refactor KeyHandler Title and Character screen keypress" />
     <MESSAGE value="Add Player Life UI" />
     <MESSAGE value="Add Event to hurt and heal player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Event to hurt and heal player" />
+    <MESSAGE value="Add Teleport event" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Teleport event" />
   </component>
 </project>
