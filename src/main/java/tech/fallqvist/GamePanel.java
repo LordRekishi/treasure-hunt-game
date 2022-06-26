@@ -44,6 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // GAME STATE
     private int gameState;
+    private final int titleState = 0;
     private final int playState = 1;
     private final int pauseState = 2;
     private final int dialogueState = 3;
@@ -67,8 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
         assetManager.setObjects();
         assetManager.setNPCs();
-        playMusic(0);
-        gameState = playState;
+        gameState = titleState;
     }
 
     public void startGameThread() {
@@ -98,7 +98,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
         if (gameState == playState) {
             player.update();
             for (Entity npc : npcs) {
@@ -123,28 +122,33 @@ public class GamePanel extends JPanel implements Runnable {
             drawStart = System.nanoTime();
         }
 
-        // TILES
-        tileManager.draw(graphics2D);
+        if (gameState == titleState) {
+            ui.draw(graphics2D);
+        } else {
 
-        // OBJECTS
-        for (Object object : objects) {
-            if (object != null) {
-                object.draw(graphics2D, this);
+            // TILES
+            tileManager.draw(graphics2D);
+
+            // OBJECTS
+            for (Object object : objects) {
+                if (object != null) {
+                    object.draw(graphics2D, this);
+                }
             }
-        }
 
-        // NPCS
-        for (Entity npc : npcs) {
-            if (npc != null) {
-                npc.draw(graphics2D);
+            // NPCS
+            for (Entity npc : npcs) {
+                if (npc != null) {
+                    npc.draw(graphics2D);
+                }
             }
+
+            // PLAYER
+            player.draw(graphics2D);
+
+            // UI
+            ui.draw(graphics2D);
         }
-
-        // PLAYER
-        player.draw(graphics2D);
-
-        // UI
-        ui.draw(graphics2D);
 
         // DEBUG
         if (keyHandler.isCheckDrawTime()) {
@@ -259,6 +263,10 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel setGameState(int gameState) {
         this.gameState = gameState;
         return this;
+    }
+
+    public int getTitleState() {
+        return titleState;
     }
 
     public int getPlayState() {
