@@ -8,6 +8,7 @@ import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.tile.TileManager;
 import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
+import tech.fallqvist.util.EventHandler;
 import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;
@@ -41,6 +42,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final SoundManager music = new SoundManager();
     private final SoundManager soundEffect = new SoundManager();
     private final UI ui = new UI(this);
+    private final EventHandler eventHandler = new EventHandler(this);
 
     // GAME STATE
     private int gameState;
@@ -254,6 +256,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public UI getUi() {
         return ui;
+    }
+
+    public EventHandler getEventHandler() {
+        return eventHandler;
     }
 
     public int getGameState() {

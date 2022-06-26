@@ -66,6 +66,8 @@ public class Player extends Entity {
             }
 
             checkCollision();
+            checkEvent();
+            resetEnterPressedValue();
             moveIfCollisionNotDetected();
             checkAndChangeSpriteAnimationImage();
         } else {
@@ -76,19 +78,29 @@ public class Player extends Entity {
     private void checkCollision() {
         setCollisionOn(false);
 
-        getGamePanel().getCollisionChecker().checkTile(this);
+        checkTileCollision();
+        checkObjectCollision();
+        checkNPCCollision();
+    }
 
+    private void checkTileCollision() {
+        getGamePanel().getCollisionChecker().checkTile(this);
+    }
+
+    private void checkObjectCollision() {
         int objectIndex = getGamePanel().getCollisionChecker().checkObject(this, true);
         pickUpObject(objectIndex);
-
-        int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpcs());
-        interactWithNPC(npcIndex);
     }
 
     private void pickUpObject(int index) {
         if (index != 999) {
 
         }
+    }
+
+    private void checkNPCCollision() {
+        int npcIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getNpcs());
+        interactWithNPC(npcIndex);
     }
 
     private void interactWithNPC(int index) {
@@ -98,6 +110,13 @@ public class Player extends Entity {
                 getGamePanel().getNpcs()[index].speak();
             }
         }
+    }
+
+    private void checkEvent() {
+        getGamePanel().getEventHandler().checkEvent();
+    }
+
+    private void resetEnterPressedValue() {
         getGamePanel().getKeyHandler().setEnterPressed(false);
     }
 
