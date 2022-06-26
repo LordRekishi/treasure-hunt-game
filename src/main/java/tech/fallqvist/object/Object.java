@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public class Object {
 
     private int index;
-    private BufferedImage image;
+    private BufferedImage image1, image2, image3;
     private String name;
     private boolean collision = false;
     private int worldX, worldY;
@@ -22,7 +22,7 @@ public class Object {
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
         if (UtilityTool.isInsidePlayerView(worldX, worldY, gamePanel)) {
-            graphics2D.drawImage(image, screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+            graphics2D.drawImage(image1, screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
         }
     }
 
@@ -35,12 +35,30 @@ public class Object {
         return this;
     }
 
-    public BufferedImage getImage() {
-        return image;
+    public BufferedImage getImage1() {
+        return image1;
     }
 
-    public Object setImage(BufferedImage image) {
-        this.image = image;
+    public Object setImage1(BufferedImage image1) {
+        this.image1 = image1;
+        return this;
+    }
+
+    public BufferedImage getImage2() {
+        return image2;
+    }
+
+    public Object setImage2(BufferedImage image2) {
+        this.image2 = image2;
+        return this;
+    }
+
+    public BufferedImage getImage3() {
+        return image3;
+    }
+
+    public Object setImage3(BufferedImage image3) {
+        this.image3 = image3;
         return this;
     }
 

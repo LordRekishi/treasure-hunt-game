@@ -15,7 +15,7 @@ public class OBJ_Key extends Object {
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/key.png")));
-            setImage(UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize()));
+            setImage1(UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize()));
         } catch (IOException e) {
             e.printStackTrace();
         }

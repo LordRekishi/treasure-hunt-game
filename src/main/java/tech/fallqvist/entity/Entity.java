@@ -11,8 +11,10 @@ import java.util.Objects;
 
 public abstract class Entity {
 
-    private int index;
     private final GamePanel gamePanel;
+
+    // CHARACTER INFO
+    private int index;
     private int worldX, worldY;
     private int speed;
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -25,6 +27,10 @@ public abstract class Entity {
     private int actionLockCounter = 0;
     private String[] dialogues = new String[20];
     private int dialogueIndex;
+
+    // CHARACTER STATUS
+    private int maxLife;
+    private int currentLife;
 
     public Entity(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -336,6 +342,24 @@ public abstract class Entity {
 
     public Entity setDialogueIndex(int dialogueIndex) {
         this.dialogueIndex = dialogueIndex;
+        return this;
+    }
+
+    public int getMaxLife() {
+        return maxLife;
+    }
+
+    public Entity setMaxLife(int maxLife) {
+        this.maxLife = maxLife;
+        return this;
+    }
+
+    public int getCurrentLife() {
+        return currentLife;
+    }
+
+    public Entity setCurrentLife(int currentLife) {
+        this.currentLife = currentLife;
         return this;
     }
 }

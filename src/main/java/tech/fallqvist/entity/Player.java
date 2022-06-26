@@ -34,6 +34,8 @@ public class Player extends Entity {
         setWorldY(getGamePanel().getTileSize() * 21);
         setSpeed(4);
         setDirection("down");
+        setMaxLife(6);
+        setCurrentLife(getMaxLife());
     }
 
     public void getAnimationImages() {

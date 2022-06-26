@@ -16,7 +16,7 @@ public class OBJ_Door extends Object {
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/door.png")));
-            setImage(UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize()));
+            setImage1(UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize()));
         } catch (IOException e) {
             e.printStackTrace();
         }

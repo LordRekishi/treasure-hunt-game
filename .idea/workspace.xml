@@ -4,8 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Character selection screen mockup">
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor KeyHandler Title and Character screen keypress">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Heart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/axe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/chest (OLD).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/chest_opened.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/coin_bronze.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/heart_blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/heart_full.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/heart_half.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/manacrystal_blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/manacrystal_full.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/potion_red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/shield_blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/shield_wood.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/objects/sword_normal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/OBJ_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/object/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +60,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/fonts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/objects",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\fonts" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\npc" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles" />
-      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\sounds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images" />
@@ -96,7 +118,7 @@
       <workItem from="1655746242686" duration="13435000" />
       <workItem from="1655837448463" duration="993000" />
       <workItem from="1655921548656" duration="4322000" />
-      <workItem from="1656259142120" duration="3942000" />
+      <workItem from="1656259142120" duration="5570000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -260,7 +282,13 @@
       <option name="presentableId" value="LOCAL−00027" />
       <updated>1656263022917</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL−00028" summary="Refactor KeyHandler Title and Character screen keypress">
+      <created>1656263141872</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1656263141872</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +306,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add FPS counter (sout)" />
     <MESSAGE value="Add abstract Entity superclass" />
     <MESSAGE value="Add Player entity" />
     <MESSAGE value="Add Player sprite" />
@@ -303,6 +330,7 @@
     <MESSAGE value="Add Title screen" />
     <MESSAGE value="Refactor KeyHandler" />
     <MESSAGE value="Add Character selection screen mockup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Character selection screen mockup" />
+    <MESSAGE value="Refactor KeyHandler Title and Character screen keypress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor KeyHandler Title and Character screen keypress" />
   </component>
 </project>

@@ -1,9 +1,12 @@
 package tech.fallqvist.ui;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.object.OBJ_Heart;
+import tech.fallqvist.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
@@ -13,6 +16,7 @@ public class UI {
     private final GamePanel gamePanel;
     private Graphics2D graphics2D;
     private Font maruMonica, purisaB;
+    private final BufferedImage heart_full, heart_half, heart_blank;
     private boolean messageOn = false;
     private String message;
     private int messageCounter;
@@ -32,16 +36,16 @@ public class UI {
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
+
+        Object heart = new OBJ_Heart(gamePanel);
+        this.heart_full = heart.getImage1();
+        this.heart_half = heart.getImage2();
+        this.heart_blank = heart.getImage3();
     }
 
     public void showMessage(String text) {
         message = text;
         messageOn = true;
-    }
-
-    public UI setGameFinished(boolean gameFinished) {
-        this.gameFinished = gameFinished;
-        return this;
     }
 
     public void draw(Graphics2D graphics2D) {
@@ -56,14 +60,16 @@ public class UI {
         }
 
         if (gamePanel.getGameState() == gamePanel.getPlayState()) {
-            // Playstate stuff
+            drawPlayerLife();
         }
 
         if (gamePanel.getGameState() == gamePanel.getPauseState()) {
+            drawPlayerLife();
             drawPauseScreen();
         }
 
         if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
+            drawPlayerLife();
             drawDialogueScreen();
         }
     }
@@ -160,6 +166,30 @@ public class UI {
 
     }
 
+    private void drawPlayerLife() {
+        int x = gamePanel.getTileSize() / 2;
+        int y = gamePanel.getTileSize() / 2;
+
+        for (int i = 0; i < gamePanel.getPlayer().getMaxLife() / 2; i++) {
+            graphics2D.drawImage(heart_blank, x, y, null);
+            x += gamePanel.getTileSize();
+        }
+
+        x = gamePanel.getTileSize() / 2;
+        y = gamePanel.getTileSize() / 2;
+
+        for (int i = 0; i < gamePanel.getPlayer().getCurrentLife(); i++) {
+            graphics2D.drawImage(heart_half, x, y, null);
+            i++;
+
+            if (i < gamePanel.getPlayer().getCurrentLife()) {
+                graphics2D.drawImage(heart_full, x, y, null);
+            }
+
+            x += gamePanel.getTileSize();
+        }
+    }
+
     private void drawPauseScreen() {
         graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN, 80F));
 
@@ -197,6 +227,11 @@ public class UI {
         graphics2D.setColor(color);
         graphics2D.setStroke(new BasicStroke(5));
         graphics2D.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+    }
+
+    public UI setGameFinished(boolean gameFinished) {
+        this.gameFinished = gameFinished;
+        return this;
     }
 
     public String getCurrentDialogue() {
