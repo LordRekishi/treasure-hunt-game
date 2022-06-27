@@ -25,6 +25,7 @@ public class Player extends Entity {
     }
 
     private void setCollision() {
+        setCollisionArea(new Rectangle(8, 16, 32, 32));
         setCollisionDefaultX(getCollisionArea().x);
         setCollisionDefaultY(getCollisionArea().y);
     }

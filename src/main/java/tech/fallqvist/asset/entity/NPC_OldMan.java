@@ -2,6 +2,7 @@ package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
 
+import java.awt.*;
 import java.util.Random;
 
 public class NPC_OldMan extends Entity {

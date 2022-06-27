@@ -22,7 +22,7 @@ public abstract class Entity implements Asset {
     private String direction;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
-    private Rectangle collisionArea = new Rectangle(8, 16, 32, 32);
+    private Rectangle collisionArea = new Rectangle(0, 0, 48, 48);
     private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
     private int actionLockCounter = 0;
