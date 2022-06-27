@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 public class Object implements Asset {
 
     private final GamePanel gamePanel;
+
     private int index;
     private BufferedImage image1, image2, image3;
     private String name;

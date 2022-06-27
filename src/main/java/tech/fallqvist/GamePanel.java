@@ -2,7 +2,7 @@ package tech.fallqvist;
 
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
-import tech.fallqvist.asset.entity.Player;
+import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.AssetManager;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.sound.SoundManager;
@@ -15,7 +15,6 @@ import tech.fallqvist.util.KeyHandler;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -62,6 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final Player player = new Player(this, keyHandler);
     private final Asset[] objects = new Object[10];
     private final Asset[] npcs = new Entity[10];
+    private final Asset[] monsters = new Entity[20];
     private final ArrayList<Asset> assets = new ArrayList<>();
 
     public GamePanel() {
@@ -75,6 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
         assetManager.setObjects();
         assetManager.setNPCs();
+        assetManager.setMonsters();
         gameState = titleState;
     }
 
@@ -106,10 +107,18 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         if (gameState == playState) {
+
             player.update();
+
             for (Asset npc : npcs) {
                 if (npc != null) {
                     npc.update();
+                }
+            }
+
+            for (Asset monster : monsters) {
+                if (monster != null) {
+                    monster.update();
                 }
             }
         }
@@ -172,6 +181,12 @@ public class GamePanel extends JPanel implements Runnable {
         for (Asset object : objects) {
             if (object != null) {
                 assets.add(object);
+            }
+        }
+
+        for (Asset monster : monsters) {
+            if (monster != null) {
+                assets.add(monster);
             }
         }
     }
@@ -272,6 +287,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public Asset[] getNpcs() {
         return npcs;
+    }
+
+    public Asset[] getMonsters() {
+        return monsters;
     }
 
     public UI getUi() {

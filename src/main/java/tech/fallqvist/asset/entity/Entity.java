@@ -2,6 +2,7 @@ package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
 public abstract class Entity implements Asset {
 
@@ -16,6 +18,7 @@ public abstract class Entity implements Asset {
 
     // CHARACTER INFO
     private int index;
+    private String name;
     private int worldX, worldY;
     private int speed;
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -26,6 +29,8 @@ public abstract class Entity implements Asset {
     private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
     private int actionLockCounter = 0;
+    private boolean invincible = false;
+    private int invincibleCounter = 0;
     private String[] dialogues = new String[20];
     private int dialogueIndex;
 
@@ -37,7 +42,35 @@ public abstract class Entity implements Asset {
         this.gamePanel = gamePanel;
     }
 
-    public void setAction() {}
+    public abstract void getAnimationImages();
+
+    public void setAction() {
+        actionLockCounter++;
+
+        if (actionLockCounter == 120) {
+
+            Random random = new Random();
+            int i = random.nextInt(100) + 1;
+
+            if (i <= 25) {
+                setDirection("up");
+            }
+
+            if (i > 25 && i <= 50) {
+                setDirection("down");
+            }
+
+            if (i > 50 && i <= 75) {
+                setDirection("left");
+            }
+
+            if (i > 75) {
+                setDirection("right");
+            }
+
+            setActionLockCounter(0);
+        }
+    }
 
     public void speak() {
         if (dialogues[dialogueIndex] == null) {
@@ -62,7 +95,16 @@ public abstract class Entity implements Asset {
         collisionOn = false;
         gamePanel.getCollisionChecker().checkTile(this);
         gamePanel.getCollisionChecker().checkObject(this, false);
-        gamePanel.getCollisionChecker().checkPlayer(this);
+        gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getNpcs());
+        gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getMonsters());
+        boolean contactPlayer = gamePanel.getCollisionChecker().checkPlayer(this);
+
+        if (this instanceof MON_GreenSlime && contactPlayer) {
+            if (!gamePanel.getPlayer().isInvincible()) {
+                gamePanel.getPlayer().setCurrentLife(getCurrentLife() - 1);
+                gamePanel.getPlayer().setInvincible(true);
+            }
+        }
 
         moveIfCollisionNotDetected();
         checkAndChangeSpriteAnimationImage();
@@ -148,6 +190,15 @@ public abstract class Entity implements Asset {
 
     public GamePanel getGamePanel() {
         return gamePanel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Entity setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public int getWorldX() {
@@ -316,6 +367,24 @@ public abstract class Entity implements Asset {
 
     public Entity setActionLockCounter(int actionLockCounter) {
         this.actionLockCounter = actionLockCounter;
+        return this;
+    }
+
+    public boolean isInvincible() {
+        return invincible;
+    }
+
+    public Entity setInvincible(boolean invincible) {
+        this.invincible = invincible;
+        return this;
+    }
+
+    public int getInvincibleCounter() {
+        return invincibleCounter;
+    }
+
+    public Entity setInvincibleCounter(int invincibleCounter) {
+        this.invincibleCounter = invincibleCounter;
         return this;
     }
 

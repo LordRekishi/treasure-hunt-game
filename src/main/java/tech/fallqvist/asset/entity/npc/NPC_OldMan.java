@@ -1,8 +1,8 @@
-package tech.fallqvist.asset.entity;
+package tech.fallqvist.asset.entity.npc;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.entity.Entity;
 
-import java.awt.*;
 import java.util.Random;
 
 public class NPC_OldMan extends Entity {
@@ -10,6 +10,7 @@ public class NPC_OldMan extends Entity {
     public NPC_OldMan(GamePanel gamePanel) {
         super(gamePanel);
 
+        setName("Old Man");
         setDirection("down");
         setSpeed(1);
 
@@ -17,6 +18,7 @@ public class NPC_OldMan extends Entity {
         setDialogue();
     }
 
+    @Override
     public void getAnimationImages() {
         setUp1(setup("/images/npc/oldman_up_1"));
         setUp2(setup("/images/npc/oldman_up_2"));
@@ -30,31 +32,7 @@ public class NPC_OldMan extends Entity {
 
     @Override
     public void setAction() {
-        setActionLockCounter(getActionLockCounter() + 1);
-
-        if (getActionLockCounter() == 120) {
-
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
-
-            if (i <= 25) {
-                setDirection("up");
-            }
-
-            if (i > 25 && i <= 50) {
-                setDirection("down");
-            }
-
-            if (i > 50 && i <= 75) {
-                setDirection("left");
-            }
-
-            if (i > 75) {
-                setDirection("right");
-            }
-
-            setActionLockCounter(0);
-        }
+        super.setAction();
     }
 
     public void setDialogue() {

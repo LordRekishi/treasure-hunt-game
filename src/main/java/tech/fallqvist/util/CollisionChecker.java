@@ -81,58 +81,15 @@ public class CollisionChecker {
                 object.getCollisionArea().x = object.getWorldX() + object.getCollisionArea().x;
                 object.getCollisionArea().y = object.getWorldY() + object.getCollisionArea().y;
 
-                switch (entity.getDirection()) {
-                    case "up" -> {
-                        entity.getCollisionArea().y -= entity.getSpeed();
+                checkFutureMovement(entity);
 
-                        if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
-                            if (object.isCollision()) {
-                                entity.setCollisionOn(true);
-                            }
-
-                            if (isPlayer) {
-                                index = object.getIndex();
-                            }
-                        }
+                if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
+                    if (object.isCollision()) {
+                        entity.setCollisionOn(true);
                     }
-                    case "down" -> {
-                        entity.getCollisionArea().y += entity.getSpeed();
 
-                        if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
-                            if (object.isCollision()) {
-                                entity.setCollisionOn(true);
-                            }
-
-                            if (isPlayer) {
-                                index = object.getIndex();
-                            }
-                        }
-                    }
-                    case "left" -> {
-                        entity.getCollisionArea().x -= entity.getSpeed();
-
-                        if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
-                            if (object.isCollision()) {
-                                entity.setCollisionOn(true);
-                            }
-
-                            if (isPlayer) {
-                                index = object.getIndex();
-                            }
-                        }
-                    }
-                    case "right" -> {
-                        entity.getCollisionArea().x += entity.getSpeed();
-
-                        if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
-                            if (object.isCollision()) {
-                                entity.setCollisionOn(true);
-                            }
-
-                            if (isPlayer) {
-                                index = object.getIndex();
-                            }
-                        }
+                    if (isPlayer) {
+                        index = object.getIndex();
                     }
                 }
 
@@ -159,38 +116,12 @@ public class CollisionChecker {
                 target.getCollisionArea().x = target.getWorldX() + target.getCollisionArea().x;
                 target.getCollisionArea().y = target.getWorldY() + target.getCollisionArea().y;
 
-                switch (entity.getDirection()) {
-                    case "up" -> {
-                        entity.getCollisionArea().y -= entity.getSpeed();
+                checkFutureMovement(entity);
 
-                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
-                            entity.setCollisionOn(true);
-                            index = target.getIndex();
-                        }
-                    }
-                    case "down" -> {
-                        entity.getCollisionArea().y += entity.getSpeed();
-
-                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
-                            entity.setCollisionOn(true);
-                            index = target.getIndex();
-                        }
-                    }
-                    case "left" -> {
-                        entity.getCollisionArea().x -= entity.getSpeed();
-
-                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
-                            entity.setCollisionOn(true);
-                            index = target.getIndex();
-                        }
-                    }
-                    case "right" -> {
-                        entity.getCollisionArea().x += entity.getSpeed();
-
-                        if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
-                            entity.setCollisionOn(true);
-                            index = target.getIndex();
-                        }
+                if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
+                    if (target != entity) {
+                        entity.setCollisionOn(true);
+                        index = target.getIndex();
                     }
                 }
 
@@ -204,47 +135,36 @@ public class CollisionChecker {
         return index;
     }
 
-    public void checkPlayer(Entity entity) {
+    public boolean checkPlayer(Entity entity) {
+        boolean contactPlayer = false;
+
         entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
         entity.getCollisionArea().y = entity.getWorldY() + entity.getCollisionArea().y;
 
         gamePanel.getPlayer().getCollisionArea().x = gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getCollisionArea().x;
         gamePanel.getPlayer().getCollisionArea().y = gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getCollisionArea().y;
 
-        switch (entity.getDirection()) {
-            case "up" -> {
-                entity.getCollisionArea().y -= entity.getSpeed();
+        checkFutureMovement(entity);
 
-                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
-                    entity.setCollisionOn(true);
-                }
-            }
-            case "down" -> {
-                entity.getCollisionArea().y += entity.getSpeed();
-
-                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
-                    entity.setCollisionOn(true);
-                }
-            }
-            case "left" -> {
-                entity.getCollisionArea().x -= entity.getSpeed();
-
-                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
-                    entity.setCollisionOn(true);
-                }
-            }
-            case "right" -> {
-                entity.getCollisionArea().x += entity.getSpeed();
-
-                if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
-                    entity.setCollisionOn(true);
-                }
-            }
+        if (entity.getCollisionArea().intersects(gamePanel.getPlayer().getCollisionArea())) {
+            entity.setCollisionOn(true);
+            contactPlayer = true;
         }
 
         entity.getCollisionArea().x = entity.getCollisionDefaultX();
         entity.getCollisionArea().y = entity.getCollisionDefaultY();
         gamePanel.getPlayer().getCollisionArea().x = gamePanel.getPlayer().getCollisionDefaultX();
         gamePanel.getPlayer().getCollisionArea().y = gamePanel.getPlayer().getCollisionDefaultY();
+
+        return contactPlayer;
+    }
+
+    private void checkFutureMovement(Entity entity) {
+        switch (entity.getDirection()) {
+            case "up" -> entity.getCollisionArea().y -= entity.getSpeed();
+            case "down" -> entity.getCollisionArea().y += entity.getSpeed();
+            case "left" -> entity.getCollisionArea().x -= entity.getSpeed();
+            case "right" -> entity.getCollisionArea().x += entity.getSpeed();
+        }
     }
 }

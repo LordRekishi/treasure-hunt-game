@@ -1,6 +1,7 @@
-package tech.fallqvist.asset.entity;
+package tech.fallqvist.asset.entity.player;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
@@ -39,6 +40,7 @@ public class Player extends Entity {
         setCurrentLife(getMaxLife());
     }
 
+    @Override
     public void getAnimationImages() {
             setUp1(setup("/images/player/boy_up_1"));
             setUp2(setup("/images/player/boy_up_2"));
@@ -74,6 +76,8 @@ public class Player extends Entity {
         } else {
             resetSpriteToDefault();
         }
+
+        checkIfInvincible();
     }
 
     private void checkCollision() {
@@ -82,6 +86,7 @@ public class Player extends Entity {
         checkTileCollision();
         checkObjectCollision();
         checkNPCCollision();
+        checkMonsterCollision();
     }
 
     private void checkTileCollision() {
@@ -113,6 +118,20 @@ public class Player extends Entity {
         }
     }
 
+    private void checkMonsterCollision() {
+        int monsterIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonsters());
+        interactWithMonster(monsterIndex);
+    }
+
+    private void interactWithMonster(int index) {
+        if (index != 999) {
+            if (!isInvincible()) {
+                setCurrentLife(getCurrentLife() - 1);
+                setInvincible(true);
+            }
+        }
+    }
+
     private void checkEvent() {
         getGamePanel().getEventHandler().checkEvent();
     }
@@ -129,6 +148,17 @@ public class Player extends Entity {
         }
     }
 
+    private void checkIfInvincible() {
+        if (isInvincible()) {
+            setInvincibleCounter(getInvincibleCounter() + 1);
+
+            if (getInvincibleCounter() > 60) {
+                setInvincible(false);
+                setInvincibleCounter(0);
+            }
+        }
+    }
+
     @Override
     public void draw(Graphics2D graphics2D) {
         int rightOffset = getGamePanel().getScreenWidth() - screenX;
@@ -137,8 +167,13 @@ public class Player extends Entity {
         int bottomOffset = getGamePanel().getScreenHeight() - screenY;
         int y = checkIfAtEdgeOfYAxis(bottomOffset);
 
+        if (isInvincible()) {
+            graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3F));
+        }
+
         graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
 
+        graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
     }
 
     @Override
