@@ -137,26 +137,9 @@ public class GamePanel extends JPanel implements Runnable {
             tileManager.draw(graphics2D);
 
             // ASSETS
-            assets.add(player);
-
-            for (Asset npc : npcs) {
-                if (npc != null) {
-                    assets.add(npc);
-                }
-            }
-
-            for (Asset object : objects) {
-                if (object != null) {
-                    assets.add(object);
-                }
-            }
-
-            assets.sort(Comparator.comparingInt(Asset::getWorldY));
-
-            for (Asset asset : assets) {
-                asset.draw(graphics2D);
-            }
-
+            addAssets();
+            sortAssets();
+            drawAssets(graphics2D);
             assets.clear();
 
             // UI
@@ -175,6 +158,32 @@ public class GamePanel extends JPanel implements Runnable {
 
         // CLOSE
         graphics2D.dispose();
+    }
+
+    private void addAssets() {
+        assets.add(player);
+
+        for (Asset npc : npcs) {
+            if (npc != null) {
+                assets.add(npc);
+            }
+        }
+
+        for (Asset object : objects) {
+            if (object != null) {
+                assets.add(object);
+            }
+        }
+    }
+
+    private void sortAssets() {
+        assets.sort(Comparator.comparingInt(Asset::getWorldY));
+    }
+
+    private void drawAssets(Graphics2D graphics2D) {
+        for (Asset asset : assets) {
+            asset.draw(graphics2D);
+        }
     }
 
     public void playMusic(int index) {
