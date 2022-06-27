@@ -1,8 +1,7 @@
-package tech.fallqvist.entity;
+package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 
 public class NPC_OldMan extends Entity {
@@ -62,6 +61,11 @@ public class NPC_OldMan extends Entity {
         getDialogues()[1] = "So you've come to this island to find \nthe treasure?";
         getDialogues()[2] = "I used to be a great wizard, but now... \nI'm a bit too old for adventuring.";
         getDialogues()[3] = "Well, good luck to you lad.";
+    }
+
+    @Override
+    public boolean isCollision() {
+        return false;
     }
 
     @Override

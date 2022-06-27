@@ -1,8 +1,8 @@
 package tech.fallqvist.ui;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.object.OBJ_Heart;
-import tech.fallqvist.object.Object;
+import tech.fallqvist.asset.object.OBJ_Heart;
+import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;

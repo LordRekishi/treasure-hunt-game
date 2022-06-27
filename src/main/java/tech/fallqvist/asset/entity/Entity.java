@@ -1,6 +1,7 @@
-package tech.fallqvist.entity;
+package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -9,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class Entity {
+public abstract class Entity implements Asset {
 
     private final GamePanel gamePanel;
 
@@ -54,6 +55,7 @@ public abstract class Entity {
         }
     }
 
+    @Override
     public void update() {
         setAction();
 
@@ -89,6 +91,7 @@ public abstract class Entity {
         }
     }
 
+    @Override
     public void draw(Graphics2D graphics2D) {
         int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX();
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
@@ -151,18 +154,16 @@ public abstract class Entity {
         return worldX;
     }
 
-    public Entity setWorldX(int worldX) {
+    public void setWorldX(int worldX) {
         this.worldX = worldX;
-        return this;
     }
 
     public int getWorldY() {
         return worldY;
     }
 
-    public Entity setWorldY(int worldY) {
+    public void setWorldY(int worldY) {
         this.worldY = worldY;
-        return this;
     }
 
     public int getSpeed() {
@@ -322,9 +323,8 @@ public abstract class Entity {
         return index;
     }
 
-    public Entity setIndex(int index) {
+    public void setIndex(int index) {
         this.index = index;
-        return this;
     }
 
     public String[] getDialogues() {

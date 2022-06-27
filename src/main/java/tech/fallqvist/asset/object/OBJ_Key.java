@@ -1,4 +1,4 @@
-package tech.fallqvist.object;
+package tech.fallqvist.asset.object;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.UtilityTool;
@@ -11,6 +11,7 @@ import java.util.Objects;
 public class OBJ_Key extends Object {
 
     public OBJ_Key(GamePanel gamePanel) {
+        super(gamePanel);
         setName("Key");
 
         try {

@@ -1,4 +1,4 @@
-package tech.fallqvist.tile;
+package tech.fallqvist.asset.tile;
 
 import java.awt.image.BufferedImage;
 

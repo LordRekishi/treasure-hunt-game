@@ -1,8 +1,8 @@
 package tech.fallqvist.util;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.entity.Entity;
-import tech.fallqvist.object.Object;
+import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.entity.Entity;
 
 public class CollisionChecker {
 
@@ -72,7 +72,7 @@ public class CollisionChecker {
     public int checkObject(Entity entity, boolean isPlayer) {
         int index = 999;
 
-        for (Object object : gamePanel.getObjects()) {
+        for (Asset object : gamePanel.getObjects()) {
 
             if (object != null) {
                 entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
@@ -146,11 +146,11 @@ public class CollisionChecker {
         return index;
     }
 
-    public int checkEntity(Entity entity, Entity[] targets) {
+    public int checkEntity(Entity entity, Asset[] targets) {
 
         int index = 999;
 
-        for (Entity target : targets) {
+        for (Asset target : targets) {
 
             if (target != null) {
                 entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;

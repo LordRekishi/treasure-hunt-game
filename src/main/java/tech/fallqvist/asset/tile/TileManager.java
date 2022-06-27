@@ -1,4 +1,4 @@
-package tech.fallqvist.tile;
+package tech.fallqvist.asset.tile;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.UtilityTool;

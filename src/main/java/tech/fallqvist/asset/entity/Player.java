@@ -1,4 +1,4 @@
-package tech.fallqvist.entity;
+package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.util.KeyHandler;
@@ -138,6 +138,11 @@ public class Player extends Entity {
 
         graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
 
+    }
+
+    @Override
+    public boolean isCollision() {
+        return false;
     }
 
     private int checkIfAtEdgeOfXAxis(int rightOffset) {

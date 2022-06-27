@@ -1,11 +1,12 @@
 package tech.fallqvist;
 
-import tech.fallqvist.entity.Entity;
-import tech.fallqvist.entity.Player;
-import tech.fallqvist.util.AssetManager;
-import tech.fallqvist.object.Object;
+import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.entity.Entity;
+import tech.fallqvist.asset.entity.Player;
+import tech.fallqvist.asset.AssetManager;
+import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.sound.SoundManager;
-import tech.fallqvist.tile.TileManager;
+import tech.fallqvist.asset.tile.TileManager;
 import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
 import tech.fallqvist.event.EventHandler;
@@ -13,6 +14,9 @@ import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -56,8 +60,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     // ENTITIES & OBJECTS
     private final Player player = new Player(this, keyHandler);
-    private final Object[] objects = new Object[10];
-    private final Entity[] npcs = new Entity[10];
+    private final Asset[] objects = new Object[10];
+    private final Asset[] npcs = new Entity[10];
+    private final ArrayList<Asset> assets = new ArrayList<>();
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -102,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         if (gameState == playState) {
             player.update();
-            for (Entity npc : npcs) {
+            for (Asset npc : npcs) {
                 if (npc != null) {
                     npc.update();
                 }
@@ -131,22 +136,28 @@ public class GamePanel extends JPanel implements Runnable {
             // TILES
             tileManager.draw(graphics2D);
 
-            // OBJECTS
-            for (Object object : objects) {
-                if (object != null) {
-                    object.draw(graphics2D, this);
-                }
-            }
+            // ASSETS
+            assets.add(player);
 
-            // NPCS
-            for (Entity npc : npcs) {
+            for (Asset npc : npcs) {
                 if (npc != null) {
-                    npc.draw(graphics2D);
+                    assets.add(npc);
                 }
             }
 
-            // PLAYER
-            player.draw(graphics2D);
+            for (Asset object : objects) {
+                if (object != null) {
+                    assets.add(object);
+                }
+            }
+
+            assets.sort(Comparator.comparingInt(Asset::getWorldY));
+
+            for (Asset asset : assets) {
+                asset.draw(graphics2D);
+            }
+
+            assets.clear();
 
             // UI
             ui.draw(graphics2D);
@@ -246,11 +257,11 @@ public class GamePanel extends JPanel implements Runnable {
         return player;
     }
 
-    public Object[] getObjects() {
+    public Asset[] getObjects() {
         return objects;
     }
 
-    public Entity[] getNpcs() {
+    public Asset[] getNpcs() {
         return npcs;
     }
 

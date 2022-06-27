@@ -1,23 +1,30 @@
-package tech.fallqvist.object;
+package tech.fallqvist.asset.object;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Object {
+public class Object implements Asset {
 
+    private final GamePanel gamePanel;
     private int index;
     private BufferedImage image1, image2, image3;
     private String name;
     private boolean collision = false;
     private int worldX, worldY;
-    private final Rectangle collisionArea = new Rectangle(0, 0, 48, 48);
-    private final int collisionDefaultX = 0;
-    private final int collisionDefaultY = 0;
+    private Rectangle collisionArea = new Rectangle(0, 0, 48, 48);
+    private int collisionDefaultX = 0;
+    private int collisionDefaultY = 0;
 
-    public void draw(Graphics2D graphics2D, GamePanel gamePanel) {
+    public Object(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         int screenX = worldX - gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX();
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
@@ -26,13 +33,17 @@ public class Object {
         }
     }
 
+    @Override
+    public void update() {
+        // Not used
+    }
+
     public int getIndex() {
         return index;
     }
 
-    public Object setIndex(int index) {
+    public void setIndex(int index) {
         this.index = index;
-        return this;
     }
 
     public BufferedImage getImage1() {
@@ -84,18 +95,16 @@ public class Object {
         return worldX;
     }
 
-    public Object setWorldX(int worldX) {
+    public void setWorldX(int worldX) {
         this.worldX = worldX;
-        return this;
     }
 
     public int getWorldY() {
         return worldY;
     }
 
-    public Object setWorldY(int worldY) {
+    public void setWorldY(int worldY) {
         this.worldY = worldY;
-        return this;
     }
 
     public Rectangle getCollisionArea() {
@@ -108,5 +117,20 @@ public class Object {
 
     public int getCollisionDefaultY() {
         return collisionDefaultY;
+    }
+
+    public Object setCollisionDefaultX(int collisionDefaultX) {
+        this.collisionDefaultX = collisionDefaultX;
+        return this;
+    }
+
+    public Object setCollisionDefaultY(int collisionDefaultY) {
+        this.collisionDefaultY = collisionDefaultY;
+        return this;
+    }
+
+    @Override
+    public void speak() {
+        // Not used
     }
 }
