@@ -111,7 +111,7 @@ public abstract class Entity implements Asset {
     }
 
     public void moveIfCollisionNotDetected() {
-        if (!isCollisionOn()) {
+        if (!isCollisionOn() && !gamePanel.getKeyHandler().isEnterPressed()) {
             switch (getDirection()) {
                 case "up" -> setWorldY(getWorldY() - getSpeed());
                 case "down" -> setWorldY(getWorldY() + getSpeed());

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add monsters and damage (need bugfix)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +83,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.tech.fallqvist.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
+        <item itemvalue="Application.tech.fallqvist.Main" />
         <item itemvalue="Application.tech.fallqvist.Main" />
       </list>
     </recent_temporary>

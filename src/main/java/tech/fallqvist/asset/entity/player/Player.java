@@ -55,8 +55,11 @@ public class Player extends Entity {
     @Override
     public void update() {
 
-        if (keyHandler.isUpPressed() || keyHandler.isDownPressed()
-                || keyHandler.isLeftPressed() || keyHandler.isRightPressed()) {
+        if (keyHandler.isUpPressed()
+                || keyHandler.isDownPressed()
+                || keyHandler.isLeftPressed()
+                || keyHandler.isRightPressed()
+                || keyHandler.isEnterPressed()) {
 
             if (keyHandler.isUpPressed()) {
                 setDirection("up");
@@ -70,8 +73,8 @@ public class Player extends Entity {
 
             checkCollision();
             checkEvent();
-            resetEnterPressedValue();
             moveIfCollisionNotDetected();
+            resetEnterPressedValue();
             checkAndChangeSpriteAnimationImage();
         } else {
             resetSpriteToDefault();
@@ -137,7 +140,7 @@ public class Player extends Entity {
     }
 
     private void resetEnterPressedValue() {
-        getGamePanel().getKeyHandler().setEnterPressed(false);
+        keyHandler.setEnterPressed(false);
     }
 
     private void resetSpriteToDefault() {
