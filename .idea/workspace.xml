@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Remove sample objects">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/monster/greenslime_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/monster/greenslime_down_2.png" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add monsters and damage (need bugfix)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,17 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/monster",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/images/monster&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\monster" />
@@ -113,7 +103,8 @@
       <workItem from="1655837448463" duration="993000" />
       <workItem from="1655921548656" duration="4322000" />
       <workItem from="1656259142120" duration="15716000" />
-      <workItem from="1656354436404" duration="6460000" />
+      <workItem from="1656354436404" duration="6492000" />
+      <workItem from="1656521661643" duration="3620000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -325,7 +316,13 @@
       <option name="presentableId" value="LOCAL−00035" />
       <updated>1656356367912</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL−00036" summary="Add monsters and damage (need bugfix)">
+      <created>1656360972325</created>
+      <option name="number" value="LOCAL−00036" />
+      <option name="presentableId" value="LOCAL−00036" />
+      <updated>1656360972325</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +340,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add performance improvements" />
     <MESSAGE value="Add collision detection" />
     <MESSAGE value="Add Objects, object collision &amp; pickup" />
     <MESSAGE value="Add Boots" />
@@ -368,6 +364,7 @@
     <MESSAGE value="Change to Asset interface" />
     <MESSAGE value="Fix Old man npc collision" />
     <MESSAGE value="Remove sample objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove sample objects" />
+    <MESSAGE value="Add monsters and damage (need bugfix)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add monsters and damage (need bugfix)" />
   </component>
 </project>
