@@ -4,9 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add monsters and damage (need bugfix)">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add start dialog by pressing enter without moving">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_attack_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/player/boy_axe_up_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,24 +63,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/images/monster&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/player",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\player" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\monster" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\fonts" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\npc" />
-      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images" />
@@ -325,7 +345,13 @@
       <option name="presentableId" value="LOCAL−00036" />
       <updated>1656360972325</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL−00037" summary="Add start dialog by pressing enter without moving">
+      <created>1656528755993</created>
+      <option name="number" value="LOCAL−00037" />
+      <option name="presentableId" value="LOCAL−00037" />
+      <updated>1656528755993</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +369,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add collision detection" />
     <MESSAGE value="Add Objects, object collision &amp; pickup" />
     <MESSAGE value="Add Boots" />
     <MESSAGE value="Add Sounds" />
@@ -368,6 +393,7 @@
     <MESSAGE value="Fix Old man npc collision" />
     <MESSAGE value="Remove sample objects" />
     <MESSAGE value="Add monsters and damage (need bugfix)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add monsters and damage (need bugfix)" />
+    <MESSAGE value="Add start dialog by pressing enter without moving" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add start dialog by pressing enter without moving" />
   </component>
 </project>

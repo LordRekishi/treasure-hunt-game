@@ -25,14 +25,19 @@ public class MON_GreenSlime extends Entity {
 
     @Override
     public void getAnimationImages() {
-        setUp1(setup("/images/monster/greenslime_down_1"));
-        setUp2(setup("/images/monster/greenslime_down_2"));
-        setDown1(setup("/images/monster/greenslime_down_1"));
-        setDown2(setup("/images/monster/greenslime_down_2"));
-        setLeft1(setup("/images/monster/greenslime_down_1"));
-        setLeft2(setup("/images/monster/greenslime_down_2"));
-        setRight1(setup("/images/monster/greenslime_down_1"));
-        setRight2(setup("/images/monster/greenslime_down_2"));
+        setUp1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setUp2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+    }
+
+    @Override
+    public void getAttackImages() {
+        // Not used
     }
 
     @Override

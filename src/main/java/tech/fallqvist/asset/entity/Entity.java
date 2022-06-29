@@ -21,16 +21,26 @@ public abstract class Entity implements Asset {
     private String name;
     private int worldX, worldY;
     private int speed;
+
+    // ANIMATION
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+    private BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     private String direction;
     private int spriteCounter = 0;
     private int spriteNumber = 1;
+    private int actionLockCounter = 0;
+
+    // COLLISION
     private Rectangle collisionArea = new Rectangle(0, 0, 48, 48);
     private int collisionDefaultX, collisionDefaultY;
     private boolean collisionOn = false;
-    private int actionLockCounter = 0;
+
+    // COMBAT
     private boolean invincible = false;
     private int invincibleCounter = 0;
+    private boolean attacking = false;
+
+    // DIALOGUE
     private String[] dialogues = new String[20];
     private int dialogueIndex;
 
@@ -43,6 +53,8 @@ public abstract class Entity implements Asset {
     }
 
     public abstract void getAnimationImages();
+
+    public abstract void getAttackImages();
 
     public void setAction() {
         actionLockCounter++;
@@ -148,34 +160,73 @@ public abstract class Entity implements Asset {
 
         switch (getDirection()) {
             case "up" -> {
-                if (getSpriteNumber() == 1)
-                    image = getUp1();
-                if (getSpriteNumber() == 2)
-                    image = getUp2();
+                if (!isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getUp1();
+                    if (getSpriteNumber() == 2)
+                        image = getUp2();
+                }
+
+                if (isAttacking()){
+                    if (getSpriteNumber() == 1)
+                        image = getAttackUp1();
+                    if (getSpriteNumber() == 2)
+                        image = getAttackUp2();
+                }
             }
             case "down" -> {
-                if (getSpriteNumber() == 1)
-                    image = getDown1();
-                if (getSpriteNumber() == 2)
-                    image = getDown2();
+                if (!isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getDown1();
+                    if (getSpriteNumber() == 2)
+                        image = getDown2();
+                }
+
+                if (isAttacking()){
+                    if (getSpriteNumber() == 1)
+                        image = getAttackDown1();
+                    if (getSpriteNumber() == 2)
+                        image = getAttackDown2();
+                }
+
             }
             case "left" -> {
-                if (getSpriteNumber() == 1)
-                    image = getLeft1();
-                if (getSpriteNumber() == 2)
-                    image = getLeft2();
+                if (!isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getLeft1();
+                    if (getSpriteNumber() == 2)
+                        image = getLeft2();
+                }
+
+                if (isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getAttackLeft1();
+                    if (getSpriteNumber() == 2)
+                        image = getAttackLeft2();
+                }
+
             }
             case "right" -> {
-                if (getSpriteNumber() == 1)
-                    image = getRight1();
-                if (getSpriteNumber() == 2)
-                    image = getRight2();
+                if (!isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getRight1();
+                    if (getSpriteNumber() == 2)
+                        image = getRight2();
+                }
+
+                if (isAttacking()) {
+                    if (getSpriteNumber() == 1)
+                        image = getAttackRight1();
+                    if (getSpriteNumber() == 2)
+                        image = getAttackRight2();
+                }
+
             }
         }
         return image;
     }
 
-    public BufferedImage setup(String imagePath) {
+    public BufferedImage setup(String imagePath, int width, int height) {
         BufferedImage image = null;
 
         try {
@@ -185,7 +236,7 @@ public abstract class Entity implements Asset {
             e.printStackTrace();
         }
 
-        return UtilityTool.scaleImage(image, getGamePanel().getTileSize(), getGamePanel().getTileSize());
+        return UtilityTool.scaleImage(image, width, height);
     }
 
     public GamePanel getGamePanel() {
@@ -295,6 +346,78 @@ public abstract class Entity implements Asset {
 
     public Entity setRight2(BufferedImage right2) {
         this.right2 = right2;
+        return this;
+    }
+
+    public BufferedImage getAttackUp1() {
+        return attackUp1;
+    }
+
+    public Entity setAttackUp1(BufferedImage attackUp1) {
+        this.attackUp1 = attackUp1;
+        return this;
+    }
+
+    public BufferedImage getAttackUp2() {
+        return attackUp2;
+    }
+
+    public Entity setAttackUp2(BufferedImage attackUp2) {
+        this.attackUp2 = attackUp2;
+        return this;
+    }
+
+    public BufferedImage getAttackDown1() {
+        return attackDown1;
+    }
+
+    public Entity setAttackDown1(BufferedImage attackDown1) {
+        this.attackDown1 = attackDown1;
+        return this;
+    }
+
+    public BufferedImage getAttackDown2() {
+        return attackDown2;
+    }
+
+    public Entity setAttackDown2(BufferedImage attackDown2) {
+        this.attackDown2 = attackDown2;
+        return this;
+    }
+
+    public BufferedImage getAttackLeft1() {
+        return attackLeft1;
+    }
+
+    public Entity setAttackLeft1(BufferedImage attackLeft1) {
+        this.attackLeft1 = attackLeft1;
+        return this;
+    }
+
+    public BufferedImage getAttackLeft2() {
+        return attackLeft2;
+    }
+
+    public Entity setAttackLeft2(BufferedImage attackLeft2) {
+        this.attackLeft2 = attackLeft2;
+        return this;
+    }
+
+    public BufferedImage getAttackRight1() {
+        return attackRight1;
+    }
+
+    public Entity setAttackRight1(BufferedImage attackRight1) {
+        this.attackRight1 = attackRight1;
+        return this;
+    }
+
+    public BufferedImage getAttackRight2() {
+        return attackRight2;
+    }
+
+    public Entity setAttackRight2(BufferedImage attackRight2) {
+        this.attackRight2 = attackRight2;
         return this;
     }
 
@@ -429,6 +552,15 @@ public abstract class Entity implements Asset {
 
     public Entity setCurrentLife(int currentLife) {
         this.currentLife = currentLife;
+        return this;
+    }
+
+    public boolean isAttacking() {
+        return attacking;
+    }
+
+    public Entity setAttacking(boolean attacking) {
+        this.attacking = attacking;
         return this;
     }
 }

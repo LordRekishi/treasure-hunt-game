@@ -3,8 +3,6 @@ package tech.fallqvist.asset.entity.npc;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
 
-import java.util.Random;
-
 public class NPC_OldMan extends Entity {
 
     public NPC_OldMan(GamePanel gamePanel) {
@@ -20,14 +18,19 @@ public class NPC_OldMan extends Entity {
 
     @Override
     public void getAnimationImages() {
-        setUp1(setup("/images/npc/oldman_up_1"));
-        setUp2(setup("/images/npc/oldman_up_2"));
-        setDown1(setup("/images/npc/oldman_down_1"));
-        setDown2(setup("/images/npc/oldman_down_2"));
-        setLeft1(setup("/images/npc/oldman_left_1"));
-        setLeft2(setup("/images/npc/oldman_left_2"));
-        setRight1(setup("/images/npc/oldman_right_1"));
-        setRight2(setup("/images/npc/oldman_right_2"));
+        setUp1(setup("/images/npc/oldman_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setUp2(setup("/images/npc/oldman_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown1(setup("/images/npc/oldman_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown2(setup("/images/npc/oldman_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft1(setup("/images/npc/oldman_left_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft2(setup("/images/npc/oldman_left_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight1(setup("/images/npc/oldman_right_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight2(setup("/images/npc/oldman_right_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+    }
+
+    @Override
+    public void getAttackImages() {
+        // Not used
     }
 
     @Override

@@ -23,6 +23,7 @@ public class Player extends Entity {
         setCollision();
         setDefaultValues();
         getAnimationImages();
+        getAttackImages();
     }
 
     private void setCollision() {
@@ -42,24 +43,40 @@ public class Player extends Entity {
 
     @Override
     public void getAnimationImages() {
-            setUp1(setup("/images/player/boy_up_1"));
-            setUp2(setup("/images/player/boy_up_2"));
-            setDown1(setup("/images/player/boy_down_1"));
-            setDown2(setup("/images/player/boy_down_2"));
-            setLeft1(setup("/images/player/boy_left_1"));
-            setLeft2(setup("/images/player/boy_left_2"));
-            setRight1(setup("/images/player/boy_right_1"));
-            setRight2(setup("/images/player/boy_right_2"));
+        setUp1(setup("/images/player/boy_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setUp2(setup("/images/player/boy_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown1(setup("/images/player/boy_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setDown2(setup("/images/player/boy_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft1(setup("/images/player/boy_left_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setLeft2(setup("/images/player/boy_left_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight1(setup("/images/player/boy_right_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+        setRight2(setup("/images/player/boy_right_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+    }
+
+    @Override
+    public void getAttackImages() {
+        setAttackUp1(setup("/images/player/boy_attack_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+        setAttackUp2(setup("/images/player/boy_attack_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+        setAttackDown1(setup("/images/player/boy_attack_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+        setAttackDown2(setup("/images/player/boy_attack_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+        setAttackLeft1(setup("/images/player/boy_attack_left_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        setAttackLeft2(setup("/images/player/boy_attack_left_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        setAttackRight1(setup("/images/player/boy_attack_right_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        setAttackRight2(setup("/images/player/boy_attack_right_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
     }
 
     @Override
     public void update() {
 
-        if (keyHandler.isUpPressed()
+        if (isAttacking()) {
+            attacking();
+
+        } else if (keyHandler.isUpPressed()
                 || keyHandler.isDownPressed()
                 || keyHandler.isLeftPressed()
                 || keyHandler.isRightPressed()
-                || keyHandler.isEnterPressed()) {
+                || keyHandler.isEnterPressed()
+                || keyHandler.isSpacePressed()) {
 
             if (keyHandler.isUpPressed()) {
                 setDirection("up");
@@ -71,6 +88,7 @@ public class Player extends Entity {
                 setDirection("right");
             }
 
+            checkIfAttacking();
             checkCollision();
             checkEvent();
             moveIfCollisionNotDetected();
@@ -81,6 +99,30 @@ public class Player extends Entity {
         }
 
         checkIfInvincible();
+    }
+
+    private void attacking() {
+        setSpriteCounter(getSpriteCounter() + 1);
+
+        if (getSpriteCounter() <= 5) {
+            setSpriteNumber(1);
+        }
+
+        if (getSpriteCounter() > 5 && getSpriteCounter() <= 25) {
+            setSpriteNumber(2);
+        }
+
+        if (getSpriteCounter() > 25) {
+            setSpriteNumber(1);
+            setSpriteCounter(0);
+            setAttacking(false);
+        }
+    }
+
+    private void checkIfAttacking() {
+        if (getGamePanel().getKeyHandler().isSpacePressed()) {
+            setAttacking(true);
+        }
     }
 
     private void checkCollision() {
@@ -174,14 +216,19 @@ public class Player extends Entity {
             graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3F));
         }
 
-        graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
+        if (isAttacking()) {
+            switch (getDirection()) {
+                case "up" -> graphics2D.drawImage(getDirectionalAnimationImage(), x, y - getGamePanel().getTileSize(), null);
+                case "left" -> graphics2D.drawImage(getDirectionalAnimationImage(), x - getGamePanel().getTileSize(), y, null);
+                default -> graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
+            }
+        } else {
+            graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
+        }
+
+
 
         graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
-    }
-
-    @Override
-    public boolean isCollision() {
-        return false;
     }
 
     private int checkIfAtEdgeOfXAxis(int rightOffset) {
@@ -214,5 +261,10 @@ public class Player extends Entity {
 
     public int getScreenY() {
         return screenY;
+    }
+
+    @Override
+    public boolean isCollision() {
+        return false;
     }
 }
