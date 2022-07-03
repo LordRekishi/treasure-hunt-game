@@ -151,6 +151,7 @@ public class Player extends Entity {
     private void damageMonster(int index) {
         if (index != 999) {
             if (!getGamePanel().getMonsters()[index].isInvincible()) {
+                getGamePanel().playSoundEffect(5);
                 getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - 1);
                 getGamePanel().getMonsters()[index].setInvincible(true);
 
@@ -163,6 +164,7 @@ public class Player extends Entity {
 
     private void checkIfAttacking() {
         if (getGamePanel().getKeyHandler().isSpacePressed()) {
+            getGamePanel().playSoundEffect(7);
             setAttacking(true);
         }
     }
@@ -213,6 +215,7 @@ public class Player extends Entity {
     private void interactWithMonster(int index) {
         if (index != 999) {
             if (!isInvincible()) {
+                getGamePanel().playSoundEffect(6);
                 setCurrentLife(getCurrentLife() - 1);
                 setInvincible(true);
             }
