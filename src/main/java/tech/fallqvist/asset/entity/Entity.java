@@ -41,12 +41,14 @@ public abstract class Entity implements Asset {
     private int invincibleCounter = 0;
     private boolean attacking = false;
     private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
+    private boolean hpBarOn = false;
+    private int hpBarCounter;
 
     // DIALOGUE
     private String[] dialogues = new String[20];
     private int dialogueIndex;
 
-    // CHARACTER STATUS
+    // ENTITY STATUS
     private int maxLife;
     private int currentLife;
     private boolean alive = true;
@@ -158,19 +160,50 @@ public abstract class Entity implements Asset {
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
         if (UtilityTool.isInsidePlayerView(worldX, worldY, gamePanel)) {
-            if (isInvincible()) {
-                graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4F));
-            }
 
-            if (isDying()) {
-                dyingAnimation(graphics2D);
-            }
+            drawLifeBar(graphics2D, screenX, screenY);
+            drawInvincible(graphics2D);
+            drawDying(graphics2D);
 
             graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
 
-            graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
+            resetAlphaTo100(graphics2D);
         }
 
+    }
+
+    private void drawLifeBar(Graphics2D graphics2D, int screenX, int screenY) {
+        if (this instanceof MON_GreenSlime && hpBarOn) {
+            double oneCurrentLifeWidth = (double) gamePanel.getTileSize() / maxLife;
+            double lifeBarValue = oneCurrentLifeWidth * currentLife;
+
+            graphics2D.setColor(new Color(35, 35, 35));
+            graphics2D.fillRect(screenX - 1, screenY - 16, gamePanel.getTileSize() + 2, 12);
+
+            graphics2D.setColor(new Color(255, 0, 30));
+            graphics2D.fillRect(screenX, screenY - 15, (int) lifeBarValue, 10);
+
+            hpBarCounter++;
+
+            if (hpBarCounter > 600) {
+                setHpBarCounter(0);
+                setHpBarOn(false);
+            }
+        }
+    }
+
+    private void drawInvincible(Graphics2D graphics2D) {
+        if (isInvincible()) {
+            setHpBarOn(true);
+            setHpBarCounter(0);
+            UtilityTool.changeAlpha(graphics2D, 0.4F);
+        }
+    }
+
+    private void drawDying(Graphics2D graphics2D) {
+        if (isDying()) {
+            dyingAnimation(graphics2D);
+        }
     }
 
     private void dyingAnimation(Graphics2D graphics2D) {
@@ -178,6 +211,15 @@ public abstract class Entity implements Asset {
 
         dyingCounter++;
 
+        blinkingAnimation(graphics2D, interval);
+
+        if (dyingCounter > interval * 8) {
+            setDying(false);
+            setAlive(false);
+        }
+    }
+
+    private void blinkingAnimation(Graphics2D graphics2D, int interval) {
         if (dyingCounter <= interval) {
             UtilityTool.changeAlpha(graphics2D, 0);
         }
@@ -209,11 +251,10 @@ public abstract class Entity implements Asset {
         if (dyingCounter > interval * 7 && dyingCounter <= interval * 8) {
             UtilityTool.changeAlpha(graphics2D, 1);
         }
+    }
 
-        if (dyingCounter > interval * 8) {
-            setDying(false);
-            setAlive(false);
-        }
+    private void resetAlphaTo100(Graphics2D graphics2D) {
+        UtilityTool.changeAlpha(graphics2D, 1);
     }
 
     public BufferedImage getDirectionalAnimationImage() {
@@ -657,5 +698,23 @@ public abstract class Entity implements Asset {
 
     public void setDyingCounter(int dyingCounter) {
         this.dyingCounter = dyingCounter;
+    }
+
+    public boolean isHpBarOn() {
+        return hpBarOn;
+    }
+
+    public Entity setHpBarOn(boolean hpBarOn) {
+        this.hpBarOn = hpBarOn;
+        return this;
+    }
+
+    public int getHpBarCounter() {
+        return hpBarCounter;
+    }
+
+    public Entity setHpBarCounter(int hpBarCounter) {
+        this.hpBarCounter = hpBarCounter;
+        return this;
     }
 }
