@@ -21,6 +21,7 @@ public class Player extends Entity {
         this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
         setCollision();
+        setPlayerAttackArea();
         setDefaultValues();
         getAnimationImages();
         getAttackImages();
@@ -30,6 +31,11 @@ public class Player extends Entity {
         setCollisionArea(new Rectangle(8, 16, 32, 32));
         setCollisionDefaultX(getCollisionArea().x);
         setCollisionDefaultY(getCollisionArea().y);
+    }
+
+    private void setPlayerAttackArea() {
+        getAttackArea().width = 36;
+        getAttackArea().height = 36;
     }
 
     public void setDefaultValues() {
@@ -110,12 +116,48 @@ public class Player extends Entity {
 
         if (getSpriteCounter() > 5 && getSpriteCounter() <= 25) {
             setSpriteNumber(2);
+
+            int currentWorldX = getWorldX();
+            int currentWorldY = getWorldY();
+            int collisionAreaWidth = getCollisionArea().width;
+            int collisionAreaHeight = getCollisionArea().height;
+
+            switch (getDirection()) {
+                case "up" -> setWorldY(currentWorldY - getAttackArea().height);
+                case "down" -> setWorldY(currentWorldY + getAttackArea().height);
+                case "left" -> setWorldX(currentWorldX - getAttackArea().width);
+                case "right" -> setWorldX(currentWorldX + getAttackArea().width);
+            }
+
+            getCollisionArea().width = getAttackArea().width;
+            getCollisionArea().height = getAttackArea().height;
+
+            int monsterIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonsters());
+            damageMonster(monsterIndex);
+
+            setWorldX(currentWorldX);
+            setWorldY(currentWorldY);
+            getCollisionArea().width = collisionAreaWidth;
+            getCollisionArea().height = collisionAreaHeight;
         }
 
         if (getSpriteCounter() > 25) {
             setSpriteNumber(1);
             setSpriteCounter(0);
             setAttacking(false);
+        }
+    }
+
+    private void damageMonster(int index) {
+        if (index != 999) {
+            if (!getGamePanel().getMonsters()[index].isInvincible()) {
+                getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - 1);
+                getGamePanel().getMonsters()[index].setInvincible(true);
+
+                if (getGamePanel().getMonsters()[index].getCurrentLife() <= 0) {
+                    getGamePanel().getMonsters()[index] = null;
+                }
+            }
         }
     }
 
@@ -193,17 +235,6 @@ public class Player extends Entity {
         }
     }
 
-    private void checkIfInvincible() {
-        if (isInvincible()) {
-            setInvincibleCounter(getInvincibleCounter() + 1);
-
-            if (getInvincibleCounter() > 60) {
-                setInvincible(false);
-                setInvincibleCounter(0);
-            }
-        }
-    }
-
     @Override
     public void draw(Graphics2D graphics2D) {
         int rightOffset = getGamePanel().getScreenWidth() - screenX;
@@ -213,7 +244,7 @@ public class Player extends Entity {
         int y = checkIfAtEdgeOfYAxis(bottomOffset);
 
         if (isInvincible()) {
-            graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3F));
+            graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4F));
         }
 
         if (isAttacking()) {
@@ -225,8 +256,6 @@ public class Player extends Entity {
         } else {
             graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
         }
-
-
 
         graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
     }

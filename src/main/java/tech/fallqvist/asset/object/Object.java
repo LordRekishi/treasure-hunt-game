@@ -108,6 +108,26 @@ public class Object implements Asset {
         this.worldY = worldY;
     }
 
+    @Override
+    public boolean isInvincible() {
+        return false;
+    }
+
+    @Override
+    public void setInvincible(boolean invincible) {
+        // Not used
+    }
+
+    @Override
+    public int getCurrentLife() {
+        return 0;
+    }
+
+    @Override
+    public void setCurrentLife(int currentLife) {
+        // Not used
+    }
+
     public Rectangle getCollisionArea() {
         return collisionArea;
     }

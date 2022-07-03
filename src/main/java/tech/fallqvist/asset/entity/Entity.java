@@ -3,6 +3,7 @@ package tech.fallqvist.asset.entity;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
+import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -39,6 +40,7 @@ public abstract class Entity implements Asset {
     private boolean invincible = false;
     private int invincibleCounter = 0;
     private boolean attacking = false;
+    private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
 
     // DIALOGUE
     private String[] dialogues = new String[20];
@@ -118,6 +120,7 @@ public abstract class Entity implements Asset {
             }
         }
 
+        checkIfInvincible();
         moveIfCollisionNotDetected();
         checkAndChangeSpriteAnimationImage();
     }
@@ -151,8 +154,15 @@ public abstract class Entity implements Asset {
         int screenY = worldY - gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
 
         if (UtilityTool.isInsidePlayerView(worldX, worldY, gamePanel)) {
+            if (isInvincible()) {
+                graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4F));
+            }
+
             graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+
+            graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
         }
+
     }
 
     public BufferedImage getDirectionalAnimationImage() {
@@ -165,9 +175,7 @@ public abstract class Entity implements Asset {
                         image = getUp1();
                     if (getSpriteNumber() == 2)
                         image = getUp2();
-                }
-
-                if (isAttacking()){
+                } else if (isAttacking()) {
                     if (getSpriteNumber() == 1)
                         image = getAttackUp1();
                     if (getSpriteNumber() == 2)
@@ -180,9 +188,7 @@ public abstract class Entity implements Asset {
                         image = getDown1();
                     if (getSpriteNumber() == 2)
                         image = getDown2();
-                }
-
-                if (isAttacking()){
+                } else if (isAttacking()) {
                     if (getSpriteNumber() == 1)
                         image = getAttackDown1();
                     if (getSpriteNumber() == 2)
@@ -196,9 +202,7 @@ public abstract class Entity implements Asset {
                         image = getLeft1();
                     if (getSpriteNumber() == 2)
                         image = getLeft2();
-                }
-
-                if (isAttacking()) {
+                } else if (isAttacking()) {
                     if (getSpriteNumber() == 1)
                         image = getAttackLeft1();
                     if (getSpriteNumber() == 2)
@@ -212,9 +216,7 @@ public abstract class Entity implements Asset {
                         image = getRight1();
                     if (getSpriteNumber() == 2)
                         image = getRight2();
-                }
-
-                if (isAttacking()) {
+                } else if (isAttacking()) {
                     if (getSpriteNumber() == 1)
                         image = getAttackRight1();
                     if (getSpriteNumber() == 2)
@@ -237,6 +239,17 @@ public abstract class Entity implements Asset {
         }
 
         return UtilityTool.scaleImage(image, width, height);
+    }
+
+    public void checkIfInvincible() {
+        if (isInvincible()) {
+            setInvincibleCounter(getInvincibleCounter() + 1);
+
+            if (getInvincibleCounter() > ((this instanceof Player) ? 60 : 40)) {
+                setInvincible(false);
+                setInvincibleCounter(0);
+            }
+        }
     }
 
     public GamePanel getGamePanel() {
@@ -497,9 +510,8 @@ public abstract class Entity implements Asset {
         return invincible;
     }
 
-    public Entity setInvincible(boolean invincible) {
+    public void setInvincible(boolean invincible) {
         this.invincible = invincible;
-        return this;
     }
 
     public int getInvincibleCounter() {
@@ -550,9 +562,8 @@ public abstract class Entity implements Asset {
         return currentLife;
     }
 
-    public Entity setCurrentLife(int currentLife) {
+    public void setCurrentLife(int currentLife) {
         this.currentLife = currentLife;
-        return this;
     }
 
     public boolean isAttacking() {
@@ -561,6 +572,15 @@ public abstract class Entity implements Asset {
 
     public Entity setAttacking(boolean attacking) {
         this.attacking = attacking;
+        return this;
+    }
+
+    public Rectangle getAttackArea() {
+        return attackArea;
+    }
+
+    public Entity setAttackArea(Rectangle attackArea) {
+        this.attackArea = attackArea;
         return this;
     }
 }
