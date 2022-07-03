@@ -155,7 +155,7 @@ public class Player extends Entity {
                 getGamePanel().getMonsters()[index].setInvincible(true);
 
                 if (getGamePanel().getMonsters()[index].getCurrentLife() <= 0) {
-                    getGamePanel().getMonsters()[index] = null;
+                    getGamePanel().getMonsters()[index].setDying(true);
                 }
             }
         }

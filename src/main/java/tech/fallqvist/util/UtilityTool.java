@@ -27,4 +27,8 @@ public class UtilityTool {
                 && worldY + gamePanel.getTileSize() > gamePanel.getPlayer().getWorldY() - gamePanel.getPlayer().getScreenY()
                 && worldY - gamePanel.getTileSize() < gamePanel.getPlayer().getWorldY() + gamePanel.getPlayer().getScreenY();
     }
+
+    public static void changeAlpha(Graphics2D graphics2D, float alphaValue) {
+        graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
+    }
 }

@@ -108,26 +108,6 @@ public class Object implements Asset {
         this.worldY = worldY;
     }
 
-    @Override
-    public boolean isInvincible() {
-        return false;
-    }
-
-    @Override
-    public void setInvincible(boolean invincible) {
-        // Not used
-    }
-
-    @Override
-    public int getCurrentLife() {
-        return 0;
-    }
-
-    @Override
-    public void setCurrentLife(int currentLife) {
-        // Not used
-    }
-
     public Rectangle getCollisionArea() {
         return collisionArea;
     }
@@ -152,6 +132,56 @@ public class Object implements Asset {
 
     @Override
     public void speak() {
+        // Not used
+    }
+
+    @Override
+    public boolean isInvincible() {
+        return false;
+    }
+
+    @Override
+    public void setInvincible(boolean invincible) {
+        // Not used
+    }
+
+    @Override
+    public int getCurrentLife() {
+        return 0;
+    }
+
+    @Override
+    public void setCurrentLife(int currentLife) {
+        // Not used
+    }
+
+    @Override
+    public boolean isAlive() {
+        return false;
+    }
+
+    @Override
+    public void setAlive(boolean alive) {
+        // Not used
+    }
+
+    @Override
+    public boolean isDying() {
+        return false;
+    }
+
+    @Override
+    public void setDying(boolean dying) {
+        // Not used
+    }
+
+    @Override
+    public int getDyingCounter() {
+        return 0;
+    }
+
+    @Override
+    public void setDyingCounter(int dyingCounter) {
         // Not used
     }
 }

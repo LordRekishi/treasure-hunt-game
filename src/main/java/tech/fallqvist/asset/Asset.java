@@ -4,7 +4,9 @@ import java.awt.*;
 
 public interface Asset {
     void update();
+
     void draw(Graphics2D graphics2D);
+
     void speak();
 
     void setIndex(int i);
@@ -34,4 +36,16 @@ public interface Asset {
     int getCurrentLife();
 
     void setCurrentLife(int currentLife);
+
+    boolean isAlive();
+
+    void setAlive(boolean alive);
+
+    boolean isDying();
+
+    void setDying(boolean dying);
+
+    int getDyingCounter();
+
+    void setDyingCounter(int dyingCounter);
 }

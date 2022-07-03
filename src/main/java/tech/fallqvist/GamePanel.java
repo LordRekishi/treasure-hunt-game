@@ -1,15 +1,15 @@
 package tech.fallqvist;
 
 import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.AssetManager;
 import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.entity.player.Player;
-import tech.fallqvist.asset.AssetManager;
 import tech.fallqvist.asset.object.Object;
-import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.asset.tile.TileManager;
+import tech.fallqvist.event.EventHandler;
+import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
-import tech.fallqvist.event.EventHandler;
 import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;
@@ -118,7 +118,13 @@ public class GamePanel extends JPanel implements Runnable {
 
             for (Asset monster : monsters) {
                 if (monster != null) {
-                    monster.update();
+                    if (monster.isAlive() && !monster.isDying()) {
+                        monster.update();
+                    }
+
+                    if (!monster.isAlive()) {
+                        removeMonster(monster.getIndex());
+                    }
                 }
             }
         }
@@ -126,6 +132,10 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == pauseState) {
             // later update
         }
+    }
+
+    private void removeMonster(int index) {
+        monsters[index] = null;
     }
 
     public void paintComponent(Graphics graphics) {

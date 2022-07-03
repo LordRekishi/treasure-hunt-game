@@ -49,6 +49,9 @@ public abstract class Entity implements Asset {
     // CHARACTER STATUS
     private int maxLife;
     private int currentLife;
+    private boolean alive = true;
+    private boolean dying = false;
+    private int dyingCounter;
 
     public Entity(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -158,11 +161,58 @@ public abstract class Entity implements Asset {
                 graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4F));
             }
 
+            if (isDying()) {
+                dyingAnimation(graphics2D);
+            }
+
             graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
 
             graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1F));
         }
 
+    }
+
+    private void dyingAnimation(Graphics2D graphics2D) {
+        int interval = 5;
+
+        dyingCounter++;
+
+        if (dyingCounter <= interval) {
+            UtilityTool.changeAlpha(graphics2D, 0);
+        }
+
+        if (dyingCounter > interval && dyingCounter <= interval * 2) {
+            UtilityTool.changeAlpha(graphics2D, 1);
+        }
+
+        if (dyingCounter > interval * 2 && dyingCounter <= interval * 3) {
+            UtilityTool.changeAlpha(graphics2D, 0);
+        }
+
+        if (dyingCounter > interval * 3 && dyingCounter <= interval * 4) {
+            UtilityTool.changeAlpha(graphics2D, 1);
+        }
+
+        if (dyingCounter > interval * 4 && dyingCounter <= interval * 5) {
+            UtilityTool.changeAlpha(graphics2D, 0);
+        }
+
+        if (dyingCounter > interval * 5 && dyingCounter <= interval * 6) {
+            UtilityTool.changeAlpha(graphics2D, 1);
+        }
+
+        if (dyingCounter > interval * 6 && dyingCounter <= interval * 7) {
+            UtilityTool.changeAlpha(graphics2D, 0);
+        }
+
+        if (dyingCounter > interval * 7 && dyingCounter <= interval * 8) {
+            UtilityTool.changeAlpha(graphics2D, 1);
+        }
+
+        if (dyingCounter > interval * 8) {
+            setDying(false);
+            setAlive(false);
+        }
     }
 
     public BufferedImage getDirectionalAnimationImage() {
@@ -582,5 +632,29 @@ public abstract class Entity implements Asset {
     public Entity setAttackArea(Rectangle attackArea) {
         this.attackArea = attackArea;
         return this;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public boolean isDying() {
+        return dying;
+    }
+
+    public void setDying(boolean dying) {
+        this.dying = dying;
+    }
+
+    public int getDyingCounter() {
+        return dyingCounter;
+    }
+
+    public void setDyingCounter(int dyingCounter) {
+        this.dyingCounter = dyingCounter;
     }
 }
