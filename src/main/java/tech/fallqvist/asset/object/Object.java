@@ -136,6 +136,11 @@ public class Object implements Asset {
     }
 
     @Override
+    public void damageReaction() {
+        // Not used
+    }
+
+    @Override
     public boolean isInvincible() {
         return false;
     }

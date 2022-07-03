@@ -154,6 +154,7 @@ public class Player extends Entity {
                 getGamePanel().playSoundEffect(5);
                 getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - 1);
                 getGamePanel().getMonsters()[index].setInvincible(true);
+                getGamePanel().getMonsters()[index].damageReaction();
 
                 if (getGamePanel().getMonsters()[index].getCurrentLife() <= 0) {
                     getGamePanel().getMonsters()[index].setDying(true);
@@ -285,6 +286,11 @@ public class Player extends Entity {
         }
 
         return screenY;
+    }
+
+    @Override
+    public void damageReaction() {
+        // Not used yet
     }
 
     public int getScreenX() {

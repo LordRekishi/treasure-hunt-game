@@ -41,8 +41,14 @@ public class MON_GreenSlime extends Entity {
     }
 
     @Override
-    public void setAction() {
-        super.setAction();
+    public void damageReaction() {
+        setActionLockCounter(0);
+        setDirection(getGamePanel().getPlayer().getDirection());
+    }
+
+    @Override
+    public void setupAI() {
+        super.setupAI();
     }
 
     @Override

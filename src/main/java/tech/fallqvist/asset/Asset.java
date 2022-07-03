@@ -9,6 +9,8 @@ public interface Asset {
 
     void speak();
 
+    void damageReaction();
+
     void setIndex(int i);
 
     int getIndex();

@@ -60,10 +60,9 @@ public abstract class Entity implements Asset {
     }
 
     public abstract void getAnimationImages();
-
     public abstract void getAttackImages();
 
-    public void setAction() {
+    public void setupAI() {
         actionLockCounter++;
 
         if (actionLockCounter == 120) {
@@ -109,7 +108,7 @@ public abstract class Entity implements Asset {
 
     @Override
     public void update() {
-        setAction();
+        setupAI();
 
         collisionOn = false;
         gamePanel.getCollisionChecker().checkTile(this);

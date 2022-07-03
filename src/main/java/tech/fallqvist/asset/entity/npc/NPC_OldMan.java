@@ -34,8 +34,13 @@ public class NPC_OldMan extends Entity {
     }
 
     @Override
-    public void setAction() {
-        super.setAction();
+    public void damageReaction() {
+        // Not used yet
+    }
+
+    @Override
+    public void setupAI() {
+        super.setupAI();
     }
 
     public void setDialogue() {
