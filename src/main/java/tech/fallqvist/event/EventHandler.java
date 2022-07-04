@@ -91,6 +91,7 @@ public class EventHandler {
 
     private void damagePit(int col, int row, int gameState) {
         gamePanel.setGameState(gameState);
+        gamePanel.playSoundEffect(6);
         gamePanel.getUi().setCurrentDialogue("You fell into a pit!");
         gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - 1);
         canTouchEvent = false;
@@ -99,6 +100,7 @@ public class EventHandler {
     private void healingPool(int col, int row, int gameState) {
         if (gamePanel.getKeyHandler().isEnterPressed()) {
             gamePanel.setGameState(gameState);
+            gamePanel.playSoundEffect(2);
             gamePanel.getUi().setCurrentDialogue("You drink the water. \nYour life has been restored.");
             gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getMaxLife());
         }
@@ -106,6 +108,7 @@ public class EventHandler {
 
     private void teleport(int col, int row, int gameState) {
         gamePanel.setGameState(gameState);
+        gamePanel.playSoundEffect(4);
         gamePanel.getUi().setCurrentDialogue("You teleport!");
         gamePanel.getPlayer().setWorldX(gamePanel.getTileSize() * 37);
         gamePanel.getPlayer().setWorldY(gamePanel.getTileSize() * 10);
