@@ -12,6 +12,7 @@ public class OBJ_Door extends Object {
 
     public OBJ_Door(GamePanel gamePanel) {
         super(gamePanel);
+
         setName("Door");
         setCollision(true);
 

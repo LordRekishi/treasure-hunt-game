@@ -4,6 +4,7 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
 import tech.fallqvist.asset.entity.player.Player;
+import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -22,6 +23,18 @@ public abstract class Entity implements Asset {
     private String name;
     private int worldX, worldY;
     private int speed;
+    private int maxLife;
+    private int currentLife;
+    private int level;
+    private int strength;
+    private int dexterity;
+    private int attackPower;
+    private int defensePower;
+    private int exp;
+    private int nextLevelExp;
+    private int coins;
+    private Object currentWeapon;
+    private Object currentShield;
 
     // ANIMATION
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -49,8 +62,7 @@ public abstract class Entity implements Asset {
     private int dialogueIndex;
 
     // ENTITY STATUS
-    private int maxLife;
-    private int currentLife;
+
     private boolean alive = true;
     private boolean dying = false;
     private int dyingCounter;
@@ -714,6 +726,96 @@ public abstract class Entity implements Asset {
 
     public Entity setHpBarCounter(int hpBarCounter) {
         this.hpBarCounter = hpBarCounter;
+        return this;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public Entity setLevel(int level) {
+        this.level = level;
+        return this;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public Entity setStrength(int strength) {
+        this.strength = strength;
+        return this;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public Entity setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+        return this;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public Entity setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+        return this;
+    }
+
+    public int getDefensePower() {
+        return defensePower;
+    }
+
+    public Entity setDefensePower(int defensePower) {
+        this.defensePower = defensePower;
+        return this;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public Entity setExp(int exp) {
+        this.exp = exp;
+        return this;
+    }
+
+    public int getNextLevelExp() {
+        return nextLevelExp;
+    }
+
+    public Entity setNextLevelExp(int nextLevelExp) {
+        this.nextLevelExp = nextLevelExp;
+        return this;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public Entity setCoins(int coins) {
+        this.coins = coins;
+        return this;
+    }
+
+    public Object getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public Entity setCurrentWeapon(Object currentWeapon) {
+        this.currentWeapon = currentWeapon;
+        return this;
+    }
+
+    public Object getCurrentShield() {
+        return currentShield;
+    }
+
+    public Entity setCurrentShield(Object currentShield) {
+        this.currentShield = currentShield;
         return this;
     }
 }

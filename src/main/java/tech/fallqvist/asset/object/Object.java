@@ -11,11 +11,18 @@ public class Object implements Asset {
 
     private final GamePanel gamePanel;
 
+    // OBJECT STATS
     private int index;
-    private BufferedImage image1, image2, image3;
     private String name;
-    private boolean collision = false;
     private int worldX, worldY;
+    private int attackValue;
+    private int defenseValue;
+
+    // IMAGES
+    private BufferedImage image1, image2, image3;
+
+    // COLLISION
+    private boolean collision = false;
     private Rectangle collisionArea = new Rectangle(0, 0, 48, 48);
     private int collisionDefaultX = 0;
     private int collisionDefaultY = 0;
@@ -130,6 +137,24 @@ public class Object implements Asset {
         return this;
     }
 
+    public int getAttackValue() {
+        return attackValue;
+    }
+
+    public Object setAttackValue(int attackValue) {
+        this.attackValue = attackValue;
+        return this;
+    }
+
+    public int getDefenseValue() {
+        return defenseValue;
+    }
+
+    public Object setDefenseValue(int defenseValue) {
+        this.defenseValue = defenseValue;
+        return this;
+    }
+
     @Override
     public void speak() {
         // Not used
@@ -189,4 +214,5 @@ public class Object implements Asset {
     public void setDyingCounter(int dyingCounter) {
         // Not used
     }
+
 }

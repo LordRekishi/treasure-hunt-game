@@ -2,6 +2,8 @@ package tech.fallqvist.asset.entity.player;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
+import tech.fallqvist.asset.object.OBJ_Shield_Wood;
+import tech.fallqvist.asset.object.OBJ_Sword_Normal;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
@@ -41,10 +43,31 @@ public class Player extends Entity {
     public void setDefaultValues() {
         setWorldX(getGamePanel().getTileSize() * 23);
         setWorldY(getGamePanel().getTileSize() * 21);
-        setSpeed(4);
+
         setDirection("down");
+        setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
+        setCurrentShield(new OBJ_Shield_Wood(getGamePanel()));
+
+        setSpeed(4);
         setMaxLife(6);
         setCurrentLife(getMaxLife());
+        setLevel(1);
+        setStrength(1);
+        setDexterity(1);
+        setExp(0);
+        setNextLevelExp(5);
+        setCoins(0);
+        setAttackPower(getAttack());
+        setDefensePower(getDefense());
+
+    }
+
+    public int getAttack() {
+        return getStrength() * getCurrentWeapon().getAttackValue();
+    }
+
+    public int getDefense() {
+        return getDexterity() * getCurrentShield().getDefenseValue();
     }
 
     @Override
