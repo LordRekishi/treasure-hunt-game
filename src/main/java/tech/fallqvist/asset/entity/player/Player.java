@@ -76,7 +76,6 @@ public class Player extends Entity {
 
         if (isAttacking()) {
             attacking();
-
         } else if (keyHandler.isUpPressed()
                 || keyHandler.isDownPressed()
                 || keyHandler.isLeftPressed()
@@ -167,6 +166,7 @@ public class Player extends Entity {
         if (getGamePanel().getKeyHandler().isSpacePressed()) {
             getGamePanel().playSoundEffect(7);
             setAttacking(true);
+            setSpriteCounter(0);
         }
     }
 

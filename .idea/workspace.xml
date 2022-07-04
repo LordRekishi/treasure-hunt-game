@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add enemy damage reaction">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add sound effects to damagePit, healingPool and teleport events">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +112,7 @@
       <workItem from="1656521661643" duration="3620000" />
       <workItem from="1656872691913" duration="214000" />
       <workItem from="1656872955427" duration="6651000" />
+      <workItem from="1656959797369" duration="1066000" />
     </task>
     <task id="LOCAL−00001" summary="Initial commit">
       <created>1654952323770</created>
@@ -368,7 +372,13 @@
       <option name="presentableId" value="LOCAL−00043" />
       <updated>1656879044473</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL−00044" summary="Add sound effects to damagePit, healingPool and teleport events">
+      <created>1656960105308</created>
+      <option name="number" value="LOCAL−00044" />
+      <option name="presentableId" value="LOCAL−00044" />
+      <updated>1656960105308</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +396,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add new tiles and map V2" />
     <MESSAGE value="Prepare game for advanced functions" />
     <MESSAGE value="Add stop camera at edge functionality" />
     <MESSAGE value="Add NPC basic movement and collision" />
@@ -411,9 +420,22 @@
     <MESSAGE value="Add combat sound effects" />
     <MESSAGE value="Add hp bar" />
     <MESSAGE value="Add enemy damage reaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add enemy damage reaction" />
+    <MESSAGE value="Add sound effects to damagePit, healingPool and teleport events" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add sound effects to damagePit, healingPool and teleport events" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java</url>
+          <line>55</line>
+          <properties field="dyingCounter" class="tech.fallqvist.asset.entity.Entity" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

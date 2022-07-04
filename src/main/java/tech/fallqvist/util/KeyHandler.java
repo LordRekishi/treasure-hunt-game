@@ -18,11 +18,6 @@ public class KeyHandler implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-        // Not used
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
@@ -197,6 +192,11 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_SPACE) {
             spacePressed = false;
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // Not used
     }
 
     public boolean isUpPressed() {
