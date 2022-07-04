@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final int playState = 1;
     private final int pauseState = 2;
     private final int dialogueState = 3;
+    private final int characterState = 4;
 
     // GAME THREAD
     private Thread gameThread;
@@ -334,5 +335,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getDialogueState() {
         return dialogueState;
+    }
+
+    public int getCharacterState() {
+        return characterState;
     }
 }

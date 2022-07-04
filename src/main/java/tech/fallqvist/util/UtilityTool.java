@@ -21,6 +21,11 @@ public class UtilityTool {
         return gamePanel.getScreenWidth() / 2 - length / 2;
     }
 
+    public static int getXForAlightToRightOfText(String text, int tailX, GamePanel gamePanel, Graphics2D graphics2D) {
+        int length = (int) graphics2D.getFontMetrics().getStringBounds(text, graphics2D).getWidth();
+        return tailX - length;
+    }
+
     public static boolean isInsidePlayerView(int worldX, int worldY, GamePanel gamePanel) {
         return worldX + gamePanel.getTileSize() > gamePanel.getPlayer().getWorldX() - gamePanel.getPlayer().getScreenX()
                 && worldX - gamePanel.getTileSize() < gamePanel.getPlayer().getWorldX() + gamePanel.getPlayer().getScreenX()

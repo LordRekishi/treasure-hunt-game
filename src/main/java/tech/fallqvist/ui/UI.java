@@ -72,6 +72,10 @@ public class UI {
             drawPlayerLife();
             drawDialogueScreen();
         }
+
+        if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
+            drawCharacterScreen();
+        }
     }
 
     private void drawTitleScreen() {
@@ -216,6 +220,98 @@ public class UI {
             graphics2D.drawString(line, x, y);
             y += 40;
         }
+    }
+
+    private void drawCharacterScreen() {
+        int frameX = gamePanel.getTileSize();
+        int frameY = gamePanel.getTileSize();
+        int frameWidth = gamePanel.getTileSize() * 5;
+        int frameHeight = gamePanel.getTileSize() * 10;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN, 32F));
+
+        int textX = frameX + 20;
+        int textY = frameY + gamePanel.getTileSize();
+        int lineHeight = 35;
+
+        graphics2D.drawString("Level", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Life", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Strength", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Dexterity", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Attack", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Defense", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Exp", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Next Level", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Coins", textX, textY);
+        textY += lineHeight + 20;
+        graphics2D.drawString("Weapon", textX, textY);
+        textY += lineHeight + 15;
+        graphics2D.drawString("Shield", textX, textY);
+
+        int tailX = (frameX + frameWidth) - 30;
+        textY = frameY + gamePanel.getTileSize();
+        String value;
+
+        value = String.valueOf(gamePanel.getPlayer().getLevel());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = gamePanel.getPlayer().getCurrentLife() + "/" + gamePanel.getPlayer().getMaxLife();
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getStrength());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getDexterity());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getAttack());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getDefense());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getExp());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getNextLevelExp());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gamePanel.getPlayer().getCoins());
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        graphics2D.drawImage(gamePanel.getPlayer().getCurrentWeapon().getImage1(), tailX - gamePanel.getTileSize(), textY - 14, null);
+        textY += gamePanel.getTileSize();
+
+        graphics2D.drawImage(gamePanel.getPlayer().getCurrentShield().getImage1(), tailX - gamePanel.getTileSize(), textY - 14, null);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {

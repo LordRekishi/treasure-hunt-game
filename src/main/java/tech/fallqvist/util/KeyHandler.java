@@ -22,20 +22,19 @@ public class KeyHandler implements KeyListener {
         int code = e.getKeyCode();
 
         if (gamePanel.getGameState() == gamePanel.getTitleState()) {
-            checkTitleScreenKeyPressed(code);
-
+            checkTitleStateKeyPressed(code);
         } else if (gamePanel.getGameState() == gamePanel.getPlayState()) {
-            checkGameScreenKeyPressed(code);
-
+            checkPlayStateKeyPressed(code);
         } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
-            checkPauseScreenKeyPressed(code);
-
+            checkPauseStateKeyPressed(code);
         } else if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
-            checkDialogeScreenKeyPressed(code);
+            checkDialogeStateKeyPressed(code);
+        } else if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
+            checkCharacterStateKeyPressed(code);
         }
     }
 
-    private void checkTitleScreenKeyPressed(int code) {
+    private void checkTitleStateKeyPressed(int code) {
         if (gamePanel.getUi().getTitleScreenState() == 0) {
             checkMainTitleScreenKeyPressed(code);
 
@@ -122,7 +121,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    private void checkGameScreenKeyPressed(int code) {
+    private void checkPlayStateKeyPressed(int code) {
         if (code == KeyEvent.VK_W) {
             upPressed = true;
         }
@@ -143,6 +142,10 @@ public class KeyHandler implements KeyListener {
             gamePanel.setGameState(gamePanel.getPauseState());
         }
 
+        if (code == KeyEvent.VK_C) {
+            gamePanel.setGameState(gamePanel.getCharacterState());
+        }
+
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
@@ -157,14 +160,20 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    private void checkPauseScreenKeyPressed(int code) {
+    private void checkPauseStateKeyPressed(int code) {
         if (code == KeyEvent.VK_P) {
             gamePanel.setGameState(gamePanel.getPlayState());
         }
     }
 
-    private void checkDialogeScreenKeyPressed(int code) {
+    private void checkDialogeStateKeyPressed(int code) {
         if (code == KeyEvent.VK_ENTER) {
+            gamePanel.setGameState(gamePanel.getPlayState());
+        }
+    }
+
+    private void checkCharacterStateKeyPressed(int code) {
+        if (code == KeyEvent.VK_C) {
             gamePanel.setGameState(gamePanel.getPlayState());
         }
     }
