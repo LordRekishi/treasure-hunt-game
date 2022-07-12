@@ -189,8 +189,29 @@ public class Player extends Entity {
                 if (getGamePanel().getMonsters()[index].getCurrentLife() <= 0) {
                     getGamePanel().getMonsters()[index].setDying(true);
                     getGamePanel().getUi().addMessage("Killed the " + getGamePanel().getMonsters()[index].getName() + "!");
+                    setExp(getExp() + getGamePanel().getMonsters()[index].getExp());
+                    getGamePanel().getUi().addMessage("Exp + " + getGamePanel().getMonsters()[index].getExp());
+
+                    checkLevelUp();
                 }
             }
+        }
+    }
+
+    private void checkLevelUp() {
+        if (getExp() >= getNextLevelExp()) {
+            setLevel(getLevel() + 1);
+            setNextLevelExp(getNextLevelExp() * 3);
+            setMaxLife(getMaxLife() + 2);
+            setStrength(getStrength() + 1);
+            setDexterity(getDexterity() + 1);
+            setAttackPower(getAttack());
+            setDefensePower(getDefense());
+
+            getGamePanel().playSoundEffect(8);
+            getGamePanel().setGameState(getGamePanel().getDialogueState());
+            getGamePanel().getUi().setCurrentDialogue("You are level " + getLevel() + " now!\n" +
+                    "You feel stronger!");
         }
     }
 

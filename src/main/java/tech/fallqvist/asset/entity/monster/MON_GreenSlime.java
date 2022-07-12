@@ -17,6 +17,7 @@ public class MON_GreenSlime extends Entity {
         setCurrentLife(getMaxLife());
         setAttackPower(5);
         setDefensePower(0);
+        setExp(2);
 
         setCollisionArea(new Rectangle(3, 18, 42, 30));
         setCollisionDefaultX(getCollisionArea().x);

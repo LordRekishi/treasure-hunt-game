@@ -19,6 +19,7 @@ public class SoundManager {
         soundUrl[5] = getClass().getResource("/sounds/hitmonster.wav");
         soundUrl[6] = getClass().getResource("/sounds/receivedamage.wav");
         soundUrl[7] = getClass().getResource("/sounds/cuttree.wav");
+        soundUrl[8] = getClass().getResource("/sounds/levelup.wav");
     }
 
     public void setFile(int index) {

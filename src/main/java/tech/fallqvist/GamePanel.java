@@ -271,6 +271,10 @@ public class GamePanel extends JPanel implements Runnable {
         return tileManager;
     }
 
+    public AssetManager getAssetManager() {
+        return assetManager;
+    }
+
     public CollisionChecker getCollisionChecker() {
         return collisionChecker;
     }

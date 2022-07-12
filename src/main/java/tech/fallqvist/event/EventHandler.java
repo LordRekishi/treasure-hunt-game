@@ -103,6 +103,7 @@ public class EventHandler {
             gamePanel.playSoundEffect(2);
             gamePanel.getUi().setCurrentDialogue("You drink the water. \nYour life has been restored.");
             gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getMaxLife());
+            gamePanel.getAssetManager().setMonsters();
         }
     }
 

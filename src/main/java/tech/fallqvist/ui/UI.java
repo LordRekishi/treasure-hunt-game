@@ -19,7 +19,6 @@ public class UI {
     private Graphics2D graphics2D;
     private Font maruMonica, purisaB;
     private final BufferedImage heart_full, heart_half, heart_blank;
-    private boolean messageOn = false;
     private List<String> messages = new ArrayList<>();
     private List<Integer> messageCounter = new ArrayList<>();
     private boolean gameFinished = false;

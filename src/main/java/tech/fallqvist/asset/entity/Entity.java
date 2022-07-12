@@ -194,6 +194,10 @@ public abstract class Entity implements Asset {
             double oneCurrentLifeWidth = (double) gamePanel.getTileSize() / maxLife;
             double lifeBarValue = oneCurrentLifeWidth * currentLife;
 
+            if (lifeBarValue <= 0) {
+                lifeBarValue = 0;
+            }
+
             graphics2D.setColor(new Color(35, 35, 35));
             graphics2D.fillRect(screenX - 1, screenY - 16, gamePanel.getTileSize() + 2, 12);
 
