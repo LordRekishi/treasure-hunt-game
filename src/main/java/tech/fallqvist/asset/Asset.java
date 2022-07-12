@@ -1,5 +1,7 @@
 package tech.fallqvist.asset;
 
+import tech.fallqvist.asset.object.Object;
+
 import java.awt.*;
 
 public interface Asset {
@@ -50,4 +52,24 @@ public interface Asset {
     int getDyingCounter();
 
     void setDyingCounter(int dyingCounter);
+
+    int getLevel();
+
+    int getStrength();
+
+    int getDexterity();
+
+    int getAttackPower();
+
+    int getDefensePower();
+
+    int getExp();
+
+    int getNextLevelExp();
+
+    int getCoins();
+
+    Object getCurrentWeapon();
+
+    Object getCurrentShield();
 }

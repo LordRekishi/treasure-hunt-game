@@ -174,7 +174,13 @@ public class Player extends Entity {
         if (index != 999) {
             if (!getGamePanel().getMonsters()[index].isInvincible()) {
                 getGamePanel().playSoundEffect(5);
-                getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - 1);
+
+                int damage = getAttackPower() - getGamePanel().getMonsters()[index].getDefensePower();
+                if (damage < 0) {
+                    damage = 0;
+                }
+
+                getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - damage);
                 getGamePanel().getMonsters()[index].setInvincible(true);
                 getGamePanel().getMonsters()[index].damageReaction();
 
@@ -239,7 +245,13 @@ public class Player extends Entity {
         if (index != 999) {
             if (!isInvincible()) {
                 getGamePanel().playSoundEffect(6);
-                setCurrentLife(getCurrentLife() - 1);
+
+                int damage = getGamePanel().getMonsters()[index].getAttackPower() - getDefensePower();
+                if (damage < 0) {
+                    damage = 0;
+                }
+
+                setCurrentLife(getCurrentLife() - damage);
                 setInvincible(true);
             }
         }

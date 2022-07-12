@@ -215,4 +215,54 @@ public class Object implements Asset {
         // Not used
     }
 
+    @Override
+    public int getLevel() {
+        return 0;
+    }
+
+    @Override
+    public int getStrength() {
+        return 0;
+    }
+
+    @Override
+    public int getDexterity() {
+        return 0;
+    }
+
+    @Override
+    public int getAttackPower() {
+        return 0;
+    }
+
+    @Override
+    public int getDefensePower() {
+        return 0;
+    }
+
+    @Override
+    public int getExp() {
+        return 0;
+    }
+
+    @Override
+    public int getNextLevelExp() {
+        return 0;
+    }
+
+    @Override
+    public int getCoins() {
+        return 0;
+    }
+
+    @Override
+    public Object getCurrentWeapon() {
+        return null;
+    }
+
+    @Override
+    public Object getCurrentShield() {
+        return null;
+    }
+
 }

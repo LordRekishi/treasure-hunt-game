@@ -132,7 +132,13 @@ public abstract class Entity implements Asset {
         if (this instanceof MON_GreenSlime && contactPlayer) {
             if (!gamePanel.getPlayer().isInvincible()) {
                 gamePanel.playSoundEffect(6);
-                gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - 1);
+
+                int damage = getAttackPower() - getGamePanel().getPlayer().getDefensePower();
+                if (damage < 0) {
+                    damage = 0;
+                }
+
+                gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - damage);
                 gamePanel.getPlayer().setInvincible(true);
             }
         }

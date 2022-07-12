@@ -283,12 +283,12 @@ public class UI {
         graphics2D.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gamePanel.getPlayer().getAttack());
+        value = String.valueOf(gamePanel.getPlayer().getAttackPower());
         textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
         graphics2D.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gamePanel.getPlayer().getDefense());
+        value = String.valueOf(gamePanel.getPlayer().getDefensePower());
         textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
         graphics2D.drawString(value, textX, textY);
         textY += lineHeight;
