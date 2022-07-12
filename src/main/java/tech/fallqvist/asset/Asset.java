@@ -9,6 +9,8 @@ public interface Asset {
 
     void draw(Graphics2D graphics2D);
 
+    String getName();
+
     void speak();
 
     void damageReaction();
