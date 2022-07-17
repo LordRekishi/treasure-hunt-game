@@ -140,6 +140,10 @@ public abstract class Entity implements Asset {
 
                 gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - damage);
                 gamePanel.getPlayer().setInvincible(true);
+
+                if (gamePanel.getPlayer().getCurrentLife() < 0) {
+                    gamePanel.getPlayer().setCurrentLife(0);
+                }
             }
         }
 
@@ -688,13 +692,14 @@ public abstract class Entity implements Asset {
         return this;
     }
 
+    @Override
     public Rectangle getAttackArea() {
         return attackArea;
     }
 
-    public Entity setAttackArea(Rectangle attackArea) {
+    @Override
+    public void setAttackArea(Rectangle attackArea) {
         this.attackArea = attackArea;
-        return this;
     }
 
     public boolean isAlive() {
@@ -827,5 +832,25 @@ public abstract class Entity implements Asset {
     public Entity setCurrentShield(Object currentShield) {
         this.currentShield = currentShield;
         return this;
+    }
+
+    @Override
+    public BufferedImage getImage1() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public boolean isCollision() {
+        return false;
+    }
+
+    @Override
+    public void use(Asset asset) {
+        // Not used
     }
 }

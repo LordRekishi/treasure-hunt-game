@@ -3,6 +3,7 @@ package tech.fallqvist.asset;
 import tech.fallqvist.asset.object.Object;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public interface Asset {
     void update();
@@ -74,4 +75,16 @@ public interface Asset {
     Object getCurrentWeapon();
 
     Object getCurrentShield();
+
+    BufferedImage getImage1();
+
+    String getDescription();
+
+    Rectangle getAttackArea();
+
+    void setAttackArea(Rectangle attackArea);
+
+    void use(Asset asset);
+
+    int getMaxLife();
 }

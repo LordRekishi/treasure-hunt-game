@@ -51,11 +51,6 @@ public class NPC_OldMan extends Entity {
     }
 
     @Override
-    public boolean isCollision() {
-        return false;
-    }
-
-    @Override
     public void speak() {
         super.speak();
     }

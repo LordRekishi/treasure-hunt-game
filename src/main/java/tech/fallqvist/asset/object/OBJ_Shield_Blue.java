@@ -8,19 +8,17 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class OBJ_Sword_Normal extends Object {
+public class OBJ_Shield_Blue extends Object {
 
-    public OBJ_Sword_Normal(GamePanel gamePanel) {
+    public OBJ_Shield_Blue(GamePanel gamePanel) {
         super(gamePanel);
 
-        setName("Normal Sword");
-        setDescription("[" + getName() + "]\nAn old sword");
-        setAttackValue(1);
-        getAttackArea().width = 36;
-        getAttackArea().height = 36;
+        setName("Blue Shield");
+        setDescription("[" + getName() + "]\nPainted blue");
+        setDefenseValue(2);
 
         try {
-            BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/sword_normal.png")));
+            BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/shield_blue.png")));
             setImage1(UtilityTool.scaleImage(image, gamePanel.getTileSize(), gamePanel.getTileSize()));
         } catch (IOException e) {
             e.printStackTrace();

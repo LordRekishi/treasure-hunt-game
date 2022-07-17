@@ -1,14 +1,14 @@
 package tech.fallqvist.asset.entity.player;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
-import tech.fallqvist.asset.object.OBJ_Key;
-import tech.fallqvist.asset.object.OBJ_Shield_Wood;
-import tech.fallqvist.asset.object.OBJ_Sword_Normal;
 import tech.fallqvist.asset.object.Object;
+import tech.fallqvist.asset.object.*;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class Player extends Entity {
     private final int screenY;
     private int resetTimer;
     private final int maxInventorySize = 20;
-    private List<Object> inventory = new ArrayList<>();
+    private List<Asset> inventory = new ArrayList<>();
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         super(gamePanel);
@@ -28,23 +28,12 @@ public class Player extends Entity {
         this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
         this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
+        setDefaultValues();
+        setItems();
         setCollision();
         setPlayerAttackArea();
-        setDefaultValues();
         getAnimationImages();
         getAttackImages();
-        setItems();
-    }
-
-    private void setCollision() {
-        setCollisionArea(new Rectangle(8, 16, 32, 32));
-        setCollisionDefaultX(getCollisionArea().x);
-        setCollisionDefaultY(getCollisionArea().y);
-    }
-
-    private void setPlayerAttackArea() {
-        getAttackArea().width = 36;
-        getAttackArea().height = 36;
     }
 
     public void setDefaultValues() {
@@ -69,18 +58,28 @@ public class Player extends Entity {
 
     }
 
-    public void setItems() {
-        inventory.add(getCurrentWeapon());
-        inventory.add(getCurrentShield());
-        inventory.add(new OBJ_Key(getGamePanel()));
-    }
-
     public int getAttack() {
         return getStrength() * getCurrentWeapon().getAttackValue();
     }
 
     public int getDefense() {
         return getDexterity() * getCurrentShield().getDefenseValue();
+    }
+
+    public void setItems() {
+        inventory.add(getCurrentWeapon());
+        inventory.add(getCurrentShield());
+        inventory.add(new OBJ_Key(getGamePanel()));
+    }
+
+    private void setCollision() {
+        setCollisionArea(new Rectangle(8, 16, 32, 32));
+        setCollisionDefaultX(getCollisionArea().x);
+        setCollisionDefaultY(getCollisionArea().y);
+    }
+
+    private void setPlayerAttackArea() {
+        setAttackArea(getCurrentWeapon().getAttackArea());
     }
 
     @Override
@@ -97,19 +96,31 @@ public class Player extends Entity {
 
     @Override
     public void getAttackImages() {
-        setAttackUp1(setup("/images/player/boy_attack_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
-        setAttackUp2(setup("/images/player/boy_attack_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
-        setAttackDown1(setup("/images/player/boy_attack_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
-        setAttackDown2(setup("/images/player/boy_attack_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
-        setAttackLeft1(setup("/images/player/boy_attack_left_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
-        setAttackLeft2(setup("/images/player/boy_attack_left_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
-        setAttackRight1(setup("/images/player/boy_attack_right_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
-        setAttackRight2(setup("/images/player/boy_attack_right_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        if (getCurrentWeapon() instanceof OBJ_Sword_Normal) {
+            setAttackUp1(setup("/images/player/boy_attack_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackUp2(setup("/images/player/boy_attack_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackDown1(setup("/images/player/boy_attack_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackDown2(setup("/images/player/boy_attack_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackLeft1(setup("/images/player/boy_attack_left_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackLeft2(setup("/images/player/boy_attack_left_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackRight1(setup("/images/player/boy_attack_right_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackRight2(setup("/images/player/boy_attack_right_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        }
+
+        if (getCurrentWeapon() instanceof OBJ_Axe) {
+            setAttackUp1(setup("/images/player/boy_axe_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackUp2(setup("/images/player/boy_axe_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackDown1(setup("/images/player/boy_axe_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackDown2(setup("/images/player/boy_axe_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
+            setAttackLeft1(setup("/images/player/boy_axe_left_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackLeft2(setup("/images/player/boy_axe_left_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackRight1(setup("/images/player/boy_axe_right_1", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+            setAttackRight2(setup("/images/player/boy_axe_right_2", getGamePanel().getTileSize() * 2, getGamePanel().getTileSize()));
+        }
     }
 
     @Override
     public void update() {
-
         if (isAttacking()) {
             attacking();
         } else if (keyHandler.isUpPressed()
@@ -255,7 +266,18 @@ public class Player extends Entity {
 
     private void pickUpObject(int index) {
         if (index != 999) {
+            String text;
 
+            if (inventory.size() != maxInventorySize) {
+                inventory.add(getGamePanel().getObjects()[index]);
+                getGamePanel().playSoundEffect(1);
+                text = "Got a " + getGamePanel().getObjects()[index].getName() + "!";
+            } else {
+                text = "You cannot carry anymore!";
+            }
+
+            getGamePanel().getUi().addMessage(text);
+            getGamePanel().getObjects()[index] = null;
         }
     }
 
@@ -289,6 +311,11 @@ public class Player extends Entity {
                 }
 
                 setCurrentLife(getCurrentLife() - damage);
+
+                if (getCurrentLife() < 0) {
+                    setCurrentLife(0);
+                }
+
                 setInvincible(true);
             }
         }
@@ -307,6 +334,31 @@ public class Player extends Entity {
         if (resetTimer == 20) {
             setSpriteNumber(1);
             resetTimer = 0;
+        }
+    }
+
+    public void equipItem() {
+        int itemIndex = getGamePanel().getUi().getItemIndexFromSlot();
+
+        if (itemIndex < inventory.size()) {
+            Asset selectedItem = inventory.get(itemIndex);
+
+            if (selectedItem instanceof OBJ_Sword_Normal || selectedItem instanceof OBJ_Axe) {
+                setCurrentWeapon((Object) selectedItem);
+                setAttackPower(getAttack());
+                setPlayerAttackArea();
+                getAttackImages();
+            }
+
+            if (selectedItem instanceof OBJ_Shield_Wood || selectedItem instanceof OBJ_Shield_Blue) {
+                setCurrentShield((Object) selectedItem);
+                setDefensePower(getDefense());
+            }
+
+            if (selectedItem instanceof OBJ_Potion_Red) {
+                selectedItem.use(this);
+                inventory.remove(itemIndex);
+            }
         }
     }
 
@@ -377,11 +429,26 @@ public class Player extends Entity {
         return false;
     }
 
-    public List<Object> getInventory() {
+    @Override
+    public BufferedImage getImage1() {
+        return getDown1();
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public void use(Asset asset) {
+
+    }
+
+    public List<Asset> getInventory() {
         return inventory;
     }
 
-    public Player setInventory(List<Object> inventory) {
+    public Player setInventory(List<Asset> inventory) {
         this.inventory = inventory;
         return this;
     }

@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Fix item description window so it only appears once item is hovered over">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Axe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Potion_Red.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Shield_Blue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Shield_Wood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Shield_Wood.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Sword_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Sword_Normal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
@@ -120,19 +124,7 @@
       <workItem from="1656872955427" duration="6651000" />
       <workItem from="1656959797369" duration="4892000" />
       <workItem from="1657653778996" duration="4816000" />
-      <workItem from="1658082005757" duration="6732000" />
-    </task>
-    <task id="LOCAL−00005" summary="Add Player entity">
-      <created>1654956709880</created>
-      <option name="number" value="LOCAL−00005" />
-      <option name="presentableId" value="LOCAL−00005" />
-      <updated>1654956709880</updated>
-    </task>
-    <task id="LOCAL−00006" summary="Add Player sprite">
-      <created>1654961354483</created>
-      <option name="number" value="LOCAL−00006" />
-      <option name="presentableId" value="LOCAL−00006" />
-      <updated>1654961354483</updated>
+      <workItem from="1658082005757" duration="12140000" />
     </task>
     <task id="LOCAL−00007" summary="Add player animation">
       <created>1654963224477</created>
@@ -416,7 +408,19 @@
       <option name="presentableId" value="LOCAL−00053" />
       <updated>1658084689094</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL−00054" summary="Add inventory screen when pressing &quot;C&quot; and item description">
+      <created>1658089772057</created>
+      <option name="number" value="LOCAL−00054" />
+      <option name="presentableId" value="LOCAL−00054" />
+      <updated>1658089772057</updated>
+    </task>
+    <task id="LOCAL−00055" summary="Fix item description window so it only appears once item is hovered over">
+      <created>1658089936351</created>
+      <option name="number" value="LOCAL−00055" />
+      <option name="presentableId" value="LOCAL−00055" />
+      <updated>1658089936351</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,8 +438,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Player Life UI" />
-    <MESSAGE value="Add Event to hurt and heal player" />
     <MESSAGE value="Add Teleport event" />
     <MESSAGE value="Refactor EventHandler to include single use events and event not retriggering" />
     <MESSAGE value="Change to Asset interface" />
@@ -459,7 +461,9 @@
     <MESSAGE value="Add Basic level system and monster respawn when resting" />
     <MESSAGE value="Add debug for x, y, column and row of the player" />
     <MESSAGE value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
+    <MESSAGE value="Add inventory screen when pressing &quot;C&quot; and item description" />
+    <MESSAGE value="Fix item description window so it only appears once item is hovered over" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix item description window so it only appears once item is hovered over" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

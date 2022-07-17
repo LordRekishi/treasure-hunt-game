@@ -54,8 +54,5 @@ public class MON_GreenSlime extends Entity {
         super.setupAI();
     }
 
-    @Override
-    public boolean isCollision() {
-        return false;
-    }
+
 }

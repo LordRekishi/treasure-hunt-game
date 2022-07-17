@@ -1,6 +1,7 @@
 package tech.fallqvist.ui;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.object.OBJ_Heart;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
@@ -361,10 +362,18 @@ public class UI {
         int slotSize = gamePanel.getTileSize() + 3;
 
         // DRAW ITEMS
-        List<Object> inventory = gamePanel.getPlayer().getInventory();
+        List<Asset> inventory = gamePanel.getPlayer().getInventory();
 
         for (int i = 0; i < inventory.size(); i++) {
-            Object object = inventory.get(i);
+            Asset object = inventory.get(i);
+
+            // EQUIPPED BOX COLOR
+            if (object == gamePanel.getPlayer().getCurrentWeapon()
+                    || object == gamePanel.getPlayer().getCurrentShield()) {
+                graphics2D.setColor(new Color(240, 190, 90));
+                graphics2D.fillRoundRect(slotX, slotY, gamePanel.getTileSize(), gamePanel.getTileSize(), 10, 10);
+            }
+
             graphics2D.drawImage(object.getImage1(), slotX, slotY, null);
 
             slotX += slotSize;

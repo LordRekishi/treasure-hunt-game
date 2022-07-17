@@ -28,7 +28,7 @@ public class KeyHandler implements KeyListener {
         } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
             checkPauseStateKeyPressed(code);
         } else if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
-            checkDialogeStateKeyPressed(code);
+            checkDialogueStateKeyPressed(code);
         } else if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
             checkCharacterStateKeyPressed(code);
         }
@@ -170,7 +170,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    private void checkDialogeStateKeyPressed(int code) {
+    private void checkDialogueStateKeyPressed(int code) {
         if (code == KeyEvent.VK_ENTER) {
             gamePanel.setGameState(gamePanel.getPlayState());
         }
@@ -180,6 +180,11 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_C) {
             gamePanel.setGameState(gamePanel.getPlayState());
         }
+
+        if (code == KeyEvent.VK_ENTER) {
+            gamePanel.getPlayer().equipItem();
+        }
+
 
         if (code == KeyEvent.VK_W) {
             if (gamePanel.getUi().getSlotRow() != 0) {

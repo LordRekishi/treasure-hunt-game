@@ -16,6 +16,7 @@ public class Object implements Asset {
     private String name;
     private String description;
     private int worldX, worldY;
+    private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     private int attackValue;
     private int defenseValue;
 
@@ -93,6 +94,16 @@ public class Object implements Asset {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public Rectangle getAttackArea() {
+        return attackArea;
+    }
+
+    @Override
+    public void setAttackArea(Rectangle attackArea) {
+        this.attackArea = attackArea;
     }
 
     public Object setDescription(String description) {
@@ -275,4 +286,13 @@ public class Object implements Asset {
         return null;
     }
 
+    @Override
+    public void use(Asset asset) {
+        // not used
+    }
+
+    @Override
+    public int getMaxLife() {
+        return 0;
+    }
 }
