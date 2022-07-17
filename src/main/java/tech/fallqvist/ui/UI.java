@@ -391,7 +391,6 @@ public class UI {
         int descriptionFrameWidth = frameWidth;
         int descriptionFrameHeight = gamePanel.getTileSize() * 3;
 
-        drawSubWindow(descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight);
 
         // DRAW DESCRIPTION TEXT
         int textX = descriptionFrameX + 20;
@@ -402,6 +401,9 @@ public class UI {
         int itemIndex = getItemIndexFromSlot();
 
         if (itemIndex < inventory.size()) {
+
+            drawSubWindow(descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight);
+
             for (String line : inventory.get(itemIndex).getDescription().split("\n")) {
                 graphics2D.drawString(line, textX, textY);
                 textY += 32;
