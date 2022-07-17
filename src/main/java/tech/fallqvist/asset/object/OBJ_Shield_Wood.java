@@ -14,6 +14,7 @@ public class OBJ_Shield_Wood extends Object {
         super(gamePanel);
 
         setName("Wooden Shield");
+        setDescription("[" + getName() + "]\nMade of wood");
         setDefenseValue(1);
 
         try {

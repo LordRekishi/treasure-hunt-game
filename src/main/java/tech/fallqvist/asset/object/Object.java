@@ -14,6 +14,7 @@ public class Object implements Asset {
     // OBJECT STATS
     private int index;
     private String name;
+    private String description;
     private int worldX, worldY;
     private int attackValue;
     private int defenseValue;
@@ -87,6 +88,15 @@ public class Object implements Asset {
 
     public Object setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Object setDescription(String description) {
+        this.description = description;
         return this;
     }
 

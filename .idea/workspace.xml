@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add debug for x, y, column and row of the player">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Shield_Wood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Shield_Wood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Sword_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/OBJ_Sword_Normal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +120,7 @@
       <workItem from="1656872955427" duration="6651000" />
       <workItem from="1656959797369" duration="4892000" />
       <workItem from="1657653778996" duration="4816000" />
-      <workItem from="1658082005757" duration="2616000" />
-    </task>
-    <task id="LOCAL−00004" summary="Add abstract Entity superclass">
-      <created>1654956685716</created>
-      <option name="number" value="LOCAL−00004" />
-      <option name="presentableId" value="LOCAL−00004" />
-      <updated>1654956685716</updated>
+      <workItem from="1658082005757" duration="6732000" />
     </task>
     <task id="LOCAL−00005" summary="Add Player entity">
       <created>1654956709880</created>
@@ -409,7 +410,13 @@
       <option name="presentableId" value="LOCAL−00052" />
       <updated>1658083542019</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL−00053" summary="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)">
+      <created>1658084689094</created>
+      <option name="number" value="LOCAL−00053" />
+      <option name="presentableId" value="LOCAL−00053" />
+      <updated>1658084689094</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor KeyHandler Title and Character screen keypress" />
     <MESSAGE value="Add Player Life UI" />
     <MESSAGE value="Add Event to hurt and heal player" />
     <MESSAGE value="Add Teleport event" />
@@ -452,7 +458,8 @@
     <MESSAGE value="Add Battle messages" />
     <MESSAGE value="Add Basic level system and monster respawn when resting" />
     <MESSAGE value="Add debug for x, y, column and row of the player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add debug for x, y, column and row of the player" />
+    <MESSAGE value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

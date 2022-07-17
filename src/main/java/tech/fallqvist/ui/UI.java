@@ -25,6 +25,8 @@ public class UI {
     private String currentDialogue;
     private int commandNumber;
     private int titleScreenState;
+    private int slotCol;
+    private int slotRow;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -77,6 +79,7 @@ public class UI {
 
         if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
             drawCharacterScreen();
+            drawInventoryScreen();
         }
     }
 
@@ -340,6 +343,72 @@ public class UI {
         graphics2D.drawImage(gamePanel.getPlayer().getCurrentShield().getImage1(), tailX - gamePanel.getTileSize(), textY - 14, null);
     }
 
+    private void drawInventoryScreen() {
+
+        // ITEM FRAME BOX
+        int frameX = gamePanel.getTileSize() * 9;
+        int frameY = gamePanel.getTileSize();
+        int frameWidth = gamePanel.getTileSize() * 6;
+        int frameHeight = gamePanel.getTileSize() * 5;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // ITEM SLOTS
+        final int slotXStart = frameX + 20;
+        final int slotYStart = frameY + 20;
+        int slotX = slotXStart;
+        int slotY = slotYStart;
+        int slotSize = gamePanel.getTileSize() + 3;
+
+        // DRAW ITEMS
+        List<Object> inventory = gamePanel.getPlayer().getInventory();
+
+        for (int i = 0; i < inventory.size(); i++) {
+            Object object = inventory.get(i);
+            graphics2D.drawImage(object.getImage1(), slotX, slotY, null);
+
+            slotX += slotSize;
+
+            if (i == 4 || i == 9 || i == 14) {
+                slotX = slotXStart;
+                slotY += slotSize;
+            }
+        }
+
+        // CURSOR selection box
+        int cursorX = slotXStart + (slotSize * slotCol);
+        int cursorY = slotYStart + (slotSize * slotRow);
+        int cursorWidth = gamePanel.getTileSize();
+        int cursorHeight = gamePanel.getTileSize();
+
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.setStroke(new BasicStroke(3));
+        graphics2D.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10, 10);
+
+        // DESCRIPTION FRAME
+        int descriptionFrameX = frameX;
+        int descriptionFrameY = frameY + frameHeight;
+        int descriptionFrameWidth = frameWidth;
+        int descriptionFrameHeight = gamePanel.getTileSize() * 3;
+
+        drawSubWindow(descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight);
+
+        // DRAW DESCRIPTION TEXT
+        int textX = descriptionFrameX + 20;
+        int textY = descriptionFrameY + gamePanel.getTileSize();
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(28F));
+
+        int itemIndex = getItemIndexFromSlot();
+
+        if (itemIndex < inventory.size()) {
+            for (String line : inventory.get(itemIndex).getDescription().split("\n")) {
+                graphics2D.drawString(line, textX, textY);
+                textY += 32;
+            }
+        }
+    }
+
     public void drawSubWindow(int x, int y, int width, int height) {
         Color color = new Color(0, 0, 0, 210);
         graphics2D.setColor(color);
@@ -349,6 +418,11 @@ public class UI {
         graphics2D.setColor(color);
         graphics2D.setStroke(new BasicStroke(5));
         graphics2D.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+    }
+
+    public int getItemIndexFromSlot() {
+        int itemIndex = slotCol + (slotRow * 5);
+        return itemIndex;
     }
 
     public UI setGameFinished(boolean gameFinished) {
@@ -380,6 +454,24 @@ public class UI {
 
     public UI setTitleScreenState(int titleScreenState) {
         this.titleScreenState = titleScreenState;
+        return this;
+    }
+
+    public int getSlotCol() {
+        return slotCol;
+    }
+
+    public UI setSlotCol(int slotCol) {
+        this.slotCol = slotCol;
+        return this;
+    }
+
+    public int getSlotRow() {
+        return slotRow;
+    }
+
+    public UI setSlotRow(int slotRow) {
+        this.slotRow = slotRow;
         return this;
     }
 }

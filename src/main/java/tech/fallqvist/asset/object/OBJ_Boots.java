@@ -12,7 +12,9 @@ public class OBJ_Boots extends Object {
 
     public OBJ_Boots(GamePanel gamePanel) {
         super(gamePanel);
+
         setName("Boots");
+        setDescription("[" + getName() + "]\nA pair of old boots");
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/boots.png")));

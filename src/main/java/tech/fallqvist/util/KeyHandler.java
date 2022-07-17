@@ -180,6 +180,34 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_C) {
             gamePanel.setGameState(gamePanel.getPlayState());
         }
+
+        if (code == KeyEvent.VK_W) {
+            if (gamePanel.getUi().getSlotRow() != 0) {
+                gamePanel.playSoundEffect(9);
+                gamePanel.getUi().setSlotRow(gamePanel.getUi().getSlotRow() - 1);
+            }
+        }
+
+        if (code == KeyEvent.VK_A) {
+            if (gamePanel.getUi().getSlotCol() != 0) {
+                gamePanel.playSoundEffect(9);
+                gamePanel.getUi().setSlotCol(gamePanel.getUi().getSlotCol() - 1);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            if (gamePanel.getUi().getSlotRow() != 3) {
+                gamePanel.playSoundEffect(9);
+                gamePanel.getUi().setSlotRow(gamePanel.getUi().getSlotRow() + 1);
+            }
+        }
+
+        if (code == KeyEvent.VK_D) {
+            if (gamePanel.getUi().getSlotCol() != 4) {
+                gamePanel.playSoundEffect(9);
+                gamePanel.getUi().setSlotCol(gamePanel.getUi().getSlotCol() + 1);
+            }
+        }
     }
 
     @Override

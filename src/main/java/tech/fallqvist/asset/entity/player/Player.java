@@ -2,11 +2,15 @@ package tech.fallqvist.asset.entity.player;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
+import tech.fallqvist.asset.object.OBJ_Key;
 import tech.fallqvist.asset.object.OBJ_Shield_Wood;
 import tech.fallqvist.asset.object.OBJ_Sword_Normal;
+import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Entity {
 
@@ -14,6 +18,8 @@ public class Player extends Entity {
     private final int screenX;
     private final int screenY;
     private int resetTimer;
+    private final int maxInventorySize = 20;
+    private List<Object> inventory = new ArrayList<>();
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         super(gamePanel);
@@ -27,6 +33,7 @@ public class Player extends Entity {
         setDefaultValues();
         getAnimationImages();
         getAttackImages();
+        setItems();
     }
 
     private void setCollision() {
@@ -60,6 +67,12 @@ public class Player extends Entity {
         setAttackPower(getAttack());
         setDefensePower(getDefense());
 
+    }
+
+    public void setItems() {
+        inventory.add(getCurrentWeapon());
+        inventory.add(getCurrentShield());
+        inventory.add(new OBJ_Key(getGamePanel()));
     }
 
     public int getAttack() {
@@ -362,5 +375,14 @@ public class Player extends Entity {
     @Override
     public boolean isCollision() {
         return false;
+    }
+
+    public List<Object> getInventory() {
+        return inventory;
+    }
+
+    public Player setInventory(List<Object> inventory) {
+        this.inventory = inventory;
+        return this;
     }
 }

@@ -14,6 +14,7 @@ public class OBJ_Sword_Normal extends Object {
         super(gamePanel);
 
         setName("Normal Sword");
+        setDescription("[" + getName() + "]\nAn old sword");
         setAttackValue(1);
 
         try {

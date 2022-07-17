@@ -12,7 +12,9 @@ public class OBJ_Key extends Object {
 
     public OBJ_Key(GamePanel gamePanel) {
         super(gamePanel);
+
         setName("Key");
+        setDescription("[" + getName() + "]\nIt opens a door");
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/key.png")));
