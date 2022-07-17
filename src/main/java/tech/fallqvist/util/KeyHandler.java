@@ -11,7 +11,7 @@ public class KeyHandler implements KeyListener {
     private final GamePanel gamePanel;
 
     // DEBUG
-    private boolean checkDrawTime = false;
+    private boolean showDebugText = false;
 
     public KeyHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -156,7 +156,7 @@ public class KeyHandler implements KeyListener {
 
         // DEBUG
         if (code == KeyEvent.VK_T) {
-            checkDrawTime = !checkDrawTime;
+            showDebugText = !showDebugText;
         }
     }
 
@@ -253,12 +253,12 @@ public class KeyHandler implements KeyListener {
         return this;
     }
 
-    public boolean isCheckDrawTime() {
-        return checkDrawTime;
+    public boolean isShowDebugText() {
+        return showDebugText;
     }
 
-    public KeyHandler setCheckDrawTime(boolean checkDrawTime) {
-        this.checkDrawTime = checkDrawTime;
+    public KeyHandler setShowDebugText(boolean showDebugText) {
+        this.showDebugText = showDebugText;
         return this;
     }
 
