@@ -158,6 +158,10 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_T) {
             showDebugText = !showDebugText;
         }
+
+        if (code == KeyEvent.VK_R) {
+            gamePanel.getTileManager().loadMap("/maps/worldV2.txt");
+        }
     }
 
     private void checkPauseStateKeyPressed(int code) {

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Basic level system and monster respawn when resting">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add debug for x, y, column and row of the player">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +113,7 @@
       <workItem from="1656872955427" duration="6651000" />
       <workItem from="1656959797369" duration="4892000" />
       <workItem from="1657653778996" duration="4816000" />
-      <workItem from="1658082005757" duration="1311000" />
-    </task>
-    <task id="LOCAL−00003" summary="Add FPS counter (sout)">
-      <created>1654955582634</created>
-      <option name="number" value="LOCAL−00003" />
-      <option name="presentableId" value="LOCAL−00003" />
-      <updated>1654955582634</updated>
+      <workItem from="1658082005757" duration="2616000" />
     </task>
     <task id="LOCAL−00004" summary="Add abstract Entity superclass">
       <created>1654956685716</created>
@@ -409,7 +403,13 @@
       <option name="presentableId" value="LOCAL−00051" />
       <updated>1657657985651</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL−00052" summary="Add debug for x, y, column and row of the player">
+      <created>1658083542018</created>
+      <option name="number" value="LOCAL−00052" />
+      <option name="presentableId" value="LOCAL−00052" />
+      <updated>1658083542019</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Character selection screen mockup" />
     <MESSAGE value="Refactor KeyHandler Title and Character screen keypress" />
     <MESSAGE value="Add Player Life UI" />
     <MESSAGE value="Add Event to hurt and heal player" />
@@ -452,7 +451,8 @@
     <MESSAGE value="Add Attack and Defense power based damage" />
     <MESSAGE value="Add Battle messages" />
     <MESSAGE value="Add Basic level system and monster respawn when resting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Basic level system and monster respawn when resting" />
+    <MESSAGE value="Add debug for x, y, column and row of the player" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add debug for x, y, column and row of the player" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
