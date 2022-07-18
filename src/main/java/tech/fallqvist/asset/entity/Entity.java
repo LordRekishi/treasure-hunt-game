@@ -239,7 +239,6 @@ public abstract class Entity implements Asset {
         blinkingAnimation(graphics2D, interval);
 
         if (dyingCounter > interval * 8) {
-            setDying(false);
             setAlive(false);
         }
     }
