@@ -9,7 +9,7 @@ public class OBJ_Fireball extends Projectile {
         super(gamePanel);
 
         setName("Fireball");
-        setSpeed(7);
+        setSpeed(6);
         setMaxLife(80);
         setCurrentLife(getMaxLife());
         setAttackPower(2);

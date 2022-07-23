@@ -33,6 +33,11 @@ public class Projectile extends Entity {
 
         } else {
 
+            boolean contactPlayer = getGamePanel().getCollisionChecker().checkPlayer(this);
+            if (!getGamePanel().getPlayer().isInvincible() && contactPlayer) {
+                damagePlayer(getAttackPower());
+                setAlive(false);
+            }
         }
 
         switch (getDirection()) {

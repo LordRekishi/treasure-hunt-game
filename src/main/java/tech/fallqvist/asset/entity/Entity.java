@@ -136,26 +136,34 @@ public abstract class Entity implements Asset {
         boolean contactPlayer = gamePanel.getCollisionChecker().checkPlayer(this);
 
         if (this instanceof MON_GreenSlime && contactPlayer) {
-            if (!gamePanel.getPlayer().isInvincible()) {
-                gamePanel.playSoundEffect(6);
-
-                int damage = getAttackPower() - getGamePanel().getPlayer().getDefensePower();
-                if (damage < 0) {
-                    damage = 0;
-                }
-
-                gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - damage);
-                gamePanel.getPlayer().setInvincible(true);
-
-                if (gamePanel.getPlayer().getCurrentLife() < 0) {
-                    gamePanel.getPlayer().setCurrentLife(0);
-                }
-            }
+            damagePlayer(getAttackPower());
         }
 
         checkIfInvincible();
         moveIfCollisionNotDetected();
         checkAndChangeSpriteAnimationImage();
+
+        if (getProjectileAvailableCounter() < 30) {
+            setProjectileAvailableCounter(getProjectileAvailableCounter() + 1);
+        }
+    }
+
+    public void damagePlayer(int attackPower) {
+        if (!gamePanel.getPlayer().isInvincible()) {
+            gamePanel.playSoundEffect(6);
+
+            int damage = attackPower - getGamePanel().getPlayer().getDefensePower();
+            if (damage < 0) {
+                damage = 0;
+            }
+
+            gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - damage);
+            gamePanel.getPlayer().setInvincible(true);
+
+            if (gamePanel.getPlayer().getCurrentLife() < 0) {
+                gamePanel.getPlayer().setCurrentLife(0);
+            }
+        }
     }
 
     public void moveIfCollisionNotDetected() {

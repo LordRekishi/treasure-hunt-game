@@ -2,8 +2,10 @@ package tech.fallqvist.asset.entity.monster;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
+import tech.fallqvist.asset.object.OBJ_Rock;
 
 import java.awt.*;
+import java.util.Random;
 
 public class MON_GreenSlime extends Entity {
 
@@ -18,6 +20,8 @@ public class MON_GreenSlime extends Entity {
         setAttackPower(5);
         setDefensePower(0);
         setExp(2);
+
+        setProjectile(new OBJ_Rock(gamePanel));
 
         setCollisionArea(new Rectangle(3, 18, 42, 30));
         setCollisionDefaultX(getCollisionArea().x);
@@ -46,6 +50,14 @@ public class MON_GreenSlime extends Entity {
     @Override
     public void setupAI() {
         super.setupAI();
+
+        int i = new Random().nextInt(100) + 1;
+
+        if (i > 99 && !getProjectile().isAlive() && getProjectileAvailableCounter() == 30) {
+            getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
+            getGamePanel().getProjectiles().add(getProjectile());
+            setProjectileAvailableCounter(0);
+        }
     }
 
 
