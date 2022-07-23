@@ -28,6 +28,8 @@ public abstract class Entity implements Asset {
     private int currentLife;
     private int maxMana;
     private int currentMana;
+    private int maxAmmo;
+    private int currentAmmo;
     private int level;
     private int strength;
     private int dexterity;
@@ -889,6 +891,24 @@ public abstract class Entity implements Asset {
 
     public Entity setProjectileAvailableCounter(int projectileAvailableCounter) {
         this.projectileAvailableCounter = projectileAvailableCounter;
+        return this;
+    }
+
+    public int getMaxAmmo() {
+        return maxAmmo;
+    }
+
+    public Entity setMaxAmmo(int maxAmmo) {
+        this.maxAmmo = maxAmmo;
+        return this;
+    }
+
+    public int getCurrentAmmo() {
+        return currentAmmo;
+    }
+
+    public Entity setCurrentAmmo(int currentAmmo) {
+        this.currentAmmo = currentAmmo;
         return this;
     }
 

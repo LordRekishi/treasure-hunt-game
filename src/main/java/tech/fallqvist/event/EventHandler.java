@@ -101,8 +101,9 @@ public class EventHandler {
         if (gamePanel.getKeyHandler().isEnterPressed()) {
             gamePanel.setGameState(gameState);
             gamePanel.playSoundEffect(2);
-            gamePanel.getUi().setCurrentDialogue("You drink the water. \nYour life has been restored.");
+            gamePanel.getUi().setCurrentDialogue("You drink the water. \nYour life and mana has been restored.");
             gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getMaxLife());
+            gamePanel.getPlayer().setCurrentMana(gamePanel.getPlayer().getMaxMana());
             gamePanel.getAssetManager().setMonsters();
         }
     }

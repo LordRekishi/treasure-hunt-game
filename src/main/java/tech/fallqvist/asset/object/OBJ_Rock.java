@@ -1,6 +1,7 @@
 package tech.fallqvist.asset.object;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.entity.ability.Projectile;
 
 public class OBJ_Rock extends Projectile {
@@ -28,5 +29,15 @@ public class OBJ_Rock extends Projectile {
         setLeft2(setup("/images/ability/rock_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight1(setup("/images/ability/rock_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight2(setup("/images/ability/rock_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
+    }
+
+    @Override
+    public boolean haveEnoughResource(Entity user) {
+        return user.getCurrentAmmo() >= getUseCost();
+    }
+
+    @Override
+    public void subtractResource(Entity user) {
+        user.setCurrentAmmo(user.getCurrentAmmo() - getUseCost());
     }
 }

@@ -3,7 +3,7 @@ package tech.fallqvist.asset.entity.ability;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
 
-public class Projectile extends Entity {
+public abstract class Projectile extends Entity {
 
     private Entity user;
 
@@ -54,4 +54,8 @@ public class Projectile extends Entity {
 
         checkAndChangeSpriteAnimationImage();
     }
+
+    public abstract boolean haveEnoughResource(Entity user);
+
+    public abstract void subtractResource(Entity user);
 }

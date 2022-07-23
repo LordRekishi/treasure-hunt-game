@@ -3,6 +3,7 @@ package tech.fallqvist.ui;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.object.OBJ_Heart;
+import tech.fallqvist.asset.object.OBJ_ManaCrystal;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
@@ -18,8 +19,8 @@ public class UI {
 
     private final GamePanel gamePanel;
     private Graphics2D graphics2D;
-    private Font maruMonica, purisaB;
-    private final BufferedImage heart_full, heart_half, heart_blank;
+    private final BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank;
+    private Font maruMonica;
     private List<String> messages = new ArrayList<>();
     private List<Integer> messageCounter = new ArrayList<>();
     private boolean gameFinished = false;
@@ -35,8 +36,6 @@ public class UI {
         try {
             InputStream inputStream = getClass().getResourceAsStream("/fonts/x12y16pxMaruMonica.ttf");
             this.maruMonica = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
-            inputStream = getClass().getResourceAsStream("/fonts/Purisa Bold.ttf");
-            this.purisaB = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
@@ -45,6 +44,10 @@ public class UI {
         this.heart_full = heart.getImage1();
         this.heart_half = heart.getImage2();
         this.heart_blank = heart.getImage3();
+
+        Object manaCrystal = new OBJ_ManaCrystal(gamePanel);
+        this.crystal_full = manaCrystal.getImage1();
+        this.crystal_blank = manaCrystal.getImage2();
     }
 
     public void addMessage(String text) {
@@ -65,16 +68,19 @@ public class UI {
 
         if (gamePanel.getGameState() == gamePanel.getPlayState()) {
             drawPlayerLife();
+            drawPlayerMana();
             drawMessages();
         }
 
         if (gamePanel.getGameState() == gamePanel.getPauseState()) {
             drawPlayerLife();
+            drawPlayerMana();
             drawPauseScreen();
         }
 
         if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
             drawPlayerLife();
+            drawPlayerMana();
             drawDialogueScreen();
         }
 
@@ -200,6 +206,24 @@ public class UI {
         }
     }
 
+    private void drawPlayerMana() {
+        int x = (gamePanel.getTileSize() / 2) - 5;
+        int y = (int) (gamePanel.getTileSize() * 1.5);
+
+        for (int i = 0; i < gamePanel.getPlayer().getMaxMana(); i++) {
+            graphics2D.drawImage(crystal_blank, x, y, null);
+            x += 35;
+        }
+
+        x = (gamePanel.getTileSize() / 2) - 5;
+        y = (int) (gamePanel.getTileSize() * 1.5);
+
+        for (int i = 0; i < gamePanel.getPlayer().getCurrentMana(); i++) {
+            graphics2D.drawImage(crystal_full, x, y, null);
+            x += 35;
+        }
+    }
+
     private void drawMessages() {
         int messageX = gamePanel.getTileSize();
         int messageY = gamePanel.getTileSize() * 4;
@@ -256,7 +280,7 @@ public class UI {
         int frameX = gamePanel.getTileSize();
         int frameY = gamePanel.getTileSize();
         int frameWidth = gamePanel.getTileSize() * 5;
-        int frameHeight = gamePanel.getTileSize() * 10;
+        int frameHeight = (int) (gamePanel.getTileSize() * 10.5);
 
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 
@@ -270,6 +294,8 @@ public class UI {
         graphics2D.drawString("Level", textX, textY);
         textY += lineHeight;
         graphics2D.drawString("Life", textX, textY);
+        textY += lineHeight;
+        graphics2D.drawString("Mana", textX, textY);
         textY += lineHeight;
         graphics2D.drawString("Strength", textX, textY);
         textY += lineHeight;
@@ -299,6 +325,11 @@ public class UI {
         textY += lineHeight;
 
         value = gamePanel.getPlayer().getCurrentLife() + "/" + gamePanel.getPlayer().getMaxLife();
+        textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
+        graphics2D.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = gamePanel.getPlayer().getCurrentMana() + "/" + gamePanel.getPlayer().getMaxMana();
         textX = UtilityTool.getXForAlightToRightOfText(value, tailX, gamePanel, graphics2D);
         graphics2D.drawString(value, textX, textY);
         textY += lineHeight;

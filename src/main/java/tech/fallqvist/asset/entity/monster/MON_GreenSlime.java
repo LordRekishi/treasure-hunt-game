@@ -22,6 +22,8 @@ public class MON_GreenSlime extends Entity {
         setExp(2);
 
         setProjectile(new OBJ_Rock(gamePanel));
+        setMaxAmmo(5);
+        setCurrentAmmo(getMaxAmmo());
 
         setCollisionArea(new Rectangle(3, 18, 42, 30));
         setCollisionDefaultX(getCollisionArea().x);
@@ -53,8 +55,13 @@ public class MON_GreenSlime extends Entity {
 
         int i = new Random().nextInt(100) + 1;
 
-        if (i > 99 && !getProjectile().isAlive() && getProjectileAvailableCounter() == 30) {
+        if (i > 99
+                && !getProjectile().isAlive()
+                && getProjectileAvailableCounter() == 30
+                && getProjectile().haveEnoughResource(this)) {
+
             getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
+            getProjectile().subtractResource(this);
             getGamePanel().getProjectiles().add(getProjectile());
             setProjectileAvailableCounter(0);
         }

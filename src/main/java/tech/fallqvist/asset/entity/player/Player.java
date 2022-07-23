@@ -48,6 +48,10 @@ public class Player extends Entity {
         setSpeed(4);
         setMaxLife(6);
         setCurrentLife(getMaxLife());
+        setMaxMana(4);
+        setCurrentMana(getMaxMana());
+        setMaxAmmo(10);
+        setCurrentAmmo(getMaxAmmo());
         setLevel(1);
         setStrength(1);
         setDexterity(1);
@@ -149,9 +153,16 @@ public class Player extends Entity {
             resetSpriteToDefault();
         }
 
-        if (getGamePanel().getKeyHandler().isProjectileKeyPressed() && !getProjectile().isAlive() && getProjectileAvailableCounter() == 30) {
+        if (getGamePanel().getKeyHandler().isProjectileKeyPressed()
+                && !getProjectile().isAlive()
+                && getProjectileAvailableCounter() == 30
+                && getProjectile().haveEnoughResource(this)) {
+
             // Set default coordinates, direction and user
             getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
+
+            // Subtract use cost
+            getProjectile().subtractResource(this);
 
             // Add it to the projectiles list
             getGamePanel().getProjectiles().add(getProjectile());
