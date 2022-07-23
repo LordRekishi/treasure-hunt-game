@@ -2,6 +2,7 @@ package tech.fallqvist.asset.entity;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.entity.ability.Projectile;
 import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
 import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.object.Object;
@@ -25,6 +26,8 @@ public abstract class Entity implements Asset {
     private int speed;
     private int maxLife;
     private int currentLife;
+    private int maxMana;
+    private int currentMana;
     private int level;
     private int strength;
     private int dexterity;
@@ -32,9 +35,14 @@ public abstract class Entity implements Asset {
     private int defensePower;
     private int exp;
     private int nextLevelExp;
+
+    // OBJECTS & ABILITIES
     private int coins;
     private Object currentWeapon;
     private Object currentShield;
+    private Projectile projectile;
+    private int useCost;
+
 
     // ANIMATION
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -56,6 +64,7 @@ public abstract class Entity implements Asset {
     private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     private boolean hpBarOn = false;
     private int hpBarCounter;
+    private int projectileAvailableCounter;
 
     // DIALOGUE
     private String[] dialogues = new String[20];
@@ -70,9 +79,6 @@ public abstract class Entity implements Asset {
     public Entity(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
-
-    public abstract void getAnimationImages();
-    public abstract void getAttackImages();
 
     public void setupAI() {
         actionLockCounter++;
@@ -833,6 +839,51 @@ public abstract class Entity implements Asset {
         return this;
     }
 
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public Entity setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+        return this;
+    }
+
+    public int getCurrentMana() {
+        return currentMana;
+    }
+
+    public Entity setCurrentMana(int currentMana) {
+        this.currentMana = currentMana;
+        return this;
+    }
+
+    public Projectile getProjectile() {
+        return projectile;
+    }
+
+    public Entity setProjectile(Projectile projectile) {
+        this.projectile = projectile;
+        return this;
+    }
+
+    public int getUseCost() {
+        return useCost;
+    }
+
+    public Entity setUseCost(int useCost) {
+        this.useCost = useCost;
+        return this;
+    }
+
+    public int getProjectileAvailableCounter() {
+        return projectileAvailableCounter;
+    }
+
+    public Entity setProjectileAvailableCounter(int projectileAvailableCounter) {
+        this.projectileAvailableCounter = projectileAvailableCounter;
+        return this;
+    }
+
     @Override
     public BufferedImage getImage1() {
         return null;
@@ -851,5 +902,9 @@ public abstract class Entity implements Asset {
     @Override
     public void use(Asset asset) {
         // Not used
+    }
+
+    @Override
+    public void damageReaction() {
     }
 }

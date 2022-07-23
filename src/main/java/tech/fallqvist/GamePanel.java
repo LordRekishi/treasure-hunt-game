@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -63,7 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
     private final Asset[] objects = new Object[10];
     private final Asset[] npcs = new Entity[10];
     private final Asset[] monsters = new Entity[20];
-    private final ArrayList<Asset> assets = new ArrayList<>();
+    private final List<Asset> assets = new ArrayList<>();
+    private final List<Asset> projectiles = new ArrayList<>();
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -125,6 +127,18 @@ public class GamePanel extends JPanel implements Runnable {
 
                     if (!monster.isAlive()) {
                         removeMonster(monster.getIndex());
+                    }
+                }
+            }
+
+            for (int i = 0; i < projectiles.size(); i++) {
+                if (projectiles.get(i) != null) {
+                    if (projectiles.get(i).isAlive()) {
+                        projectiles.get(i).update();
+                    }
+
+                    if (!projectiles.get(i).isAlive()) {
+                        projectiles.remove(projectiles.get(i));
                     }
                 }
             }
@@ -210,6 +224,12 @@ public class GamePanel extends JPanel implements Runnable {
         for (Asset monster : monsters) {
             if (monster != null) {
                 assets.add(monster);
+            }
+        }
+
+        for (Asset projectile : projectiles) {
+            if (projectile != null) {
+                assets.add(projectile);
             }
         }
     }
@@ -355,5 +375,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getCharacterState() {
         return characterState;
+    }
+
+    public List<Asset> getProjectiles() {
+        return projectiles;
     }
 }

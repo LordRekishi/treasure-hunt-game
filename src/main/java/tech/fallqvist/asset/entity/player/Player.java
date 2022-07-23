@@ -43,6 +43,7 @@ public class Player extends Entity {
         setDirection("down");
         setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
         setCurrentShield(new OBJ_Shield_Wood(getGamePanel()));
+        setProjectile(new OBJ_Fireball(getGamePanel()));
 
         setSpeed(4);
         setMaxLife(6);
@@ -82,7 +83,6 @@ public class Player extends Entity {
         setAttackArea(getCurrentWeapon().getAttackArea());
     }
 
-    @Override
     public void getAnimationImages() {
         setUp1(setup("/images/player/boy_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setUp2(setup("/images/player/boy_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
@@ -94,7 +94,6 @@ public class Player extends Entity {
         setRight2(setup("/images/player/boy_right_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
     }
 
-    @Override
     public void getAttackImages() {
         if (getCurrentWeapon() instanceof OBJ_Sword_Normal) {
             setAttackUp1(setup("/images/player/boy_attack_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize() * 2));
@@ -150,7 +149,23 @@ public class Player extends Entity {
             resetSpriteToDefault();
         }
 
+        if (getGamePanel().getKeyHandler().isProjectileKeyPressed() && !getProjectile().isAlive() && getProjectileAvailableCounter() == 30) {
+            // Set default coordinates, direction and user
+            getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
+
+            // Add it to the projectiles list
+            getGamePanel().getProjectiles().add(getProjectile());
+
+            setProjectileAvailableCounter(0);
+
+            getGamePanel().playSoundEffect(10);
+        }
+
         checkIfInvincible();
+
+        if (getProjectileAvailableCounter() < 30) {
+            setProjectileAvailableCounter(getProjectileAvailableCounter() + 1);
+        }
     }
 
     private void attacking() {
@@ -179,7 +194,7 @@ public class Player extends Entity {
             getCollisionArea().height = getAttackArea().height;
 
             int monsterIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonsters());
-            damageMonster(monsterIndex);
+            damageMonster(monsterIndex, getAttackPower());
 
             setWorldX(currentWorldX);
             setWorldY(currentWorldY);
@@ -194,12 +209,12 @@ public class Player extends Entity {
         }
     }
 
-    private void damageMonster(int index) {
+    public void damageMonster(int index, int attackPower) {
         if (index != 999) {
             if (!getGamePanel().getMonsters()[index].isInvincible()) {
                 getGamePanel().playSoundEffect(5);
 
-                int damage = getAttackPower() - getGamePanel().getMonsters()[index].getDefensePower();
+                int damage = attackPower - getGamePanel().getMonsters()[index].getDefensePower();
                 if (damage < 0) {
                     damage = 0;
                 }

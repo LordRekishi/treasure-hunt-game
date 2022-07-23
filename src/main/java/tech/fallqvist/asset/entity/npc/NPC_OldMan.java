@@ -16,7 +16,6 @@ public class NPC_OldMan extends Entity {
         setDialogue();
     }
 
-    @Override
     public void getAnimationImages() {
         setUp1(setup("/images/npc/oldman_up_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setUp2(setup("/images/npc/oldman_up_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
@@ -26,11 +25,6 @@ public class NPC_OldMan extends Entity {
         setLeft2(setup("/images/npc/oldman_left_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight1(setup("/images/npc/oldman_right_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight2(setup("/images/npc/oldman_right_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
-    }
-
-    @Override
-    public void getAttackImages() {
-        // Not used
     }
 
     @Override

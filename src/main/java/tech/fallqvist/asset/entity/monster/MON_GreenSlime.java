@@ -26,7 +26,6 @@ public class MON_GreenSlime extends Entity {
         getAnimationImages();
     }
 
-    @Override
     public void getAnimationImages() {
         setUp1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setUp2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
@@ -36,11 +35,6 @@ public class MON_GreenSlime extends Entity {
         setLeft2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight1(setup("/images/monster/greenslime_down_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight2(setup("/images/monster/greenslime_down_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
-    }
-
-    @Override
-    public void getAttackImages() {
-        // Not used
     }
 
     @Override
