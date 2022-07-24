@@ -122,6 +122,13 @@ public class KeyHandler implements KeyListener {
     }
 
     private void checkPlayStateKeyPressed(int code) {
+        checkMovementKeys(code);
+        checkGamestateKeys(code);
+        checkInteractionKeys(code);
+        checkAdminKeys(code);
+    }
+
+    private void checkMovementKeys(int code) {
         if (code == KeyEvent.VK_W) {
             upPressed = true;
         }
@@ -137,8 +144,9 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             rightPressed = true;
         }
+    }
 
-
+    private void checkGamestateKeys(int code) {
         if (code == KeyEvent.VK_P) {
             gamePanel.setGameState(gamePanel.getPauseState());
         }
@@ -146,7 +154,9 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_C) {
             gamePanel.setGameState(gamePanel.getCharacterState());
         }
+    }
 
+    private void checkInteractionKeys(int code) {
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
@@ -158,7 +168,9 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_F) {
             projectileKeyPressed = true;
         }
+    }
 
+    private void checkAdminKeys(int code) {
         // DEBUG
         if (code == KeyEvent.VK_T) {
             showDebugText = !showDebugText;
@@ -190,7 +202,10 @@ public class KeyHandler implements KeyListener {
             gamePanel.getPlayer().equipItem();
         }
 
+        checkCharacterScreenMovementKeys(code);
+    }
 
+    private void checkCharacterScreenMovementKeys(int code) {
         if (code == KeyEvent.VK_W) {
             if (gamePanel.getUi().getSlotRow() != 0) {
                 gamePanel.playSoundEffect(9);
@@ -253,6 +268,7 @@ public class KeyHandler implements KeyListener {
     public void keyTyped(KeyEvent e) {
         // Not used
     }
+
 
     public boolean isUpPressed() {
         return upPressed;
