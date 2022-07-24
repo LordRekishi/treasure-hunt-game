@@ -3,7 +3,7 @@ package tech.fallqvist.asset.entity;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.ability.Projectile;
-import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
+import tech.fallqvist.asset.entity.monster.Monster;
 import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
@@ -137,7 +137,7 @@ public abstract class Entity implements Asset {
         gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getMonsters());
         boolean contactPlayer = gamePanel.getCollisionChecker().checkPlayer(this);
 
-        if (this instanceof MON_GreenSlime && contactPlayer) {
+        if (this instanceof Monster && contactPlayer) {
             damagePlayer(getAttackPower());
         }
 
@@ -210,7 +210,7 @@ public abstract class Entity implements Asset {
     }
 
     private void drawLifeBar(Graphics2D graphics2D, int screenX, int screenY) {
-        if (this instanceof MON_GreenSlime && hpBarOn) {
+        if (this instanceof Monster && hpBarOn) {
             double oneCurrentLifeWidth = (double) gamePanel.getTileSize() / maxLife;
             double lifeBarValue = oneCurrentLifeWidth * currentLife;
 

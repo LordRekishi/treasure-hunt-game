@@ -1,13 +1,11 @@
 package tech.fallqvist.asset.entity.monster;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.object.ability.OBJ_Rock;
 
 import java.awt.*;
-import java.util.Random;
 
-public class MON_GreenSlime extends Entity {
+public class MON_GreenSlime extends Monster {
 
     public MON_GreenSlime(GamePanel gamePanel) {
         super(gamePanel);
@@ -52,19 +50,6 @@ public class MON_GreenSlime extends Entity {
     @Override
     public void setupAI() {
         super.setupAI();
-
-        int i = new Random().nextInt(100) + 1;
-
-        if (i > 99
-                && !getProjectile().isAlive()
-                && getProjectileAvailableCounter() == 30
-                && getProjectile().haveEnoughResource(this)) {
-
-            getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
-            getProjectile().subtractResource(this);
-            getGamePanel().getProjectiles().add(getProjectile());
-            setProjectileAvailableCounter(0);
-        }
     }
 
 

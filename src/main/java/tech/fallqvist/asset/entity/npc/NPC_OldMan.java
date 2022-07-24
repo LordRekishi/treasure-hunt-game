@@ -1,9 +1,8 @@
 package tech.fallqvist.asset.entity.npc;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.asset.entity.Entity;
 
-public class NPC_OldMan extends Entity {
+public class NPC_OldMan extends NPC {
 
     public NPC_OldMan(GamePanel gamePanel) {
         super(gamePanel);
@@ -25,11 +24,6 @@ public class NPC_OldMan extends Entity {
         setLeft2(setup("/images/npc/oldman_left_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight1(setup("/images/npc/oldman_right_1", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
         setRight2(setup("/images/npc/oldman_right_2", getGamePanel().getTileSize(), getGamePanel().getTileSize()));
-    }
-
-    @Override
-    public void damageReaction() {
-        // Not used yet
     }
 
     @Override
