@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Mana &amp; Ammo">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor KeyHandler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,19 +120,7 @@
       <workItem from="1658156599844" duration="3086000" />
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
-      <workItem from="1658655037483" duration="1561000" />
-    </task>
-    <task id="LOCAL−00012" summary="Add collision detection">
-      <created>1654982198514</created>
-      <option name="number" value="LOCAL−00012" />
-      <option name="presentableId" value="LOCAL−00012" />
-      <updated>1654982198514</updated>
-    </task>
-    <task id="LOCAL−00013" summary="Add Objects, object collision &amp; pickup">
-      <created>1655065046287</created>
-      <option name="number" value="LOCAL−00013" />
-      <option name="presentableId" value="LOCAL−00013" />
-      <updated>1655065046287</updated>
+      <workItem from="1658655037483" duration="2950000" />
     </task>
     <task id="LOCAL−00014" summary="Add Boots">
       <created>1655065415813</created>
@@ -418,7 +404,19 @@
       <option name="presentableId" value="LOCAL−00060" />
       <updated>1658610671463</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL−00061" summary="Refactor GamePanel">
+      <created>1658656980461</created>
+      <option name="number" value="LOCAL−00061" />
+      <option name="presentableId" value="LOCAL−00061" />
+      <updated>1658656980461</updated>
+    </task>
+    <task id="LOCAL−00062" summary="Refactor KeyHandler">
+      <created>1658656992974</created>
+      <option name="number" value="LOCAL−00062" />
+      <option name="presentableId" value="LOCAL−00062" />
+      <updated>1658656992974</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,8 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add monsters and damage (need bugfix)" />
-    <MESSAGE value="Add start dialog by pressing enter without moving" />
     <MESSAGE value="Add Player attack animation" />
     <MESSAGE value="Add enemy hit detection" />
     <MESSAGE value="Add enemy death animation" />
@@ -461,7 +457,9 @@
     <MESSAGE value="Add Projectile mechanics" />
     <MESSAGE value="Add Monster Rock Projectile &amp; AI" />
     <MESSAGE value="Add Mana &amp; Ammo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Mana &amp; Ammo" />
+    <MESSAGE value="Refactor GamePanel" />
+    <MESSAGE value="Refactor KeyHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor KeyHandler" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -471,7 +469,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java</url>
-          <line>314</line>
+          <line>313</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

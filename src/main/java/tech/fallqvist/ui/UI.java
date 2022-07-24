@@ -33,12 +33,7 @@ public class UI {
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        try {
-            InputStream inputStream = getClass().getResourceAsStream("/fonts/x12y16pxMaruMonica.ttf");
-            this.maruMonica = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-        }
+        setupFonts();
 
         Object heart = new OBJ_Heart(gamePanel);
         this.heart_full = heart.getImage1();
@@ -50,17 +45,19 @@ public class UI {
         this.crystal_blank = manaCrystal.getImage2();
     }
 
-    public void addMessage(String text) {
-        messages.add(text);
-        messageCounter.add(0);
+    private void setupFonts() {
+        try {
+            InputStream inputStream = getClass().getResourceAsStream("/fonts/x12y16pxMaruMonica.ttf");
+            this.maruMonica = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(inputStream));
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void draw(Graphics2D graphics2D) {
         this.graphics2D = graphics2D;
 
-        graphics2D.setFont(maruMonica);
-        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics2D.setColor(Color.WHITE);
+        setupDefaultGraphics(graphics2D);
 
         if (gamePanel.getGameState() == gamePanel.getTitleState()) {
             drawTitleScreen();
@@ -88,6 +85,12 @@ public class UI {
             drawCharacterScreen();
             drawInventoryScreen();
         }
+    }
+
+    private void setupDefaultGraphics(Graphics2D graphics2D) {
+        graphics2D.setFont(maruMonica);
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics2D.setColor(Color.WHITE);
     }
 
     private void drawTitleScreen() {
@@ -224,6 +227,11 @@ public class UI {
         }
     }
 
+    public void addMessage(String text) {
+        messages.add(text);
+        messageCounter.add(0);
+    }
+
     private void drawMessages() {
         int messageX = gamePanel.getTileSize();
         int messageY = gamePanel.getTileSize() * 4;
@@ -291,6 +299,14 @@ public class UI {
         int textY = frameY + gamePanel.getTileSize();
         int lineHeight = 35;
 
+        drawText(textX, textY, lineHeight);
+
+        int tailX = (frameX + frameWidth) - 30;
+
+        drawValues(textY, lineHeight, tailX);
+    }
+
+    private void drawText(int textX, int textY, int lineHeight) {
         graphics2D.drawString("Level", textX, textY);
         textY += lineHeight;
         graphics2D.drawString("Life", textX, textY);
@@ -314,9 +330,10 @@ public class UI {
         graphics2D.drawString("Weapon", textX, textY);
         textY += lineHeight + 15;
         graphics2D.drawString("Shield", textX, textY);
+    }
 
-        int tailX = (frameX + frameWidth) - 30;
-        textY = frameY + gamePanel.getTileSize();
+    private void drawValues(int textY, int lineHeight, int tailX) {
+        int textX;
         String value;
 
         value = String.valueOf(gamePanel.getPlayer().getLevel());
@@ -369,6 +386,10 @@ public class UI {
         graphics2D.drawString(value, textX, textY);
         textY += lineHeight;
 
+        drawCurrentEquipment(textY, tailX);
+    }
+
+    private void drawCurrentEquipment(int textY, int tailX) {
         graphics2D.drawImage(gamePanel.getPlayer().getCurrentWeapon().getImage1(), tailX - gamePanel.getTileSize(), textY - 14, null);
         textY += gamePanel.getTileSize();
 
@@ -392,9 +413,21 @@ public class UI {
         int slotY = slotYStart;
         int slotSize = gamePanel.getTileSize() + 3;
 
-        // DRAW ITEMS
         List<Asset> inventory = gamePanel.getPlayer().getInventory();
 
+        drawItemsInInventory(slotXStart, slotX, slotY, slotSize, inventory);
+        drawSelectionBox(slotXStart, slotYStart, slotSize);
+
+        // DESCRIPTION FRAME
+        int descriptionFrameX = frameX;
+        int descriptionFrameY = frameY + frameHeight;
+        int descriptionFrameWidth = frameWidth;
+        int descriptionFrameHeight = gamePanel.getTileSize() * 3;
+
+        drawItemDescriptionText(inventory, descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight);
+    }
+
+    private void drawItemsInInventory(int slotXStart, int slotX, int slotY, int slotSize, List<Asset> inventory) {
         for (int i = 0; i < inventory.size(); i++) {
             Asset object = inventory.get(i);
 
@@ -414,7 +447,9 @@ public class UI {
                 slotY += slotSize;
             }
         }
+    }
 
+    private void drawSelectionBox(int slotXStart, int slotYStart, int slotSize) {
         // CURSOR selection box
         int cursorX = slotXStart + (slotSize * slotCol);
         int cursorY = slotYStart + (slotSize * slotRow);
@@ -424,14 +459,9 @@ public class UI {
         graphics2D.setColor(Color.WHITE);
         graphics2D.setStroke(new BasicStroke(3));
         graphics2D.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10, 10);
+    }
 
-        // DESCRIPTION FRAME
-        int descriptionFrameX = frameX;
-        int descriptionFrameY = frameY + frameHeight;
-        int descriptionFrameWidth = frameWidth;
-        int descriptionFrameHeight = gamePanel.getTileSize() * 3;
-
-
+    private void drawItemDescriptionText(List<Asset> inventory, int descriptionFrameX, int descriptionFrameY, int descriptionFrameWidth, int descriptionFrameHeight) {
         // DRAW DESCRIPTION TEXT
         int textX = descriptionFrameX + 20;
         int textY = descriptionFrameY + gamePanel.getTileSize();
@@ -451,6 +481,11 @@ public class UI {
         }
     }
 
+    public int getItemIndexFromSlot() {
+        int itemIndex = slotCol + (slotRow * 5);
+        return itemIndex;
+    }
+
     public void drawSubWindow(int x, int y, int width, int height) {
         Color color = new Color(0, 0, 0, 210);
         graphics2D.setColor(color);
@@ -462,10 +497,6 @@ public class UI {
         graphics2D.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
 
-    public int getItemIndexFromSlot() {
-        int itemIndex = slotCol + (slotRow * 5);
-        return itemIndex;
-    }
 
     public UI setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
