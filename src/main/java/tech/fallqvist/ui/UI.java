@@ -2,9 +2,9 @@ package tech.fallqvist.ui;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
-import tech.fallqvist.asset.object.OBJ_Heart;
-import tech.fallqvist.asset.object.OBJ_ManaCrystal;
 import tech.fallqvist.asset.object.Object;
+import tech.fallqvist.asset.object.ui.OBJ_Heart;
+import tech.fallqvist.asset.object.ui.OBJ_ManaCrystal;
 import tech.fallqvist.util.UtilityTool;
 
 import java.awt.*;

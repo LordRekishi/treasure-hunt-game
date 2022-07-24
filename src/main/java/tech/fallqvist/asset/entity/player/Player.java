@@ -4,7 +4,13 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.object.Object;
-import tech.fallqvist.asset.object.*;
+import tech.fallqvist.asset.object.ability.OBJ_Fireball;
+import tech.fallqvist.asset.object.equipment.OBJ_Axe;
+import tech.fallqvist.asset.object.equipment.OBJ_Shield_Blue;
+import tech.fallqvist.asset.object.equipment.OBJ_Shield_Wood;
+import tech.fallqvist.asset.object.equipment.OBJ_Sword_Normal;
+import tech.fallqvist.asset.object.usable.OBJ_Key;
+import tech.fallqvist.asset.object.usable.OBJ_Potion_Red;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;

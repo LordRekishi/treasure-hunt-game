@@ -1,6 +1,7 @@
-package tech.fallqvist.asset.object;
+package tech.fallqvist.asset.object.usable;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;

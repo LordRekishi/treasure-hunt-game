@@ -2,7 +2,7 @@ package tech.fallqvist.asset.entity.monster;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
-import tech.fallqvist.asset.object.OBJ_Rock;
+import tech.fallqvist.asset.object.ability.OBJ_Rock;
 
 import java.awt.*;
 import java.util.Random;

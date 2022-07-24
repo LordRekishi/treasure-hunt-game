@@ -3,10 +3,10 @@ package tech.fallqvist.asset;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
 import tech.fallqvist.asset.entity.npc.NPC_OldMan;
-import tech.fallqvist.asset.object.OBJ_Axe;
-import tech.fallqvist.asset.object.OBJ_Key;
-import tech.fallqvist.asset.object.OBJ_Potion_Red;
-import tech.fallqvist.asset.object.OBJ_Shield_Blue;
+import tech.fallqvist.asset.object.equipment.OBJ_Axe;
+import tech.fallqvist.asset.object.equipment.OBJ_Shield_Blue;
+import tech.fallqvist.asset.object.usable.OBJ_Key;
+import tech.fallqvist.asset.object.usable.OBJ_Potion_Red;
 
 public class AssetManager {
 

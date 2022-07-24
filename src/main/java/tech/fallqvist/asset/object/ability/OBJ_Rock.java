@@ -1,4 +1,4 @@
-package tech.fallqvist.asset.object;
+package tech.fallqvist.asset.object.ability;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
