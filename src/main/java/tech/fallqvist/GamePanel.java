@@ -6,6 +6,7 @@ import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.asset.tile.TileManager;
+import tech.fallqvist.asset.tile.interactive.InteractiveTile;
 import tech.fallqvist.event.EventHandler;
 import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.ui.UI;
@@ -66,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final Asset[] monsters = new Entity[20];
     private final List<Asset> assets = new ArrayList<>();
     private final List<Asset> projectiles = new ArrayList<>();
+    private final InteractiveTile[] interactiveTiles = new InteractiveTile[50];
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -79,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetManager.setObjects();
         assetManager.setNPCs();
         assetManager.setMonsters();
+        assetManager.setInteractiveTiles();
         gameState = titleState;
     }
 
@@ -115,6 +118,7 @@ public class GamePanel extends JPanel implements Runnable {
             updateNPCs();
             updateMonsters();
             updateProjectiles();
+            updateInteractiveTiles();
         }
 
         if (gameState == pauseState) {
@@ -163,6 +167,14 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    private void updateInteractiveTiles() {
+        for (InteractiveTile interactiveTile : interactiveTiles) {
+            if (interactiveTile != null) {
+                interactiveTile.update();
+            }
+        }
+    }
+
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
@@ -179,6 +191,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             // TILES
             tileManager.draw(graphics2D);
+            drawInteractiveTiles(graphics2D);
 
             // ASSETS
             addAssets();
@@ -197,6 +210,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         // CLOSE
         graphics2D.dispose();
+    }
+
+    private void drawInteractiveTiles(Graphics2D graphics2D) {
+        for (InteractiveTile interactiveTile : interactiveTiles) {
+            if (interactiveTile != null) {
+                interactiveTile.draw(graphics2D);
+            }
+        }
     }
 
     private void addAssets() {
@@ -394,5 +415,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public List<Asset> getProjectiles() {
         return projectiles;
+    }
+
+    public InteractiveTile[] getInteractiveTiles() {
+        return interactiveTiles;
     }
 }

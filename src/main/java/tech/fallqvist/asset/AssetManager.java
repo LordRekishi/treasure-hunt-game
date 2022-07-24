@@ -9,6 +9,7 @@ import tech.fallqvist.asset.object.usable.inventory.OBJ_Potion_Red;
 import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Coin_Bronze;
 import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Heart;
 import tech.fallqvist.asset.object.usable.pickuponly.OBJ_ManaCrystal;
+import tech.fallqvist.asset.tile.interactive.IT_DryTree;
 
 public class AssetManager {
 
@@ -94,5 +95,42 @@ public class AssetManager {
         gamePanel.getMonsters()[4].setWorldX(tileSize * 38);
         gamePanel.getMonsters()[4].setWorldY(tileSize * 42);
         gamePanel.getMonsters()[4].setIndex(4);
+    }
+
+    public void setInteractiveTiles() {
+        gamePanel.getInteractiveTiles()[0] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[0].setWorldX(tileSize * 27);
+        gamePanel.getInteractiveTiles()[0].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[0].setIndex(0);
+
+        gamePanel.getInteractiveTiles()[1] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[1].setWorldX(tileSize * 28);
+        gamePanel.getInteractiveTiles()[1].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[1].setIndex(1);
+
+        gamePanel.getInteractiveTiles()[2] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[2].setWorldX(tileSize * 29);
+        gamePanel.getInteractiveTiles()[2].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[2].setIndex(2);
+
+        gamePanel.getInteractiveTiles()[3] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[3].setWorldX(tileSize * 30);
+        gamePanel.getInteractiveTiles()[3].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[3].setIndex(3);
+
+        gamePanel.getInteractiveTiles()[4] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[4].setWorldX(tileSize * 31);
+        gamePanel.getInteractiveTiles()[4].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[4].setIndex(4);
+
+        gamePanel.getInteractiveTiles()[5] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[5].setWorldX(tileSize * 32);
+        gamePanel.getInteractiveTiles()[5].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[5].setIndex(5);
+
+        gamePanel.getInteractiveTiles()[6] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[6].setWorldX(tileSize * 33);
+        gamePanel.getInteractiveTiles()[6].setWorldY(tileSize * 12);
+        gamePanel.getInteractiveTiles()[6].setIndex(6);
     }
 }

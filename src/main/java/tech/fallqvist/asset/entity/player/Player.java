@@ -171,11 +171,13 @@ public class Player extends Entity {
         if (getSpriteCounter() > 5 && getSpriteCounter() <= 25) {
             setSpriteNumber(2);
 
+            // Save current worldX, worldY and CollisionArea
             int currentWorldX = getWorldX();
             int currentWorldY = getWorldY();
             int collisionAreaWidth = getCollisionArea().width;
             int collisionAreaHeight = getCollisionArea().height;
 
+            // Adjust player's worldX/Y to the attackArea
             switch (getDirection()) {
                 case "up" -> setWorldY(currentWorldY - getAttackArea().height);
                 case "down" -> setWorldY(currentWorldY + getAttackArea().height);
@@ -183,12 +185,19 @@ public class Player extends Entity {
                 case "right" -> setWorldX(currentWorldX + getAttackArea().width);
             }
 
+            // Make collisionArea into attackArea
             getCollisionArea().width = getAttackArea().width;
             getCollisionArea().height = getAttackArea().height;
 
+            // Check monster collision with updated collisionArea
             int monsterIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonsters());
             damageMonster(monsterIndex, getAttackPower());
 
+            // Check interactiveTile collision
+            int interactiveTileIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getInteractiveTiles());
+            damageInteractiveTile(interactiveTileIndex);
+
+            // Reset collisionArea to player
             setWorldX(currentWorldX);
             setWorldY(currentWorldY);
             getCollisionArea().width = collisionAreaWidth;
@@ -230,6 +239,22 @@ public class Player extends Entity {
         }
     }
 
+    private void damageInteractiveTile(int index) {
+        if (index != 999
+                && getGamePanel().getInteractiveTiles()[index].isDestructible()
+                && getGamePanel().getInteractiveTiles()[index].isCorrectWeapon(getCurrentWeapon())
+                && !getGamePanel().getInteractiveTiles()[index].isInvincible()) {
+
+            getGamePanel().getInteractiveTiles()[index].playSoundEffect();
+            getGamePanel().getInteractiveTiles()[index].setCurrentLife(getGamePanel().getInteractiveTiles()[index].getCurrentLife() - 1);
+            getGamePanel().getInteractiveTiles()[index].setInvincible(true);
+
+            if (getGamePanel().getInteractiveTiles()[index].getCurrentLife() == 0) {
+                getGamePanel().getInteractiveTiles()[index] = getGamePanel().getInteractiveTiles()[index].getDestroyedForm();
+            }
+        }
+    }
+
     private void checkLevelUp() {
         if (getExp() >= getNextLevelExp()) {
             setLevel(getLevel() + 1);
@@ -258,6 +283,7 @@ public class Player extends Entity {
         setCollisionOn(false);
 
         checkTileCollision();
+        checkInteractiveTileCollision();
         checkObjectCollision();
         checkNPCCollision();
         checkMonsterCollision();
@@ -265,6 +291,10 @@ public class Player extends Entity {
 
     private void checkTileCollision() {
         getGamePanel().getCollisionChecker().checkTile(this);
+    }
+
+    private void checkInteractiveTileCollision() {
+        getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getInteractiveTiles());
     }
 
     private void checkObjectCollision() {

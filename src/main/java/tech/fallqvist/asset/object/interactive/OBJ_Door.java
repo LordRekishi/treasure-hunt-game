@@ -1,4 +1,4 @@
-package tech.fallqvist.asset.object.interactable;
+package tech.fallqvist.asset.object.interactive;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.object.Object;

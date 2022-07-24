@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add PickUpOnlyObject in preparation for monster item drops">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add monster item drop">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_DryTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_Trunk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/InteractiveTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/interactive/drytree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/interactive/trunk.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactable/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactive/OBJ_Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactable/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactive/OBJ_Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,28 +60,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/images/ability&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/images/tiles/interactive",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\tiles\interactive" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\ability" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\player" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\monster" />
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images\objects" />
-      <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\images" />
@@ -130,12 +139,6 @@
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
       <workItem from="1658655037483" duration="3765000" />
-    </task>
-    <task id="LOCAL−00022" summary="Add NPC basic movement and collision">
-      <created>1655759931586</created>
-      <option name="number" value="LOCAL−00022" />
-      <option name="presentableId" value="LOCAL−00022" />
-      <updated>1655759931586</updated>
     </task>
     <task id="LOCAL−00023" summary="Add NPC_OldMan dialogue">
       <created>1655924820310</created>
@@ -425,7 +428,13 @@
       <option name="presentableId" value="LOCAL−00070" />
       <updated>1658667183561</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL−00071" summary="Add monster item drop">
+      <created>1658685009116</created>
+      <option name="number" value="LOCAL−00071" />
+      <option name="presentableId" value="LOCAL−00071" />
+      <updated>1658685009116</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix player twitch when attacking" />
     <MESSAGE value="Add Player stats" />
     <MESSAGE value="Add Character window when pressing C, with Player stats and equipment" />
     <MESSAGE value="Add Attack and Defense power based damage" />
@@ -468,7 +476,8 @@
     <MESSAGE value="Add Weapon superclass" />
     <MESSAGE value="Refactor Entity draw method" />
     <MESSAGE value="Add PickUpOnlyObject in preparation for monster item drops" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add PickUpOnlyObject in preparation for monster item drops" />
+    <MESSAGE value="Add monster item drop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add monster item drop" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

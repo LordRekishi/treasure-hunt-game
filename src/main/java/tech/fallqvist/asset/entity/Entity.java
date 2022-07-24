@@ -7,6 +7,7 @@ import tech.fallqvist.asset.entity.monster.Monster;
 import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.object.equipment.Shield;
 import tech.fallqvist.asset.object.equipment.Weapon;
+import tech.fallqvist.asset.tile.interactive.InteractiveTile;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -75,6 +76,7 @@ public abstract class Entity implements Asset {
 
     public Entity(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        setDirection("down");
     }
 
     public void setupAI() {
@@ -118,6 +120,7 @@ public abstract class Entity implements Asset {
         gamePanel.getCollisionChecker().checkObject(this, false);
         gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getNpcs());
         gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getMonsters());
+        gamePanel.getCollisionChecker().checkEntity(this, gamePanel.getInteractiveTiles());
         boolean contactPlayer = gamePanel.getCollisionChecker().checkPlayer(this);
 
         if (this instanceof Monster && contactPlayer) {
@@ -339,7 +342,8 @@ public abstract class Entity implements Asset {
         if (isInvincible()) {
             setInvincibleCounter(getInvincibleCounter() + 1);
 
-            if (getInvincibleCounter() > ((this instanceof Player) ? 60 : 40)) {
+            if (getInvincibleCounter() > ((this instanceof Player) ? 60 : 40)
+                    || getInvincibleCounter() > ((this instanceof InteractiveTile) ? 20 : 40)) {
                 setInvincible(false);
                 setInvincibleCounter(0);
             }

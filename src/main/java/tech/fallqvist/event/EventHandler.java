@@ -56,8 +56,8 @@ public class EventHandler {
                 healingPool(23, 12, gamePanel.getDialogueState());
             }
 
-            if (hit(25, 12, "any")) {
-                teleport(25, 12, gamePanel.getDialogueState());
+            if (hit(23, 7, "any")) {
+                teleport(23, 7, gamePanel.getDialogueState());
             }
         }
     }

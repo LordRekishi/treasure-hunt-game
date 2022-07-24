@@ -8,7 +8,6 @@ public class NPC_OldMan extends NPC {
         super(gamePanel);
 
         setName("Old Man");
-        setDirection("down");
         setSpeed(1);
 
         getAnimationImages();
