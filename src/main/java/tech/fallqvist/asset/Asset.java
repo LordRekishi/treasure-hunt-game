@@ -83,4 +83,8 @@ public interface Asset {
     void use();
 
     int getMaxLife();
+
+    void checkDrop();
+
+    void dropObject(Asset droppedObject);
 }

@@ -276,4 +276,12 @@ public class Object implements Asset {
     public int getMaxLife() {
         return 0;
     }
+
+    @Override
+    public void checkDrop() {
+    }
+
+    @Override
+    public void dropObject(Asset droppedObject) {
+    }
 }

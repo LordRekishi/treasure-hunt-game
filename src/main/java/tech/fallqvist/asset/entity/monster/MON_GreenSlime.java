@@ -2,8 +2,12 @@ package tech.fallqvist.asset.entity.monster;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.object.ability.OBJ_Rock;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Coin_Bronze;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Heart;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_ManaCrystal;
 
 import java.awt.*;
+import java.util.Random;
 
 public class MON_GreenSlime extends Monster {
 
@@ -52,5 +56,21 @@ public class MON_GreenSlime extends Monster {
         super.setupAI();
     }
 
+    @Override
+    public void checkDrop() {
+        int i = new Random().nextInt(100) + 1;
+
+        if (i < 50) {
+            dropObject(new OBJ_Coin_Bronze(getGamePanel()));
+        }
+
+        if (i >= 50 && i < 75) {
+            dropObject(new OBJ_Heart(getGamePanel()));
+        }
+
+        if (i >= 75 && i < 100) {
+            dropObject(new OBJ_ManaCrystal(getGamePanel()));
+        }
+    }
 
 }

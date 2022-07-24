@@ -285,6 +285,7 @@ public class Player extends Entity {
                 String text;
 
                 if (inventory.size() != maxInventorySize) {
+                    System.out.println(index);
                     inventory.add(getGamePanel().getObjects()[index]);
                     getGamePanel().playSoundEffect(1);
                     text = "Got a " + getGamePanel().getObjects()[index].getName() + "!";

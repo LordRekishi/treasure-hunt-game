@@ -363,6 +363,20 @@ public abstract class Entity implements Asset {
         UtilityTool.changeAlpha(graphics2D, 1);
     }
 
+    @Override
+    public void dropObject(Asset droppedObject) {
+
+        for (int i = 0; i < gamePanel.getObjects().length; i++) {
+            if (gamePanel.getObjects()[i] == null) {
+                gamePanel.getObjects()[i] = droppedObject;
+                gamePanel.getObjects()[i].setWorldX(worldX);
+                gamePanel.getObjects()[i].setWorldY(worldY);
+                gamePanel.getObjects()[i].setIndex(i);
+                break;
+            }
+        }
+    }
+
 
     public GamePanel getGamePanel() {
         return gamePanel;
@@ -874,8 +888,8 @@ public abstract class Entity implements Asset {
         return this;
     }
 
-
     // NOT USED
+
     @Override
     public BufferedImage getImage1() {
         return null;
@@ -898,5 +912,9 @@ public abstract class Entity implements Asset {
 
     @Override
     public void damageReaction() {
+    }
+
+    @Override
+    public void checkDrop() {
     }
 }
