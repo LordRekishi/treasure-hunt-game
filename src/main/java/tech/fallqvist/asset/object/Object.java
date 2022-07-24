@@ -15,6 +15,7 @@ public class Object implements Asset {
     private int index;
     private String name;
     private String description;
+    private int value;
     private int worldX, worldY;
 
     // IMAGES
@@ -96,6 +97,15 @@ public class Object implements Asset {
 
     public Object setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public Object setValue(int value) {
+        this.value = value;
         return this;
     }
 
@@ -208,16 +218,6 @@ public class Object implements Asset {
     }
 
     @Override
-    public int getDyingCounter() {
-        return 0;
-    }
-
-    @Override
-    public void setDyingCounter(int dyingCounter) {
-        // Not used
-    }
-
-    @Override
     public int getLevel() {
         return 0;
     }
@@ -268,7 +268,7 @@ public class Object implements Asset {
     }
 
     @Override
-    public void use(Asset asset) {
+    public void use() {
         // not used
     }
 

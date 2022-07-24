@@ -144,10 +144,6 @@ public abstract class Entity implements Asset {
 
             gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() - damage);
             gamePanel.getPlayer().setInvincible(true);
-
-            if (gamePanel.getPlayer().getCurrentLife() < 0) {
-                gamePanel.getPlayer().setCurrentLife(0);
-            }
         }
     }
 
@@ -896,7 +892,7 @@ public abstract class Entity implements Asset {
     }
 
     @Override
-    public void use(Asset asset) {
+    public void use() {
         // Not used
     }
 

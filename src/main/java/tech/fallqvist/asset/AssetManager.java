@@ -5,8 +5,10 @@ import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
 import tech.fallqvist.asset.entity.npc.NPC_OldMan;
 import tech.fallqvist.asset.object.equipment.OBJ_Axe;
 import tech.fallqvist.asset.object.equipment.OBJ_Shield_Blue;
-import tech.fallqvist.asset.object.usable.OBJ_Key;
-import tech.fallqvist.asset.object.usable.OBJ_Potion_Red;
+import tech.fallqvist.asset.object.usable.inventory.OBJ_Potion_Red;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Coin_Bronze;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Heart;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_ManaCrystal;
 
 public class AssetManager {
 
@@ -19,17 +21,17 @@ public class AssetManager {
     }
 
     public void setObjects() {
-        gamePanel.getObjects()[0] = new OBJ_Key(gamePanel);
+        gamePanel.getObjects()[0] = new OBJ_Coin_Bronze(gamePanel);
         gamePanel.getObjects()[0].setWorldX(tileSize * 25);
         gamePanel.getObjects()[0].setWorldY(tileSize * 23);
         gamePanel.getObjects()[0].setIndex(0);
 
-        gamePanel.getObjects()[1] = new OBJ_Key(gamePanel);
+        gamePanel.getObjects()[1] = new OBJ_Coin_Bronze(gamePanel);
         gamePanel.getObjects()[1].setWorldX(tileSize * 21);
         gamePanel.getObjects()[1].setWorldY(tileSize * 19);
         gamePanel.getObjects()[1].setIndex(1);
 
-        gamePanel.getObjects()[2] = new OBJ_Key(gamePanel);
+        gamePanel.getObjects()[2] = new OBJ_Coin_Bronze(gamePanel);
         gamePanel.getObjects()[2].setWorldX(tileSize * 26);
         gamePanel.getObjects()[2].setWorldY(tileSize * 21);
         gamePanel.getObjects()[2].setIndex(2);
@@ -48,6 +50,16 @@ public class AssetManager {
         gamePanel.getObjects()[5].setWorldX(tileSize * 22);
         gamePanel.getObjects()[5].setWorldY(tileSize * 27);
         gamePanel.getObjects()[5].setIndex(5);
+
+        gamePanel.getObjects()[6] = new OBJ_Heart(gamePanel);
+        gamePanel.getObjects()[6].setWorldX(tileSize * 22);
+        gamePanel.getObjects()[6].setWorldY(tileSize * 29);
+        gamePanel.getObjects()[6].setIndex(6);
+
+        gamePanel.getObjects()[7] = new OBJ_ManaCrystal(gamePanel);
+        gamePanel.getObjects()[7].setWorldX(tileSize * 22);
+        gamePanel.getObjects()[7].setWorldY(tileSize * 31);
+        gamePanel.getObjects()[7].setIndex(7);
     }
 
     public void setNPCs() {

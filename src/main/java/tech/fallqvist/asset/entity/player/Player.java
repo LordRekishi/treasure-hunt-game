@@ -5,8 +5,9 @@ import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.object.ability.OBJ_Fireball;
 import tech.fallqvist.asset.object.equipment.*;
-import tech.fallqvist.asset.object.usable.OBJ_Key;
-import tech.fallqvist.asset.object.usable.OBJ_Potion_Red;
+import tech.fallqvist.asset.object.usable.inventory.OBJ_Key;
+import tech.fallqvist.asset.object.usable.inventory.OBJ_Potion_Red;
+import tech.fallqvist.asset.object.usable.pickuponly.PickUpOnlyObject;
 import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
@@ -157,6 +158,7 @@ public class Player extends Entity {
 
         fireProjectileIfKeyPressed();
         checkIfInvincible();
+        updateLifeAndMana();
     }
 
     private void attacking() {
@@ -272,17 +274,27 @@ public class Player extends Entity {
 
     private void pickUpObject(int index) {
         if (index != 999) {
-            String text;
 
-            if (inventory.size() != maxInventorySize) {
-                inventory.add(getGamePanel().getObjects()[index]);
-                getGamePanel().playSoundEffect(1);
-                text = "Got a " + getGamePanel().getObjects()[index].getName() + "!";
-            } else {
-                text = "You cannot carry anymore!";
+            // PICK-UP ONLY ITEMS
+            if (getGamePanel().getObjects()[index] instanceof PickUpOnlyObject) {
+                getGamePanel().getObjects()[index].use();
             }
 
-            getGamePanel().getUi().addMessage(text);
+            // INVENTORY ITEMS
+            else {
+                String text;
+
+                if (inventory.size() != maxInventorySize) {
+                    inventory.add(getGamePanel().getObjects()[index]);
+                    getGamePanel().playSoundEffect(1);
+                    text = "Got a " + getGamePanel().getObjects()[index].getName() + "!";
+                } else {
+                    text = "You cannot carry anymore!";
+                }
+
+                getGamePanel().getUi().addMessage(text);
+            }
+
             getGamePanel().getObjects()[index] = null;
         }
     }
@@ -317,11 +329,6 @@ public class Player extends Entity {
                 }
 
                 setCurrentLife(getCurrentLife() - damage);
-
-                if (getCurrentLife() < 0) {
-                    setCurrentLife(0);
-                }
-
                 setInvincible(true);
             }
         }
@@ -368,6 +375,24 @@ public class Player extends Entity {
         }
     }
 
+    private void updateLifeAndMana() {
+        if (getCurrentLife() > getMaxLife()) {
+            setCurrentLife(getMaxLife());
+        }
+
+        if (getCurrentLife() < 0) {
+            setCurrentLife(0);
+        }
+
+        if (getCurrentMana() > getMaxMana()) {
+            setCurrentMana(getMaxMana());
+        }
+
+        if (getCurrentMana() < 0) {
+            setCurrentMana(0);
+        }
+    }
+
     public void selectItem() {
         int itemIndex = getGamePanel().getUi().getItemIndexFromSlot();
 
@@ -387,7 +412,7 @@ public class Player extends Entity {
             }
 
             if (selectedItem instanceof OBJ_Potion_Red) {
-                selectedItem.use(this);
+                selectedItem.use();
                 inventory.remove(itemIndex);
             }
         }
@@ -407,8 +432,10 @@ public class Player extends Entity {
 
         if (isAttacking()) {
             switch (getDirection()) {
-                case "up" -> graphics2D.drawImage(getDirectionalAnimationImage(), x, y - getGamePanel().getTileSize(), null);
-                case "left" -> graphics2D.drawImage(getDirectionalAnimationImage(), x - getGamePanel().getTileSize(), y, null);
+                case "up" ->
+                        graphics2D.drawImage(getDirectionalAnimationImage(), x, y - getGamePanel().getTileSize(), null);
+                case "left" ->
+                        graphics2D.drawImage(getDirectionalAnimationImage(), x - getGamePanel().getTileSize(), y, null);
                 default -> graphics2D.drawImage(getDirectionalAnimationImage(), x, y, null);
             }
         } else {
@@ -483,7 +510,7 @@ public class Player extends Entity {
     }
 
     @Override
-    public void use(Asset asset) {
+    public void use() {
         // Not used
     }
 }

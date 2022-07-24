@@ -1,7 +1,6 @@
-package tech.fallqvist.asset.object.usable;
+package tech.fallqvist.asset.object.usable.inventory;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
@@ -13,14 +12,14 @@ import java.util.Objects;
 public class OBJ_Potion_Red extends Object {
 
     private final GamePanel gamePanel;
-    private final int healingValue = 5;
 
     public OBJ_Potion_Red(GamePanel gamePanel) {
         super(gamePanel);
         this.gamePanel = gamePanel;
 
         setName("Red Potion");
-        setDescription("[" + getName() + "]\nRestores " + healingValue + " health");
+        setValue(5);
+        setDescription("[" + getName() + "]\nRestores " + getValue() + " health");
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/potion_red.png")));
@@ -31,16 +30,12 @@ public class OBJ_Potion_Red extends Object {
     }
 
     @Override
-    public void use(Asset asset) {
+    public void use() {
         gamePanel.setGameState(gamePanel.getDialogueState());
         gamePanel.getUi().setCurrentDialogue("You drink the " + getName() + "!\n" +
-                "You have restored " + healingValue + " life!");
+                "You have restored " + getValue() + " life!");
 
-        asset.setCurrentLife(asset.getCurrentLife() + healingValue);
-
-        if (asset.getCurrentLife() > asset.getMaxLife()) {
-            asset.setCurrentLife(asset.getMaxLife());
-        }
+        gamePanel.getPlayer().setCurrentLife(gamePanel.getPlayer().getCurrentLife() + getValue());
 
         gamePanel.playSoundEffect(2);
     }

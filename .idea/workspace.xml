@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Entity, Player and Object">
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Weapon.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Entity draw method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/pickuponly/OBJ_Coin_Bronze.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/pickuponly/PickUpOnlyObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ui/OBJ_Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/pickuponly/OBJ_Heart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ui/OBJ_ManaCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/pickuponly/OBJ_ManaCrystal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/inventory/OBJ_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/OBJ_Potion_Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/usable/inventory/OBJ_Potion_Red.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
     </list>
     <list id="a5316cfb-d843-49b0-969e-d232f0cec141" name="Add Shield superclass" comment="Add Shield superclass" />
     <list id="d2b661d7-72ab-4f45-8b7a-762f41383cf8" name="Add Weapon superclass" comment="Add Weapon superclass" />
@@ -14,6 +25,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -124,12 +138,6 @@
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
       <workItem from="1658655037483" duration="3765000" />
-    </task>
-    <task id="LOCAL−00020" summary="Prepare game for advanced functions">
-      <created>1655751542218</created>
-      <option name="number" value="LOCAL−00020" />
-      <option name="presentableId" value="LOCAL−00020" />
-      <updated>1655751542218</updated>
     </task>
     <task id="LOCAL−00021" summary="Add stop camera at edge functionality">
       <created>1655755255062</created>
@@ -419,7 +427,13 @@
       <option name="presentableId" value="LOCAL−00068" />
       <updated>1658663624005</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL−00069" summary="Refactor Entity draw method">
+      <created>1658664247421</created>
+      <option name="number" value="LOCAL−00069" />
+      <option name="presentableId" value="LOCAL−00069" />
+      <updated>1658664247421</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +451,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add sound effects to damagePit, healingPool and teleport events" />
     <MESSAGE value="Fix player moving forward when attacking" />
     <MESSAGE value="Fix player twitch when attacking" />
     <MESSAGE value="Add Player stats" />
@@ -462,7 +475,8 @@
     <MESSAGE value="Refactor Entity, Player and Object" />
     <MESSAGE value="Add Shield superclass" />
     <MESSAGE value="Add Weapon superclass" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Weapon superclass" />
+    <MESSAGE value="Refactor Entity draw method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Entity draw method" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

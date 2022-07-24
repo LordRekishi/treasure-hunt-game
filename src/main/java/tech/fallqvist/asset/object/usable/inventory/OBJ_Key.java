@@ -1,4 +1,4 @@
-package tech.fallqvist.asset.object.usable;
+package tech.fallqvist.asset.object.usable.inventory;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.object.Object;

@@ -52,10 +52,6 @@ public interface Asset {
 
     void setDying(boolean dying);
 
-    int getDyingCounter();
-
-    void setDyingCounter(int dyingCounter);
-
     int getLevel();
 
     int getStrength();
@@ -84,7 +80,7 @@ public interface Asset {
 
     void setAttackArea(Rectangle attackArea);
 
-    void use(Asset asset);
+    void use();
 
     int getMaxLife();
 }
