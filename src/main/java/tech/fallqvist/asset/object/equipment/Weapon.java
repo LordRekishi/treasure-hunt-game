@@ -6,7 +6,6 @@ import tech.fallqvist.asset.object.Object;
 import java.awt.*;
 
 public class Weapon extends Object {
-
     private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     private int attackValue;
 

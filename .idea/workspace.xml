@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Equipment">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Entity, Player and Object">
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Weapon.java" afterDir="false" />
     </list>
-    <list id="a5316cfb-d843-49b0-969e-d232f0cec141" name="Add Shield superclass" comment="Add Shield superclass">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" afterDir="false" />
-    </list>
-    <list id="d2b661d7-72ab-4f45-8b7a-762f41383cf8" name="Add Weapon superclass" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Weapon.java" afterDir="false" />
-    </list>
+    <list id="a5316cfb-d843-49b0-969e-d232f0cec141" name="Add Shield superclass" comment="Add Shield superclass" />
+    <list id="d2b661d7-72ab-4f45-8b7a-762f41383cf8" name="Add Weapon superclass" comment="Add Weapon superclass" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,24 +124,6 @@
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
       <workItem from="1658655037483" duration="3765000" />
-    </task>
-    <task id="LOCAL−00017" summary="Add Finish game mechanic">
-      <created>1655069797816</created>
-      <option name="number" value="LOCAL−00017" />
-      <option name="presentableId" value="LOCAL−00017" />
-      <updated>1655069797816</updated>
-    </task>
-    <task id="LOCAL−00018" summary="Improve scaling draw time">
-      <created>1655152193414</created>
-      <option name="number" value="LOCAL−00018" />
-      <option name="presentableId" value="LOCAL−00018" />
-      <updated>1655152193414</updated>
-    </task>
-    <task id="LOCAL−00019" summary="Add new tiles and map V2">
-      <created>1655749110593</created>
-      <option name="number" value="LOCAL−00019" />
-      <option name="presentableId" value="LOCAL−00019" />
-      <updated>1655749110593</updated>
     </task>
     <task id="LOCAL−00020" summary="Prepare game for advanced functions">
       <created>1655751542218</created>
@@ -427,7 +401,25 @@
       <option name="presentableId" value="LOCAL−00065" />
       <updated>1658662120430</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL−00066" summary="Refactor Entity, Player and Object">
+      <created>1658663606019</created>
+      <option name="number" value="LOCAL−00066" />
+      <option name="presentableId" value="LOCAL−00066" />
+      <updated>1658663606019</updated>
+    </task>
+    <task id="LOCAL−00067" summary="Add Shield superclass">
+      <created>1658663619339</created>
+      <option name="number" value="LOCAL−00067" />
+      <option name="presentableId" value="LOCAL−00067" />
+      <updated>1658663619339</updated>
+    </task>
+    <task id="LOCAL−00068" summary="Add Weapon superclass">
+      <created>1658663624005</created>
+      <option name="number" value="LOCAL−00068" />
+      <option name="presentableId" value="LOCAL−00068" />
+      <updated>1658663624005</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,9 +437,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add combat sound effects" />
-    <MESSAGE value="Add hp bar" />
-    <MESSAGE value="Add enemy damage reaction" />
     <MESSAGE value="Add sound effects to damagePit, healingPool and teleport events" />
     <MESSAGE value="Fix player moving forward when attacking" />
     <MESSAGE value="Fix player twitch when attacking" />
@@ -470,7 +459,10 @@
     <MESSAGE value="Refactor UI" />
     <MESSAGE value="Refactor Objects" />
     <MESSAGE value="Refactor Equipment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Equipment" />
+    <MESSAGE value="Refactor Entity, Player and Object" />
+    <MESSAGE value="Add Shield superclass" />
+    <MESSAGE value="Add Weapon superclass" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Weapon superclass" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

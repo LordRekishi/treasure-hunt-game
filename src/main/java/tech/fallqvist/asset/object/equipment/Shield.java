@@ -4,7 +4,6 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.object.Object;
 
 public class Shield extends Object {
-
     private int defenseValue;
 
     public Shield(GamePanel gamePanel) {

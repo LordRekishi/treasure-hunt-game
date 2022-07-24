@@ -185,7 +185,7 @@ public abstract class Entity implements Asset {
             drawInvincible(graphics2D);
             drawDying(graphics2D);
 
-            graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, gamePanel.getTileSize(), gamePanel.getTileSize(), null);
+            graphics2D.drawImage(getDirectionalAnimationImage(), screenX, screenY, null);
 
             resetAlphaTo100(graphics2D);
         }
