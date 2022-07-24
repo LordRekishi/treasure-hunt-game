@@ -112,36 +112,9 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == playState) {
 
             player.update();
-
-            for (Asset npc : npcs) {
-                if (npc != null) {
-                    npc.update();
-                }
-            }
-
-            for (Asset monster : monsters) {
-                if (monster != null) {
-                    if (monster.isAlive() && !monster.isDying()) {
-                        monster.update();
-                    }
-
-                    if (!monster.isAlive()) {
-                        removeMonster(monster.getIndex());
-                    }
-                }
-            }
-
-            for (int i = 0; i < projectiles.size(); i++) {
-                if (projectiles.get(i) != null) {
-                    if (projectiles.get(i).isAlive()) {
-                        projectiles.get(i).update();
-                    }
-
-                    if (!projectiles.get(i).isAlive()) {
-                        projectiles.remove(projectiles.get(i));
-                    }
-                }
-            }
+            updateNPCs();
+            updateMonsters();
+            updateProjectiles();
         }
 
         if (gameState == pauseState) {
@@ -149,8 +122,44 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    private void updateNPCs() {
+        for (Asset npc : npcs) {
+            if (npc != null) {
+                npc.update();
+            }
+        }
+    }
+
+    private void updateMonsters() {
+        for (Asset monster : monsters) {
+            if (monster != null) {
+                if (monster.isAlive() && !monster.isDying()) {
+                    monster.update();
+                }
+
+                if (!monster.isAlive()) {
+                    removeMonster(monster.getIndex());
+                }
+            }
+        }
+    }
+
     private void removeMonster(int index) {
         monsters[index] = null;
+    }
+
+    private void updateProjectiles() {
+        for (int i = 0; i < projectiles.size(); i++) {
+            if (projectiles.get(i) != null) {
+                if (projectiles.get(i).isAlive()) {
+                    projectiles.get(i).update();
+                }
+
+                if (!projectiles.get(i).isAlive()) {
+                    projectiles.remove(projectiles.get(i));
+                }
+            }
+        }
     }
 
     public void paintComponent(Graphics graphics) {
@@ -182,24 +191,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         // DEBUG
         if (keyHandler.isShowDebugText()) {
-            long drawEnd = System.nanoTime();
-            long passedTime = drawEnd - drawStart;
-            int x = 10;
-            int y = 400;
-            int lineHeight = 20;
-
-            graphics2D.setFont(new Font("Arial", Font.PLAIN, 20));
-            graphics2D.setColor(Color.WHITE);
-
-            graphics2D.drawString("WorldX: " + player.getWorldX(), x, y);
-            y += lineHeight;
-            graphics2D.drawString("WorldY: " + player.getWorldY(), x, y);
-            y += lineHeight;
-            graphics2D.drawString("Col: " + (player.getWorldX() + player.getCollisionArea().x) / tileSize, x, y);
-            y += lineHeight;
-            graphics2D.drawString("Row: " + (player.getWorldY() + player.getCollisionArea().y) / tileSize, x, y);
-            y += lineHeight;
-            graphics2D.drawString("Draw Time: " + passedTime, x, y);
+            drawDebugInfo(graphics2D, drawStart);
         }
 
         // CLOSE
@@ -244,6 +236,27 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    private void drawDebugInfo(Graphics2D graphics2D, long drawStart) {
+        long drawEnd = System.nanoTime();
+        long passedTime = drawEnd - drawStart;
+        int x = 10;
+        int y = 400;
+        int lineHeight = 20;
+
+        graphics2D.setFont(new Font("Arial", Font.PLAIN, 20));
+        graphics2D.setColor(Color.WHITE);
+
+        graphics2D.drawString("WorldX: " + player.getWorldX(), x, y);
+        y += lineHeight;
+        graphics2D.drawString("WorldY: " + player.getWorldY(), x, y);
+        y += lineHeight;
+        graphics2D.drawString("Col: " + (player.getWorldX() + player.getCollisionArea().x) / tileSize, x, y);
+        y += lineHeight;
+        graphics2D.drawString("Row: " + (player.getWorldY() + player.getCollisionArea().y) / tileSize, x, y);
+        y += lineHeight;
+        graphics2D.drawString("Draw Time: " + passedTime, x, y);
+    }
+
     public void playMusic(int index) {
         music.setFile(index);
         music.play();
@@ -258,6 +271,7 @@ public class GamePanel extends JPanel implements Runnable {
         soundEffect.setFile(index);
         soundEffect.play();
     }
+
 
     public int getTileSize() {
         return tileSize;
