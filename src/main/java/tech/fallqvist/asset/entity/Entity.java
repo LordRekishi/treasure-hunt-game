@@ -46,7 +46,6 @@ public abstract class Entity implements Asset {
     private Projectile projectile;
     private int useCost;
 
-
     // ANIMATION
     private BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     private BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
@@ -69,12 +68,7 @@ public abstract class Entity implements Asset {
     private int hpBarCounter;
     private int projectileAvailableCounter;
 
-    // DIALOGUE
-    private String[] dialogues = new String[20];
-    private int dialogueIndex;
-
     // ENTITY STATUS
-
     private boolean alive = true;
     private boolean dying = false;
     private int dyingCounter;
@@ -111,20 +105,8 @@ public abstract class Entity implements Asset {
         }
     }
 
+    @Override
     public void speak() {
-        if (dialogues[dialogueIndex] == null) {
-            setDialogueIndex(0);
-        }
-
-        gamePanel.getUi().setCurrentDialogue(getDialogues()[dialogueIndex]);
-        dialogueIndex++;
-
-        switch (gamePanel.getPlayer().getDirection()) {
-            case "up" -> setDirection("down");
-            case "down" -> setDirection("up");
-            case "left" -> setDirection("right");
-            case "right" -> setDirection("left");
-        }
     }
 
     @Override
@@ -294,10 +276,6 @@ public abstract class Entity implements Asset {
         }
     }
 
-    private void resetAlphaTo100(Graphics2D graphics2D) {
-        UtilityTool.changeAlpha(graphics2D, 1);
-    }
-
     public BufferedImage getDirectionalAnimationImage() {
         BufferedImage image = null;
 
@@ -361,6 +339,17 @@ public abstract class Entity implements Asset {
         return image;
     }
 
+    public void checkIfInvincible() {
+        if (isInvincible()) {
+            setInvincibleCounter(getInvincibleCounter() + 1);
+
+            if (getInvincibleCounter() > ((this instanceof Player) ? 60 : 40)) {
+                setInvincible(false);
+                setInvincibleCounter(0);
+            }
+        }
+    }
+
     public BufferedImage setup(String imagePath, int width, int height) {
         BufferedImage image = null;
 
@@ -374,16 +363,10 @@ public abstract class Entity implements Asset {
         return UtilityTool.scaleImage(image, width, height);
     }
 
-    public void checkIfInvincible() {
-        if (isInvincible()) {
-            setInvincibleCounter(getInvincibleCounter() + 1);
-
-            if (getInvincibleCounter() > ((this instanceof Player) ? 60 : 40)) {
-                setInvincible(false);
-                setInvincibleCounter(0);
-            }
-        }
+    private void resetAlphaTo100(Graphics2D graphics2D) {
+        UtilityTool.changeAlpha(graphics2D, 1);
     }
+
 
     public GamePanel getGamePanel() {
         return gamePanel;
@@ -664,24 +647,6 @@ public abstract class Entity implements Asset {
         this.index = index;
     }
 
-    public String[] getDialogues() {
-        return dialogues;
-    }
-
-    public Entity setDialogues(String[] dialogues) {
-        this.dialogues = dialogues;
-        return this;
-    }
-
-    public int getDialogueIndex() {
-        return dialogueIndex;
-    }
-
-    public Entity setDialogueIndex(int dialogueIndex) {
-        this.dialogueIndex = dialogueIndex;
-        return this;
-    }
-
     public int getMaxLife() {
         return maxLife;
     }
@@ -913,6 +878,8 @@ public abstract class Entity implements Asset {
         return this;
     }
 
+
+    // NOT USED
     @Override
     public BufferedImage getImage1() {
         return null;

@@ -45,6 +45,7 @@ public class Object implements Asset {
         // Not used
     }
 
+
     public int getIndex() {
         return index;
     }
@@ -91,16 +92,6 @@ public class Object implements Asset {
 
     public String getDescription() {
         return description;
-    }
-
-    @Override
-    public Rectangle getAttackArea() {
-        return null;
-    }
-
-    @Override
-    public void setAttackArea(Rectangle attackArea) {
-
     }
 
     public Object setDescription(String description) {
@@ -153,6 +144,17 @@ public class Object implements Asset {
     public Object setCollisionDefaultY(int collisionDefaultY) {
         this.collisionDefaultY = collisionDefaultY;
         return this;
+    }
+
+
+    // NOT USED
+    @Override
+    public Rectangle getAttackArea() {
+        return null;
+    }
+
+    @Override
+    public void setAttackArea(Rectangle attackArea) {
     }
 
     @Override

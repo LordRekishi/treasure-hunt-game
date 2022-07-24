@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Test">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor Equipment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Shield_Blue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Shield_Blue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Shield_Wood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Shield_Wood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Sword_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/OBJ_Sword_Normal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" afterDir="false" />
     </list>
     <list id="a5316cfb-d843-49b0-969e-d232f0cec141" name="Add Shield superclass" comment="Add Shield superclass">
       <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/equipment/Shield.java" afterDir="false" />
@@ -134,12 +132,6 @@
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
       <workItem from="1658655037483" duration="3765000" />
-    </task>
-    <task id="LOCAL−00016" summary="Add Sound effects">
-      <created>1655066642950</created>
-      <option name="number" value="LOCAL−00016" />
-      <option name="presentableId" value="LOCAL−00016" />
-      <updated>1655066642950</updated>
     </task>
     <task id="LOCAL−00017" summary="Add Finish game mechanic">
       <created>1655069797816</created>
@@ -429,7 +421,13 @@
       <option name="presentableId" value="LOCAL−00064" />
       <updated>1658658755099</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL−00065" summary="Refactor Equipment">
+      <created>1658662120430</created>
+      <option name="number" value="LOCAL−00065" />
+      <option name="presentableId" value="LOCAL−00065" />
+      <updated>1658662120430</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add enemy death animation" />
     <MESSAGE value="Add combat sound effects" />
     <MESSAGE value="Add hp bar" />
     <MESSAGE value="Add enemy damage reaction" />
@@ -472,7 +469,8 @@
     <MESSAGE value="Refactor KeyHandler" />
     <MESSAGE value="Refactor UI" />
     <MESSAGE value="Refactor Objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Objects" />
+    <MESSAGE value="Refactor Equipment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Equipment" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

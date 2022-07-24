@@ -155,30 +155,8 @@ public class Player extends Entity {
             resetSpriteToDefault();
         }
 
-        if (getGamePanel().getKeyHandler().isProjectileKeyPressed()
-                && !getProjectile().isAlive()
-                && getProjectileAvailableCounter() == 30
-                && getProjectile().haveEnoughResource(this)) {
-
-            // Set default coordinates, direction and user
-            getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
-
-            // Subtract use cost
-            getProjectile().subtractResource(this);
-
-            // Add it to the projectiles list
-            getGamePanel().getProjectiles().add(getProjectile());
-
-            setProjectileAvailableCounter(0);
-
-            getGamePanel().playSoundEffect(10);
-        }
-
+        fireProjectileIfKeyPressed();
         checkIfInvincible();
-
-        if (getProjectileAvailableCounter() < 30) {
-            setProjectileAvailableCounter(getProjectileAvailableCounter() + 1);
-        }
     }
 
     private void attacking() {
@@ -365,6 +343,31 @@ public class Player extends Entity {
         }
     }
 
+    private void fireProjectileIfKeyPressed() {
+        if (getGamePanel().getKeyHandler().isProjectileKeyPressed()
+                && !getProjectile().isAlive()
+                && getProjectileAvailableCounter() == 30
+                && getProjectile().haveEnoughResource(this)) {
+
+            // Set default coordinates, direction and user
+            getProjectile().set(getWorldX(), getWorldY(), getDirection(), true, this);
+
+            // Subtract use cost
+            getProjectile().subtractResource(this);
+
+            // Add it to the projectiles list
+            getGamePanel().getProjectiles().add(getProjectile());
+
+            setProjectileAvailableCounter(0);
+
+            getGamePanel().playSoundEffect(10);
+        }
+
+        if (getProjectileAvailableCounter() < 30) {
+            setProjectileAvailableCounter(getProjectileAvailableCounter() + 1);
+        }
+    }
+
     public void selectItem() {
         int itemIndex = getGamePanel().getUi().getItemIndexFromSlot();
 
@@ -439,10 +442,6 @@ public class Player extends Entity {
         return screenY;
     }
 
-    @Override
-    public void damageReaction() {
-        // Not used yet
-    }
 
     public int getScreenX() {
         return screenX;
@@ -453,23 +452,8 @@ public class Player extends Entity {
     }
 
     @Override
-    public boolean isCollision() {
-        return false;
-    }
-
-    @Override
     public BufferedImage getImage1() {
         return getDown1();
-    }
-
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    @Override
-    public void use(Asset asset) {
-
     }
 
     public List<Asset> getInventory() {
@@ -479,5 +463,27 @@ public class Player extends Entity {
     public Player setInventory(List<Asset> inventory) {
         this.inventory = inventory;
         return this;
+    }
+
+
+    // NOT USED
+    @Override
+    public void damageReaction() {
+        // Not used yet
+    }
+
+    @Override
+    public boolean isCollision() {
+        return false;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public void use(Asset asset) {
+        // Not used
     }
 }

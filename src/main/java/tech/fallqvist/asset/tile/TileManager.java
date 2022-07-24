@@ -164,7 +164,6 @@ public class TileManager {
             return worldX;
         }
 
-
         if (rightOffset > gamePanel.getWorldWidth() - gamePanel.getPlayer().getWorldX()) {
             return gamePanel.getScreenWidth() - (gamePanel.getWorldWidth() - worldX);
         }
@@ -176,7 +175,6 @@ public class TileManager {
         if (gamePanel.getPlayer().getScreenY() > gamePanel.getPlayer().getWorldY()) {
             return worldY;
         }
-
 
         if (bottomOffset > gamePanel.getWorldHeight() - gamePanel.getPlayer().getWorldY()) {
             return gamePanel.getScreenHeight() - (gamePanel.getWorldHeight() - worldY);
