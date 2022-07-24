@@ -199,7 +199,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_ENTER) {
-            gamePanel.getPlayer().equipItem();
+            gamePanel.getPlayer().selectItem();
         }
 
         checkCharacterScreenMovementKeys(code);

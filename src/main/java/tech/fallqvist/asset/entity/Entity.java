@@ -5,7 +5,8 @@ import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.ability.Projectile;
 import tech.fallqvist.asset.entity.monster.Monster;
 import tech.fallqvist.asset.entity.player.Player;
-import tech.fallqvist.asset.object.Object;
+import tech.fallqvist.asset.object.equipment.Shield;
+import tech.fallqvist.asset.object.equipment.Weapon;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -40,8 +41,8 @@ public abstract class Entity implements Asset {
 
     // OBJECTS & ABILITIES
     private int coins;
-    private Object currentWeapon;
-    private Object currentShield;
+    private Weapon currentWeapon;
+    private Shield currentShield;
     private Projectile projectile;
     private int useCost;
 
@@ -831,20 +832,20 @@ public abstract class Entity implements Asset {
         return this;
     }
 
-    public Object getCurrentWeapon() {
+    public Weapon getCurrentWeapon() {
         return currentWeapon;
     }
 
-    public Entity setCurrentWeapon(Object currentWeapon) {
+    public Entity setCurrentWeapon(Weapon currentWeapon) {
         this.currentWeapon = currentWeapon;
         return this;
     }
 
-    public Object getCurrentShield() {
+    public Shield getCurrentShield() {
         return currentShield;
     }
 
-    public Entity setCurrentShield(Object currentShield) {
+    public Entity setCurrentShield(Shield currentShield) {
         this.currentShield = currentShield;
         return this;
     }

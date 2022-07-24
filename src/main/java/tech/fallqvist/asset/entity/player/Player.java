@@ -3,12 +3,8 @@ package tech.fallqvist.asset.entity.player;
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
-import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.asset.object.ability.OBJ_Fireball;
-import tech.fallqvist.asset.object.equipment.OBJ_Axe;
-import tech.fallqvist.asset.object.equipment.OBJ_Shield_Blue;
-import tech.fallqvist.asset.object.equipment.OBJ_Shield_Wood;
-import tech.fallqvist.asset.object.equipment.OBJ_Sword_Normal;
+import tech.fallqvist.asset.object.equipment.*;
 import tech.fallqvist.asset.object.usable.OBJ_Key;
 import tech.fallqvist.asset.object.usable.OBJ_Potion_Red;
 import tech.fallqvist.util.KeyHandler;
@@ -369,21 +365,21 @@ public class Player extends Entity {
         }
     }
 
-    public void equipItem() {
+    public void selectItem() {
         int itemIndex = getGamePanel().getUi().getItemIndexFromSlot();
 
         if (itemIndex < inventory.size()) {
             Asset selectedItem = inventory.get(itemIndex);
 
-            if (selectedItem instanceof OBJ_Sword_Normal || selectedItem instanceof OBJ_Axe) {
-                setCurrentWeapon((Object) selectedItem);
+            if (selectedItem instanceof Weapon) {
+                setCurrentWeapon((Weapon) selectedItem);
                 setAttackPower(getAttack());
                 setPlayerAttackArea();
                 getAttackImages();
             }
 
-            if (selectedItem instanceof OBJ_Shield_Wood || selectedItem instanceof OBJ_Shield_Blue) {
-                setCurrentShield((Object) selectedItem);
+            if (selectedItem instanceof Shield) {
+                setCurrentShield((Shield) selectedItem);
                 setDefensePower(getDefense());
             }
 

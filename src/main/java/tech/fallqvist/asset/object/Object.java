@@ -16,9 +16,6 @@ public class Object implements Asset {
     private String name;
     private String description;
     private int worldX, worldY;
-    private Rectangle attackArea = new Rectangle(0, 0, 0, 0);
-    private int attackValue;
-    private int defenseValue;
 
     // IMAGES
     private BufferedImage image1, image2, image3;
@@ -98,12 +95,12 @@ public class Object implements Asset {
 
     @Override
     public Rectangle getAttackArea() {
-        return attackArea;
+        return null;
     }
 
     @Override
     public void setAttackArea(Rectangle attackArea) {
-        this.attackArea = attackArea;
+
     }
 
     public Object setDescription(String description) {
@@ -155,24 +152,6 @@ public class Object implements Asset {
 
     public Object setCollisionDefaultY(int collisionDefaultY) {
         this.collisionDefaultY = collisionDefaultY;
-        return this;
-    }
-
-    public int getAttackValue() {
-        return attackValue;
-    }
-
-    public Object setAttackValue(int attackValue) {
-        this.attackValue = attackValue;
-        return this;
-    }
-
-    public int getDefenseValue() {
-        return defenseValue;
-    }
-
-    public Object setDefenseValue(int defenseValue) {
-        this.defenseValue = defenseValue;
         return this;
     }
 

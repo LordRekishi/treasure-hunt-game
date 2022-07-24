@@ -1,7 +1,6 @@
 package tech.fallqvist.asset.object.equipment;
 
 import tech.fallqvist.GamePanel;
-import tech.fallqvist.asset.object.Object;
 import tech.fallqvist.util.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class OBJ_Axe extends Object {
+public class OBJ_Axe extends Weapon {
 
     public OBJ_Axe(GamePanel gamePanel) {
         super(gamePanel);
