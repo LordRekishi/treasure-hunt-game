@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add monster item drop">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_DryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_Trunk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/InteractiveTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/interactive/drytree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tiles/interactive/trunk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactable/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactive/OBJ_Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactable/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/interactive/OBJ_Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV2.txt" afterDir="false" />
-    </list>
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Interactive Tiles" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,12 +122,6 @@
       <workItem from="1658600013643" duration="1207000" />
       <workItem from="1658602176603" duration="8204000" />
       <workItem from="1658655037483" duration="3765000" />
-    </task>
-    <task id="LOCAL−00023" summary="Add NPC_OldMan dialogue">
-      <created>1655924820310</created>
-      <option name="number" value="LOCAL−00023" />
-      <option name="presentableId" value="LOCAL−00023" />
-      <updated>1655924820310</updated>
     </task>
     <task id="LOCAL−00024" summary="Add custom fonts">
       <created>1655925880456</created>
@@ -434,7 +411,13 @@
       <option name="presentableId" value="LOCAL−00071" />
       <updated>1658685009116</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL−00072" summary="Add Interactive Tiles">
+      <created>1658692201027</created>
+      <option name="number" value="LOCAL−00072" />
+      <option name="presentableId" value="LOCAL−00072" />
+      <updated>1658692201027</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Player stats" />
     <MESSAGE value="Add Character window when pressing C, with Player stats and equipment" />
     <MESSAGE value="Add Attack and Defense power based damage" />
     <MESSAGE value="Add Battle messages" />
@@ -477,7 +459,8 @@
     <MESSAGE value="Refactor Entity draw method" />
     <MESSAGE value="Add PickUpOnlyObject in preparation for monster item drops" />
     <MESSAGE value="Add monster item drop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add monster item drop" />
+    <MESSAGE value="Add Interactive Tiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Interactive Tiles" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
