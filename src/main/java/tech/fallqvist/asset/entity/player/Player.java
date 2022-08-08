@@ -249,6 +249,8 @@ public class Player extends Entity {
             getGamePanel().getInteractiveTiles()[index].setCurrentLife(getGamePanel().getInteractiveTiles()[index].getCurrentLife() - 1);
             getGamePanel().getInteractiveTiles()[index].setInvincible(true);
 
+            generateParticle(getGamePanel().getInteractiveTiles()[index], getGamePanel().getInteractiveTiles()[index]);
+
             if (getGamePanel().getInteractiveTiles()[index].getCurrentLife() == 0) {
                 getGamePanel().getInteractiveTiles()[index] = getGamePanel().getInteractiveTiles()[index].getDestroyedForm();
             }

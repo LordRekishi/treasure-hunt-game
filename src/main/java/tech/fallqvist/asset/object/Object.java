@@ -284,4 +284,24 @@ public class Object implements Asset {
     @Override
     public void dropObject(Asset droppedObject) {
     }
+
+    @Override
+    public Color getParticleColor() {
+        return null;
+    }
+
+    @Override
+    public int getParticleSize() {
+        return 0;
+    }
+
+    @Override
+    public int getParticleSpeed() {
+        return 0;
+    }
+
+    @Override
+    public int getParticleMaxLife() {
+        return 0;
+    }
 }

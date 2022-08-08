@@ -87,4 +87,12 @@ public interface Asset {
     void checkDrop();
 
     void dropObject(Asset droppedObject);
+
+    Color getParticleColor();
+
+    int getParticleSize();
+
+    int getParticleSpeed();
+
+    int getParticleMaxLife();
 }

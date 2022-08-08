@@ -4,6 +4,8 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.object.equipment.OBJ_Axe;
 import tech.fallqvist.asset.object.equipment.Weapon;
 
+import java.awt.*;
+
 public class IT_DryTree extends InteractiveTile {
 
     private final GamePanel gamePanel;
@@ -37,5 +39,25 @@ public class IT_DryTree extends InteractiveTile {
         tile.setWorldY(getWorldY());
         tile.setIndex(getIndex());
         return tile;
+    }
+
+    @Override
+    public Color getParticleColor() {
+        return new Color(65, 50, 30);
+    }
+
+    @Override
+    public int getParticleSize() {
+        return 6; // 6 pixels
+    }
+
+    @Override
+    public int getParticleSpeed() {
+        return 1;
+    }
+
+    @Override
+    public int getParticleMaxLife() {
+        return 20; // How long it will last
     }
 }

@@ -4,6 +4,7 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.ability.Projectile;
 import tech.fallqvist.asset.entity.monster.Monster;
+import tech.fallqvist.asset.entity.particle.Particle;
 import tech.fallqvist.asset.entity.player.Player;
 import tech.fallqvist.asset.object.equipment.Shield;
 import tech.fallqvist.asset.object.equipment.Weapon;
@@ -219,7 +220,10 @@ public abstract class Entity implements Asset {
         if (isInvincible()) {
             setHpBarOn(true);
             setHpBarCounter(0);
-            UtilityTool.changeAlpha(graphics2D, 0.4F);
+
+            if (!(this instanceof InteractiveTile)) {
+                UtilityTool.changeAlpha(graphics2D, 0.4F);
+            }
         }
     }
 
@@ -369,7 +373,6 @@ public abstract class Entity implements Asset {
 
     @Override
     public void dropObject(Asset droppedObject) {
-
         for (int i = 0; i < gamePanel.getObjects().length; i++) {
             if (gamePanel.getObjects()[i] == null) {
                 gamePanel.getObjects()[i] = droppedObject;
@@ -379,6 +382,22 @@ public abstract class Entity implements Asset {
                 break;
             }
         }
+    }
+
+    public void generateParticle(Entity generator, Entity target) {
+        Color color = generator.getParticleColor();
+        int size = generator.getParticleSize();
+        int speed = generator.getParticleSpeed();
+        int maxLife = generator.getParticleMaxLife();
+
+        Particle p1 = new Particle(gamePanel, generator, color, size, speed, maxLife, -2, -1);
+        Particle p2 = new Particle(gamePanel, generator, color, size, speed, maxLife, 2, -1);
+        Particle p3 = new Particle(gamePanel, generator, color, size, speed, maxLife, -2, 1);
+        Particle p4 = new Particle(gamePanel, generator, color, size, speed, maxLife, 2, 1);
+        gamePanel.getParticles().add(p1);
+        gamePanel.getParticles().add(p2);
+        gamePanel.getParticles().add(p3);
+        gamePanel.getParticles().add(p4);
     }
 
 
@@ -920,5 +939,25 @@ public abstract class Entity implements Asset {
 
     @Override
     public void checkDrop() {
+    }
+
+    @Override
+    public Color getParticleColor() {
+        return null;
+    }
+
+    @Override
+    public int getParticleSize() {
+        return 0;
+    }
+
+    @Override
+    public int getParticleSpeed() {
+        return 0;
+    }
+
+    @Override
+    public int getParticleMaxLife() {
+        return 0;
     }
 }

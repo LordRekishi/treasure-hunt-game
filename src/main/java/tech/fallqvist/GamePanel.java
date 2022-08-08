@@ -68,6 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final List<Asset> assets = new ArrayList<>();
     private final List<Asset> projectiles = new ArrayList<>();
     private final InteractiveTile[] interactiveTiles = new InteractiveTile[50];
+    private final List<Asset> particles = new ArrayList<>();
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -118,6 +119,7 @@ public class GamePanel extends JPanel implements Runnable {
             updateNPCs();
             updateMonsters();
             updateProjectiles();
+            updateParticles();
             updateInteractiveTiles();
         }
 
@@ -162,6 +164,20 @@ public class GamePanel extends JPanel implements Runnable {
 
                 if (!projectiles.get(i).isAlive()) {
                     projectiles.remove(projectiles.get(i));
+                }
+            }
+        }
+    }
+
+    private void updateParticles() {
+        for (int i = 0; i < particles.size(); i++) {
+            if (particles.get(i) != null) {
+                if (particles.get(i).isAlive()) {
+                    particles.get(i).update();
+                }
+
+                if (!particles.get(i).isAlive()) {
+                    particles.remove(particles.get(i));
                 }
             }
         }
@@ -244,6 +260,12 @@ public class GamePanel extends JPanel implements Runnable {
         for (Asset projectile : projectiles) {
             if (projectile != null) {
                 assets.add(projectile);
+            }
+        }
+
+        for (Asset particle : particles) {
+            if (particle != null) {
+                assets.add(particle);
             }
         }
     }
@@ -419,5 +441,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public InteractiveTile[] getInteractiveTiles() {
         return interactiveTiles;
+    }
+
+    public List<Asset> getParticles() {
+        return particles;
     }
 }
