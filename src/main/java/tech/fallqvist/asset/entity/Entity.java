@@ -384,16 +384,16 @@ public abstract class Entity implements Asset {
         }
     }
 
-    public void generateParticle(Entity generator, Entity target) {
+    public void generateParticle(Entity generator, Asset target) {
         Color color = generator.getParticleColor();
         int size = generator.getParticleSize();
         int speed = generator.getParticleSpeed();
         int maxLife = generator.getParticleMaxLife();
 
-        Particle p1 = new Particle(gamePanel, generator, color, size, speed, maxLife, -2, -1);
-        Particle p2 = new Particle(gamePanel, generator, color, size, speed, maxLife, 2, -1);
-        Particle p3 = new Particle(gamePanel, generator, color, size, speed, maxLife, -2, 1);
-        Particle p4 = new Particle(gamePanel, generator, color, size, speed, maxLife, 2, 1);
+        Particle p1 = new Particle(gamePanel, target, color, size, speed, maxLife, -2, -1);
+        Particle p2 = new Particle(gamePanel, target, color, size, speed, maxLife, 2, -1);
+        Particle p3 = new Particle(gamePanel, target, color, size, speed, maxLife, -2, 1);
+        Particle p4 = new Particle(gamePanel, target, color, size, speed, maxLife, 2, 1);
         gamePanel.getParticles().add(p1);
         gamePanel.getParticles().add(p2);
         gamePanel.getParticles().add(p3);

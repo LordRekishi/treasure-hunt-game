@@ -28,6 +28,7 @@ public abstract class Projectile extends Entity {
             int monsterIndex = getGamePanel().getCollisionChecker().checkEntity(this, getGamePanel().getMonsters());
             if (monsterIndex != 999) {
                 getGamePanel().getPlayer().damageMonster(monsterIndex, getAttackPower());
+                generateParticle(user.getProjectile(), getGamePanel().getMonsters()[monsterIndex]);
                 setAlive(false);
             }
 
@@ -36,6 +37,7 @@ public abstract class Projectile extends Entity {
             boolean contactPlayer = getGamePanel().getCollisionChecker().checkPlayer(this);
             if (!getGamePanel().getPlayer().isInvincible() && contactPlayer) {
                 damagePlayer(getAttackPower());
+                generateParticle(user.getProjectile(), getGamePanel().getPlayer());
                 setAlive(false);
             }
         }

@@ -1,18 +1,19 @@
 package tech.fallqvist.asset.entity.particle;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 import tech.fallqvist.asset.entity.Entity;
 
 import java.awt.*;
 
 public class Particle extends Entity {
 
-    private Entity generator;
+    private Asset generator;
     private Color color;
     private int size;
     private int xd, yd;
 
-    public Particle(GamePanel gamePanel, Entity generator, Color color, int size, int speed, int maxLife, int xd, int yd) {
+    public Particle(GamePanel gamePanel, Asset generator, Color color, int size, int speed, int maxLife, int xd, int yd) {
         super(gamePanel);
 
         this.generator = generator;

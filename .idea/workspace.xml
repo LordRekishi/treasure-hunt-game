@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Remove debug sout">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/particle/Particle.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Particles when hitting InteractiveTile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/Asset.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_DryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/interactive/IT_DryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/particle/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/particle/Particle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Fireball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Fireball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Rock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,13 +131,7 @@
       <workItem from="1658655037483" duration="3765000" />
       <workItem from="1659303527234" duration="51000" />
       <workItem from="1659977040122" duration="735000" />
-      <workItem from="1659978094315" duration="4571000" />
-    </task>
-    <task id="LOCAL−00025" summary="Add Title screen">
-      <created>1656261461591</created>
-      <option name="number" value="LOCAL−00025" />
-      <option name="presentableId" value="LOCAL−00025" />
-      <updated>1656261461591</updated>
+      <workItem from="1659978094315" duration="5614000" />
     </task>
     <task id="LOCAL−00026" summary="Refactor KeyHandler">
       <created>1656261828466</created>
@@ -429,7 +421,13 @@
       <option name="presentableId" value="LOCAL−00073" />
       <updated>1659303568973</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL−00074" summary="Add Particles when hitting InteractiveTile">
+      <created>1659982941056</created>
+      <option name="number" value="LOCAL−00074" />
+      <option name="presentableId" value="LOCAL−00074" />
+      <updated>1659982941056</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Attack and Defense power based damage" />
     <MESSAGE value="Add Battle messages" />
     <MESSAGE value="Add Basic level system and monster respawn when resting" />
     <MESSAGE value="Add debug for x, y, column and row of the player" />
@@ -472,7 +469,8 @@
     <MESSAGE value="Add monster item drop" />
     <MESSAGE value="Add Interactive Tiles" />
     <MESSAGE value="Remove debug sout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove debug sout" />
+    <MESSAGE value="Add Particles when hitting InteractiveTile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Particles when hitting InteractiveTile" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

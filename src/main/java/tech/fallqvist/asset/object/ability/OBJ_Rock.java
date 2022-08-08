@@ -4,6 +4,8 @@ import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.entity.ability.Projectile;
 
+import java.awt.*;
+
 public class OBJ_Rock extends Projectile {
 
     public OBJ_Rock(GamePanel gamePanel) {
@@ -39,5 +41,25 @@ public class OBJ_Rock extends Projectile {
     @Override
     public void subtractResource(Entity user) {
         user.setCurrentAmmo(user.getCurrentAmmo() - getUseCost());
+    }
+
+    @Override
+    public Color getParticleColor() {
+        return new Color(40, 50, 0);
+    }
+
+    @Override
+    public int getParticleSize() {
+        return 10; // pixels
+    }
+
+    @Override
+    public int getParticleSpeed() {
+        return 1;
+    }
+
+    @Override
+    public int getParticleMaxLife() {
+        return 20; // How long it will last
     }
 }
