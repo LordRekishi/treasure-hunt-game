@@ -31,22 +31,14 @@ public class Player extends Entity {
         this.screenX = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() / 2);
         this.screenY = gamePanel.getScreenHeight() / 2 - (gamePanel.getTileSize() / 2);
 
-        setDefaultValues();
         setItems();
+        setDefaultValues();
         setCollision();
-        setPlayerAttackArea();
         getAnimationImages();
-        getAttackImages();
     }
 
     public void setDefaultValues() {
-        setWorldX(getGamePanel().getTileSize() * 23);
-        setWorldY(getGamePanel().getTileSize() * 21);
-
-        setDirection("down");
-        setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
-        setCurrentShield(new OBJ_Shield_Wood(getGamePanel()));
-        setProjectile(new OBJ_Fireball(getGamePanel()));
+        setDefaultPosition();
 
         setSpeed(4);
         setMaxLife(6);
@@ -66,18 +58,40 @@ public class Player extends Entity {
 
     }
 
+    public void setItems() {
+        inventory.clear();
+        setDefaultWeapon();
+        setCurrentShield(new OBJ_Shield_Wood(getGamePanel()));
+        setProjectile(new OBJ_Fireball(getGamePanel()));
+        inventory.add(getCurrentWeapon());
+        inventory.add(getCurrentShield());
+        inventory.add(new OBJ_Key(getGamePanel()));
+    }
+
+    private void setDefaultWeapon() {
+        setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
+        setPlayerAttackArea();
+        getAttackImages();
+    }
+
+    public void setDefaultPosition() {
+        setWorldX(getGamePanel().getTileSize() * 23);
+        setWorldY(getGamePanel().getTileSize() * 21);
+        setDirection("down");
+    }
+
+    public void restoreLifeAndMana() {
+        setCurrentLife(getMaxLife());
+        setCurrentMana(getMaxMana());
+        setInvincible(false);
+    }
+
     public int getAttack() {
         return getStrength() * getCurrentWeapon().getAttackValue();
     }
 
     public int getDefense() {
         return getDexterity() * getCurrentShield().getDefenseValue();
-    }
-
-    public void setItems() {
-        inventory.add(getCurrentWeapon());
-        inventory.add(getCurrentShield());
-        inventory.add(new OBJ_Key(getGamePanel()));
     }
 
     private void setCollision() {
@@ -159,6 +173,7 @@ public class Player extends Entity {
         fireProjectileIfKeyPressed();
         checkIfInvincible();
         updateLifeAndMana();
+        checkIfAlive();
     }
 
     private void attacking() {
@@ -422,6 +437,14 @@ public class Player extends Entity {
 
         if (getCurrentMana() < 0) {
             setCurrentMana(0);
+        }
+    }
+
+    private void checkIfAlive() {
+        if (getCurrentLife() <= 0) {
+            getGamePanel().playSoundEffect(11);
+            getGamePanel().setGameState(getGamePanel().getGameOverState());
+            setInvincible(false);
         }
     }
 

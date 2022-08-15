@@ -90,6 +90,10 @@ public class UI {
         if (gamePanel.getGameState() == gamePanel.getOptionState()) {
             drawOptionScreen();
         }
+
+        if (gamePanel.getGameState() == gamePanel.getGameOverState()) {
+            drawGameOverScreen();
+        }
     }
 
     private void setupDefaultGraphics(Graphics2D graphics2D) {
@@ -189,6 +193,7 @@ public class UI {
                 gamePanel.setGameState(gamePanel.getPlayState());
                 gamePanel.playMusic(0);
                 commandNumber = 0;
+                titleScreenState = 0;
             }
         }
 
@@ -202,6 +207,7 @@ public class UI {
                 gamePanel.setGameState(gamePanel.getPlayState());
                 gamePanel.playMusic(0);
                 commandNumber = 0;
+                titleScreenState = 0;
             }
         }
 
@@ -215,6 +221,7 @@ public class UI {
                 gamePanel.setGameState(gamePanel.getPlayState());
                 gamePanel.playMusic(0);
                 commandNumber = 0;
+                titleScreenState = 0;
             }
         }
 
@@ -743,6 +750,58 @@ public class UI {
                 commandNumber = 4;
             }
         }
+    }
+
+    private void drawGameOverScreen() {
+        graphics2D.setColor(new Color(0, 0, 0, 150));
+        graphics2D.fillRect(0, 0, gamePanel.getScreenWidth(), gamePanel.getScreenHeight());
+
+        int textX;
+        int textY;
+        String text;
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 110f));
+
+        // TITLE TEXT
+        text = "Game Over";
+
+        // Shadow
+        graphics2D.setColor(Color.black);
+        textX = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        textY = gamePanel.getTileSize() * 4;
+        graphics2D.drawString(text, textX, textY);
+
+        // Text
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.drawString(text, textX - 4, textY - 4);
+
+        // RETRY
+        graphics2D.setFont(graphics2D.getFont().deriveFont(50f));
+        text = "Retry";
+        textX = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        textY += gamePanel.getTileSize() * 4;
+        graphics2D.drawString(text, textX, textY);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", textX - 40, textY);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                commandNumber = 0;
+                gamePanel.retry();
+            }
+        }
+
+        // BACK TO TITLE
+        text = "Quit";
+        textX = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        textY += 55;
+        graphics2D.drawString(text, textX, textY);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", textX - 40, textY);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                commandNumber = 0;
+                gamePanel.restart();
+            }
+        }
+
+        gamePanel.getKeyHandler().setEnterPressed(false);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {

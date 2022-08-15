@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     private BufferedImage tempScreen;
     private Graphics2D graphics2D;
     private final Config config = new Config(this);
+    private final int gameOverState = 6;
 
     private final int FPS = 60;
 
@@ -67,8 +68,8 @@ public class GamePanel extends JPanel implements Runnable {
     private final int pauseState = 2;
     private final int dialogueState = 3;
     private final int characterState = 4;
-    private boolean fullScreenOn;
     private final int optionState = 5;
+    private boolean fullScreenOn;
 
     // GAME THREAD
     private Thread gameThread;
@@ -122,6 +123,25 @@ public class GamePanel extends JPanel implements Runnable {
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
+    }
+
+    public void retry() {
+        player.setDefaultPosition();
+        player.restoreLifeAndMana();
+        assetManager.setNPCs();
+        assetManager.setMonsters();
+        gameState = playState;
+    }
+
+    public void restart() {
+        player.setItems();
+        player.setDefaultValues();
+        assetManager.setObjects();
+        assetManager.setNPCs();
+        assetManager.setMonsters();
+        assetManager.setInteractiveTiles();
+        gameState = titleState;
+        stopMusic();
     }
 
     @Override
@@ -483,6 +503,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getOptionState() {
         return optionState;
+    }
+
+    public int getGameOverState() {
+        return gameOverState;
     }
 
     public List<Asset> getProjectiles() {

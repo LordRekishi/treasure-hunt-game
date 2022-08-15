@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Fix title menu bug">
-      <change afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/Config.java" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Config file save/load">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +135,8 @@
       <workItem from="1660487487307" duration="595000" />
       <workItem from="1660567762781" duration="608000" />
       <workItem from="1660568477424" duration="427000" />
-      <workItem from="1660568913558" duration="17254000" />
-    </task>
-    <task id="LOCAL−00030" summary="Add Event to hurt and heal player">
-      <created>1656267275842</created>
-      <option name="number" value="LOCAL−00030" />
-      <option name="presentableId" value="LOCAL−00030" />
-      <updated>1656267275842</updated>
+      <workItem from="1660568913558" duration="18061000" />
+      <workItem from="1660600839822" duration="3093000" />
     </task>
     <task id="LOCAL−00031" summary="Add Teleport event">
       <created>1656267560083</created>
@@ -431,7 +426,13 @@
       <option name="presentableId" value="LOCAL−00078" />
       <updated>1660584786842</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL−00079" summary="Add Config file save/load">
+      <created>1660586382834</created>
+      <option name="number" value="LOCAL−00079" />
+      <option name="presentableId" value="LOCAL−00079" />
+      <updated>1660586382834</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +450,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add inventory screen when pressing &quot;C&quot; and item description" />
     <MESSAGE value="Fix item description window so it only appears once item is hovered over" />
     <MESSAGE value="Add item pickup and equip" />
     <MESSAGE value="Fix bug where receiving damage while monster is dying" />
@@ -474,7 +474,8 @@
     <MESSAGE value="Add Fullscreen functionality (menu bug)" />
     <MESSAGE value="Add Options menu" />
     <MESSAGE value="Fix title menu bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix title menu bug" />
+    <MESSAGE value="Add Config file save/load" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Config file save/load" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

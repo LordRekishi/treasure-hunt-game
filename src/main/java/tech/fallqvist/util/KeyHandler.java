@@ -23,16 +23,24 @@ public class KeyHandler implements KeyListener {
 
         if (gamePanel.getGameState() == gamePanel.getTitleState()) {
             checkTitleStateKeyPressed(code);
+
         } else if (gamePanel.getGameState() == gamePanel.getPlayState()) {
             checkPlayStateKeyPressed(code);
+
         } else if (gamePanel.getGameState() == gamePanel.getPauseState()) {
             checkPauseStateKeyPressed(code);
+
         } else if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
             checkDialogueStateKeyPressed(code);
+
         } else if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
             checkCharacterStateKeyPressed(code);
+
         } else if (gamePanel.getGameState() == gamePanel.getOptionState()) {
             checkOptionStateKeyPressed(code);
+
+        } else if (gamePanel.getGameState() == gamePanel.getGameOverState()) {
+            checkGameOverStateKeyPressed(code);
         }
     }
 
@@ -291,6 +299,28 @@ public class KeyHandler implements KeyListener {
                     gamePanel.playSoundEffect(9);
                 }
             }
+        }
+    }
+
+    private void checkGameOverStateKeyPressed(int code) {
+        if (code == KeyEvent.VK_W) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() - 1);
+            gamePanel.playSoundEffect(9);
+            if (gamePanel.getUi().getCommandNumber() < 0) {
+                gamePanel.getUi().setCommandNumber(1);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            gamePanel.getUi().setCommandNumber(gamePanel.getUi().getCommandNumber() + 1);
+            gamePanel.playSoundEffect(9);
+            if (gamePanel.getUi().getCommandNumber() > 1) {
+                gamePanel.getUi().setCommandNumber(0);
+            }
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
         }
     }
 
