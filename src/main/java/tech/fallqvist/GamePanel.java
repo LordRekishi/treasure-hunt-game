@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     private int fullScreenHeight = screenHeight;
     private BufferedImage tempScreen;
     private Graphics2D graphics2D;
+    private final int optionState = 5;
 
     private final int FPS = 60;
 
@@ -65,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final int pauseState = 2;
     private final int dialogueState = 3;
     private final int characterState = 4;
+    private boolean fullScreenOn;
 
     // GAME THREAD
     private Thread gameThread;
@@ -97,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable {
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
         graphics2D = (Graphics2D) tempScreen.getGraphics();
 
-        setFullScreen();
+//        setFullScreen();
     }
 
     public void setFullScreen() {
@@ -381,6 +383,15 @@ public class GamePanel extends JPanel implements Runnable {
         return maxWorldRows;
     }
 
+    public boolean isFullScreenOn() {
+        return fullScreenOn;
+    }
+
+    public GamePanel setFullScreenOn(boolean fullScreenOn) {
+        this.fullScreenOn = fullScreenOn;
+        return this;
+    }
+
     public KeyHandler getKeyHandler() {
         return keyHandler;
     }
@@ -463,6 +474,10 @@ public class GamePanel extends JPanel implements Runnable {
         return characterState;
     }
 
+    public int getOptionState() {
+        return optionState;
+    }
+
     public List<Asset> getProjectiles() {
         return projectiles;
     }
@@ -473,5 +488,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     public List<Asset> getParticles() {
         return particles;
+    }
+
+    public SoundManager getMusic() {
+        return music;
+    }
+
+    public SoundManager getSoundEffect() {
+        return soundEffect;
     }
 }
