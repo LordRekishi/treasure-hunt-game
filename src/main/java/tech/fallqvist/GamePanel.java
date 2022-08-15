@@ -11,6 +11,7 @@ import tech.fallqvist.event.EventHandler;
 import tech.fallqvist.sound.SoundManager;
 import tech.fallqvist.ui.UI;
 import tech.fallqvist.util.CollisionChecker;
+import tech.fallqvist.util.Config;
 import tech.fallqvist.util.KeyHandler;
 
 import javax.swing.*;
@@ -39,12 +40,16 @@ public class GamePanel extends JPanel implements Runnable {
     private int fullScreenHeight = screenHeight;
     private BufferedImage tempScreen;
     private Graphics2D graphics2D;
+    private final Config config = new Config(this);
+
     private final int FPS = 60;
+
     // WORLD SETTINGS
     private final int maxWorldColumns = 50;
     private final int maxWorldRows = 50;
     private final int worldWidth = tileSize * maxWorldColumns;
     private final int worldHeight = tileSize * maxWorldRows;
+
     // SYSTEM
     private final KeyHandler keyHandler = new KeyHandler(this);
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
@@ -55,13 +60,14 @@ public class GamePanel extends JPanel implements Runnable {
     private final UI ui = new UI(this);
     private final EventHandler eventHandler = new EventHandler(this);
     private final int titleState = 0;
+
+    // GAME STATE
+    private int gameState;
     private final int playState = 1;
     private final int pauseState = 2;
     private final int dialogueState = 3;
     private final int characterState = 4;
     private boolean fullScreenOn;
-    // GAME STATE
-    private int gameState;
     private final int optionState = 5;
 
     // GAME THREAD
@@ -95,7 +101,9 @@ public class GamePanel extends JPanel implements Runnable {
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
         graphics2D = (Graphics2D) tempScreen.getGraphics();
 
-//        setFullScreen();
+        if (fullScreenOn) {
+            setFullScreen();
+        }
     }
 
     public void setFullScreen() {
@@ -438,6 +446,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public EventHandler getEventHandler() {
         return eventHandler;
+    }
+
+    public Config getConfig() {
+        return config;
     }
 
     public int getGameState() {
