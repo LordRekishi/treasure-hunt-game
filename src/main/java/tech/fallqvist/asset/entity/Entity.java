@@ -394,6 +394,7 @@ public abstract class Entity implements Asset {
         Particle p2 = new Particle(gamePanel, target, color, size, speed, maxLife, 2, -1);
         Particle p3 = new Particle(gamePanel, target, color, size, speed, maxLife, -2, 1);
         Particle p4 = new Particle(gamePanel, target, color, size, speed, maxLife, 2, 1);
+
         gamePanel.getParticles().add(p1);
         gamePanel.getParticles().add(p2);
         gamePanel.getParticles().add(p3);

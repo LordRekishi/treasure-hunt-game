@@ -285,7 +285,7 @@ public class UI {
     }
 
     private void drawCharacterScreen() {
-        int frameX = gamePanel.getTileSize();
+        int frameX = gamePanel.getTileSize() * 2;
         int frameY = gamePanel.getTileSize();
         int frameWidth = gamePanel.getTileSize() * 5;
         int frameHeight = (int) (gamePanel.getTileSize() * 10.5);
@@ -399,7 +399,7 @@ public class UI {
     private void drawInventoryScreen() {
 
         // ITEM FRAME BOX
-        int frameX = gamePanel.getTileSize() * 9;
+        int frameX = gamePanel.getTileSize() * 12;
         int frameY = gamePanel.getTileSize();
         int frameWidth = gamePanel.getTileSize() * 6;
         int frameHeight = gamePanel.getTileSize() * 5;

@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Particles when hitting InteractiveTile">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Particles to Fireball and Rock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/particle/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/particle/Particle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Fireball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Fireball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/object/ability/OBJ_Rock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -131,13 +130,11 @@
       <workItem from="1658655037483" duration="3765000" />
       <workItem from="1659303527234" duration="51000" />
       <workItem from="1659977040122" duration="735000" />
-      <workItem from="1659978094315" duration="5614000" />
-    </task>
-    <task id="LOCAL−00026" summary="Refactor KeyHandler">
-      <created>1656261828466</created>
-      <option name="number" value="LOCAL−00026" />
-      <option name="presentableId" value="LOCAL−00026" />
-      <updated>1656261828466</updated>
+      <workItem from="1659978094315" duration="7146000" />
+      <workItem from="1660487487307" duration="595000" />
+      <workItem from="1660567762781" duration="608000" />
+      <workItem from="1660568477424" duration="427000" />
+      <workItem from="1660568913558" duration="3558000" />
     </task>
     <task id="LOCAL−00027" summary="Add Character selection screen mockup">
       <created>1656263022917</created>
@@ -427,7 +424,13 @@
       <option name="presentableId" value="LOCAL−00074" />
       <updated>1659982941056</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL−00075" summary="Add Particles to Fireball and Rock">
+      <created>1659983942315</created>
+      <option name="number" value="LOCAL−00075" />
+      <option name="presentableId" value="LOCAL−00075" />
+      <updated>1659983942315</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Battle messages" />
     <MESSAGE value="Add Basic level system and monster respawn when resting" />
     <MESSAGE value="Add debug for x, y, column and row of the player" />
     <MESSAGE value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
@@ -470,7 +472,8 @@
     <MESSAGE value="Add Interactive Tiles" />
     <MESSAGE value="Remove debug sout" />
     <MESSAGE value="Add Particles when hitting InteractiveTile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Particles when hitting InteractiveTile" />
+    <MESSAGE value="Add Particles to Fireball and Rock" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Particles to Fireball and Rock" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
