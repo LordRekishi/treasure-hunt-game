@@ -99,95 +99,136 @@ public class UI {
     }
 
     private void drawTitleScreen() {
-        if (titleScreenState == 0) {
-            // TITLE TEXT
-            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 96F));
+        graphics2D.setColor(Color.black);
+        graphics2D.fillRect(0, 0, gamePanel.getScreenWidth(), gamePanel.getScreenHeight());
 
-            String text = "Blue Boy Adventure";
-            int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            int y = gamePanel.getTileSize() * 3;
+        switch (titleScreenState) {
+            case 0 -> drawStartScreen();
+            case 1 -> drawClassScreen();
+        }
 
-            // Shadow
-            graphics2D.setColor(Color.GRAY);
-            graphics2D.drawString(text, x + 5, y + 5);
+        gamePanel.getKeyHandler().setEnterPressed(false);
+    }
 
-            // Text
-            graphics2D.setColor(Color.WHITE);
-            graphics2D.drawString(text, x, y);
+    private void drawStartScreen() {
 
-            // GAME IMAGE
-            x = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() * 2) / 2;
-            y += gamePanel.getTileSize() * 2;
-            graphics2D.drawImage(gamePanel.getPlayer().getDown1(), x, y, gamePanel.getTileSize() * 2, gamePanel.getTileSize() * 2, null);
+        // TITLE TEXT
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 96F));
 
-            // MENU
-            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 48F));
+        String text = "Blue Boy Adventure";
+        int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        int y = gamePanel.getTileSize() * 3;
 
-            text = "NEW GAME";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize() * 3.5;
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 0) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
+        // Shadow
+        graphics2D.setColor(Color.GRAY);
+        graphics2D.drawString(text, x + 5, y + 5);
 
-            text = "LOAD GAME";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize();
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 1) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
+        // Text
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.drawString(text, x, y);
 
-            text = "QUIT";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize();
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 2) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
-        } else if (titleScreenState == 1) {
-            graphics2D.setColor(Color.WHITE);
-            graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 42F));
+        // GAME IMAGE
+        x = gamePanel.getScreenWidth() / 2 - (gamePanel.getTileSize() * 2) / 2;
+        y += gamePanel.getTileSize() * 2;
+        graphics2D.drawImage(gamePanel.getPlayer().getDown1(), x, y, gamePanel.getTileSize() * 2, gamePanel.getTileSize() * 2, null);
 
-            String text = "Select your class!";
-            int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            int y = gamePanel.getTileSize() * 3;
-            graphics2D.drawString(text, x, y);
+        // MENU
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 48F));
 
-            text = "Fighter";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize() * 3;
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 0) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
-
-            text = "Rogue";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize();
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 1) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
-
-            text = "Sorcerer";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize();
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 2) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
-            }
-
-            text = "Cancel";
-            x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
-            y += gamePanel.getTileSize() * 2;
-            graphics2D.drawString(text, x, y);
-            if (commandNumber == 3) {
-                graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+        text = "NEW GAME";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize() * 3.5;
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                titleScreenState = 1;
+                commandNumber = 0;
             }
         }
 
+        text = "LOAD GAME";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize();
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                // Later
+            }
+        }
+
+        text = "QUIT";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize();
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 2) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                System.exit(0);
+            }
+        }
+    }
+
+    private void drawClassScreen() {
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD, 42F));
+
+        String text = "Select your class!";
+        int x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        int y = gamePanel.getTileSize() * 3;
+        graphics2D.drawString(text, x, y);
+
+        text = "Fighter";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize() * 3;
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+                commandNumber = 0;
+            }
+        }
+
+        text = "Rogue";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize();
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+                commandNumber = 0;
+            }
+        }
+
+        text = "Sorcerer";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize();
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 2) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+                gamePanel.playMusic(0);
+                commandNumber = 0;
+            }
+        }
+
+        text = "Cancel";
+        x = UtilityTool.getXForCenterOfText(text, gamePanel, graphics2D);
+        y += gamePanel.getTileSize() * 2;
+        graphics2D.drawString(text, x, y);
+        if (commandNumber == 3) {
+            graphics2D.drawString(">", x - gamePanel.getTileSize(), y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                titleScreenState = 0;
+                commandNumber = 0;
+            }
+        }
     }
 
     private void drawPlayerLife() {
@@ -574,6 +615,10 @@ public class UI {
         graphics2D.drawString("Back", textX, textY);
         if (commandNumber == 5) {
             graphics2D.drawString(">", textX - 25, textY);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                gamePanel.setGameState(gamePanel.getPlayState());
+                commandNumber = 0;
+            }
         }
 
         // FULLSCREEN CHECK BOX
@@ -677,6 +722,9 @@ public class UI {
             if (gamePanel.getKeyHandler().isEnterPressed()) {
                 subState = 0;
                 gamePanel.setGameState(gamePanel.getTitleState());
+                titleScreenState = 0;
+                commandNumber = 0;
+                gamePanel.stopMusic();
             }
         }
 

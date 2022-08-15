@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Fullscreen functionality (menu bug)">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add Options menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
@@ -135,13 +133,7 @@
       <workItem from="1660487487307" duration="595000" />
       <workItem from="1660567762781" duration="608000" />
       <workItem from="1660568477424" duration="427000" />
-      <workItem from="1660568913558" duration="11943000" />
-    </task>
-    <task id="LOCAL−00028" summary="Refactor KeyHandler Title and Character screen keypress">
-      <created>1656263141872</created>
-      <option name="number" value="LOCAL−00028" />
-      <option name="presentableId" value="LOCAL−00028" />
-      <updated>1656263141872</updated>
+      <workItem from="1660568913558" duration="15685000" />
     </task>
     <task id="LOCAL−00029" summary="Add Player Life UI">
       <created>1656264960379</created>
@@ -431,7 +423,13 @@
       <option name="presentableId" value="LOCAL−00076" />
       <updated>1660572741483</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL−00077" summary="Add Options menu">
+      <created>1660580876734</created>
+      <option name="number" value="LOCAL−00077" />
+      <option name="presentableId" value="LOCAL−00077" />
+      <updated>1660580876734</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +447,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add debug for x, y, column and row of the player" />
     <MESSAGE value="Add map instant refresh by pressing &quot;R&quot; while the game is running (need to do CTRL+F9 after changing the map file if on IntelliJ)" />
     <MESSAGE value="Add inventory screen when pressing &quot;C&quot; and item description" />
     <MESSAGE value="Fix item description window so it only appears once item is hovered over" />
@@ -474,7 +471,8 @@
     <MESSAGE value="Add Particles when hitting InteractiveTile" />
     <MESSAGE value="Add Particles to Fireball and Rock" />
     <MESSAGE value="Add Fullscreen functionality (menu bug)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Fullscreen functionality (menu bug)" />
+    <MESSAGE value="Add Options menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Options menu" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

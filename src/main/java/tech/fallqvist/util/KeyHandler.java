@@ -63,21 +63,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_ENTER) {
-            titleScreenEnterPressed();
-        }
-    }
-
-    private void titleScreenEnterPressed() {
-        if (gamePanel.getUi().getCommandNumber() == 0) {
-            gamePanel.getUi().setTitleScreenState(1);
-        }
-
-        if (gamePanel.getUi().getCommandNumber() == 1) {
-            // load game
-        }
-
-        if (gamePanel.getUi().getCommandNumber() == 2) {
-            System.exit(0);
+            enterPressed = true;
         }
     }
 
@@ -99,15 +85,14 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_ENTER) {
-            characterScreenEnterPressed();
+            enterPressed = true;
         }
     }
 
     private void characterScreenEnterPressed() {
         if (gamePanel.getUi().getCommandNumber() == 0) {
             System.out.println("Fighter selected!");
-            gamePanel.setGameState(gamePanel.getPlayState());
-            gamePanel.playMusic(0);
+
         }
 
         if (gamePanel.getUi().getCommandNumber() == 1) {

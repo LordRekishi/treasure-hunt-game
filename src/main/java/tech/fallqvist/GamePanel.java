@@ -39,16 +39,12 @@ public class GamePanel extends JPanel implements Runnable {
     private int fullScreenHeight = screenHeight;
     private BufferedImage tempScreen;
     private Graphics2D graphics2D;
-    private final int optionState = 5;
-
     private final int FPS = 60;
-
     // WORLD SETTINGS
     private final int maxWorldColumns = 50;
     private final int maxWorldRows = 50;
     private final int worldWidth = tileSize * maxWorldColumns;
     private final int worldHeight = tileSize * maxWorldRows;
-
     // SYSTEM
     private final KeyHandler keyHandler = new KeyHandler(this);
     private final CollisionChecker collisionChecker = new CollisionChecker(this);
@@ -58,15 +54,15 @@ public class GamePanel extends JPanel implements Runnable {
     private final SoundManager soundEffect = new SoundManager();
     private final UI ui = new UI(this);
     private final EventHandler eventHandler = new EventHandler(this);
-
-    // GAME STATE
-    private int gameState;
     private final int titleState = 0;
     private final int playState = 1;
     private final int pauseState = 2;
     private final int dialogueState = 3;
     private final int characterState = 4;
     private boolean fullScreenOn;
+    // GAME STATE
+    private int gameState;
+    private final int optionState = 5;
 
     // GAME THREAD
     private Thread gameThread;
@@ -143,7 +139,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         if (gameState == playState) {
-
             player.update();
             updateNPCs();
             updateMonsters();
