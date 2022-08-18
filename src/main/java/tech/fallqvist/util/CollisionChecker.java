@@ -29,8 +29,8 @@ public class CollisionChecker {
             case "up" -> {
                 entityTopRow = (entityTopWorldY - entity.getSpeed()) / gamePanel.getTileSize();
 
-                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[entityLeftCol][entityTopRow];
-                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[entityRightCol][entityTopRow];
+                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityLeftCol][entityTopRow];
+                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityRightCol][entityTopRow];
 
                 if (gamePanel.getTileManager().getTiles()[tileNum1].isCollision() || gamePanel.getTileManager().getTiles()[tileNum2].isCollision()) {
                     entity.setCollisionOn(true);
@@ -39,8 +39,8 @@ public class CollisionChecker {
             case "down" -> {
                 entityBottomRow = (entityBottomWorldY + entity.getSpeed()) / gamePanel.getTileSize();
 
-                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[entityLeftCol][entityBottomRow];
-                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[entityRightCol][entityBottomRow];
+                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityLeftCol][entityBottomRow];
+                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityRightCol][entityBottomRow];
 
                 if (gamePanel.getTileManager().getTiles()[tileNum1].isCollision() || gamePanel.getTileManager().getTiles()[tileNum2].isCollision()) {
                     entity.setCollisionOn(true);
@@ -49,8 +49,8 @@ public class CollisionChecker {
             case "left" -> {
                 entityLeftCol = (entityLeftWorldX - entity.getSpeed()) / gamePanel.getTileSize();
 
-                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[entityLeftCol][entityTopRow];
-                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[entityLeftCol][entityBottomRow];
+                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityLeftCol][entityTopRow];
+                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityLeftCol][entityBottomRow];
 
                 if (gamePanel.getTileManager().getTiles()[tileNum1].isCollision() || gamePanel.getTileManager().getTiles()[tileNum2].isCollision()) {
                     entity.setCollisionOn(true);
@@ -59,8 +59,8 @@ public class CollisionChecker {
             case "right" -> {
                 entityRightCol = (entityRightWorldX + entity.getSpeed()) / gamePanel.getTileSize();
 
-                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[entityRightCol][entityTopRow];
-                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[entityRightCol][entityBottomRow];
+                tileNum1 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityRightCol][entityTopRow];
+                tileNum2 = gamePanel.getTileManager().getMapTileNumbers()[gamePanel.getCurrentMap()][entityRightCol][entityBottomRow];
 
                 if (gamePanel.getTileManager().getTiles()[tileNum1].isCollision() || gamePanel.getTileManager().getTiles()[tileNum2].isCollision()) {
                     entity.setCollisionOn(true);
@@ -72,63 +72,64 @@ public class CollisionChecker {
     public int checkObject(Entity entity, boolean isPlayer) {
         int index = 999;
 
-        for (Asset object : gamePanel.getObjects()) {
+        Asset[][] objects = gamePanel.getObjects();
+        for (int i = 0; i < objects[1].length; i++) {
 
-            if (object != null) {
+            if (objects[gamePanel.getCurrentMap()][i] != null) {
                 entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
                 entity.getCollisionArea().y = entity.getWorldY() + entity.getCollisionArea().y;
 
-                object.getCollisionArea().x = object.getWorldX() + object.getCollisionArea().x;
-                object.getCollisionArea().y = object.getWorldY() + object.getCollisionArea().y;
+                objects[gamePanel.getCurrentMap()][i].getCollisionArea().x = objects[gamePanel.getCurrentMap()][i].getWorldX() + objects[gamePanel.getCurrentMap()][i].getCollisionArea().x;
+                objects[gamePanel.getCurrentMap()][i].getCollisionArea().y = objects[gamePanel.getCurrentMap()][i].getWorldY() + objects[gamePanel.getCurrentMap()][i].getCollisionArea().y;
 
                 checkFutureMovement(entity);
 
-                if (entity.getCollisionArea().intersects(object.getCollisionArea())) {
-                    if (object.isCollision()) {
+                if (entity.getCollisionArea().intersects(objects[gamePanel.getCurrentMap()][i].getCollisionArea())) {
+                    if (objects[gamePanel.getCurrentMap()][i].isCollision()) {
                         entity.setCollisionOn(true);
                     }
 
                     if (isPlayer) {
-                        index = object.getIndex();
+                        index = objects[gamePanel.getCurrentMap()][i].getIndex();
                     }
                 }
 
                 entity.getCollisionArea().x = entity.getCollisionDefaultX();
                 entity.getCollisionArea().y = entity.getCollisionDefaultY();
-                object.getCollisionArea().x = object.getCollisionDefaultX();
-                object.getCollisionArea().y = object.getCollisionDefaultY();
+                objects[gamePanel.getCurrentMap()][i].getCollisionArea().x = objects[gamePanel.getCurrentMap()][i].getCollisionDefaultX();
+                objects[gamePanel.getCurrentMap()][i].getCollisionArea().y = objects[gamePanel.getCurrentMap()][i].getCollisionDefaultY();
             }
         }
 
         return index;
     }
 
-    public int checkEntity(Entity entity, Asset[] targets) {
+    public int checkEntity(Entity entity, Asset[][] targets) {
 
         int index = 999;
 
-        for (Asset target : targets) {
+        for (int i = 0; i < targets[1].length; i++) {
 
-            if (target != null) {
+            if (targets[gamePanel.getCurrentMap()][i] != null) {
                 entity.getCollisionArea().x = entity.getWorldX() + entity.getCollisionArea().x;
                 entity.getCollisionArea().y = entity.getWorldY() + entity.getCollisionArea().y;
 
-                target.getCollisionArea().x = target.getWorldX() + target.getCollisionArea().x;
-                target.getCollisionArea().y = target.getWorldY() + target.getCollisionArea().y;
+                targets[gamePanel.getCurrentMap()][i].getCollisionArea().x = targets[gamePanel.getCurrentMap()][i].getWorldX() + targets[gamePanel.getCurrentMap()][i].getCollisionArea().x;
+                targets[gamePanel.getCurrentMap()][i].getCollisionArea().y = targets[gamePanel.getCurrentMap()][i].getWorldY() + targets[gamePanel.getCurrentMap()][i].getCollisionArea().y;
 
                 checkFutureMovement(entity);
 
-                if (entity.getCollisionArea().intersects(target.getCollisionArea())) {
-                    if (target != entity) {
+                if (entity.getCollisionArea().intersects(targets[gamePanel.getCurrentMap()][i].getCollisionArea())) {
+                    if (targets[gamePanel.getCurrentMap()][i] != entity) {
                         entity.setCollisionOn(true);
-                        index = target.getIndex();
+                        index = targets[gamePanel.getCurrentMap()][i].getIndex();
                     }
                 }
 
                 entity.getCollisionArea().x = entity.getCollisionDefaultX();
                 entity.getCollisionArea().y = entity.getCollisionDefaultY();
-                target.getCollisionArea().x = target.getCollisionDefaultX();
-                target.getCollisionArea().y = target.getCollisionDefaultY();
+                targets[gamePanel.getCurrentMap()][i].getCollisionArea().x = targets[gamePanel.getCurrentMap()][i].getCollisionDefaultX();
+                targets[gamePanel.getCurrentMap()][i].getCollisionArea().y = targets[gamePanel.getCurrentMap()][i].getCollisionDefaultY();
             }
         }
 

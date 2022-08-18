@@ -374,11 +374,11 @@ public abstract class Entity implements Asset {
     @Override
     public void dropObject(Asset droppedObject) {
         for (int i = 0; i < gamePanel.getObjects().length; i++) {
-            if (gamePanel.getObjects()[i] == null) {
-                gamePanel.getObjects()[i] = droppedObject;
-                gamePanel.getObjects()[i].setWorldX(worldX);
-                gamePanel.getObjects()[i].setWorldY(worldY);
-                gamePanel.getObjects()[i].setIndex(i);
+            if (gamePanel.getObjects()[gamePanel.getCurrentMap()][i] == null) {
+                gamePanel.getObjects()[gamePanel.getCurrentMap()][i] = droppedObject;
+                gamePanel.getObjects()[gamePanel.getCurrentMap()][i].setWorldX(worldX);
+                gamePanel.getObjects()[gamePanel.getCurrentMap()][i].setWorldY(worldY);
+                gamePanel.getObjects()[gamePanel.getCurrentMap()][i].setIndex(i);
                 break;
             }
         }

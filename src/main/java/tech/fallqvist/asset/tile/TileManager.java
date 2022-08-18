@@ -15,16 +15,17 @@ public class TileManager {
 
     private final GamePanel gamePanel;
     private final Tile[] tiles;
-    private final int[][] mapTileNumbers;
+    private final int[][][] mapTileNumbers;
 
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
         this.tiles = new Tile[50];
-        this.mapTileNumbers = new int[gamePanel.getMaxWorldColumns()][gamePanel.getMaxWorldRows()];
+        this.mapTileNumbers = new int[gamePanel.getMaxMaps()][gamePanel.getMaxWorldColumns()][gamePanel.getMaxWorldRows()];
 
         getTileImage();
-        loadMap("/maps/worldV2.txt");
+        loadMap("/maps/worldV3.txt", 0);
+        loadMap("/maps/interior01.txt", 1);
     }
 
     public void getTileImage() {
@@ -74,6 +75,9 @@ public class TileManager {
         setup(39, "earth", false);
         setup(40, "wall", true);
         setup(41, "tree", true);
+        setup(42, "hut", false);
+        setup(43, "floor01", false);
+        setup(44, "table01", true);
     }
 
     public void setup(int index, String imageName, boolean collision) {
@@ -87,7 +91,7 @@ public class TileManager {
         }
     }
 
-    public void loadMap(String mapPath) {
+    public void loadMap(String mapPath, int map) {
         try {
             InputStream inputStream = getClass().getResourceAsStream(mapPath);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -102,7 +106,7 @@ public class TileManager {
                     String[] numbers = line.split(" ");
                     int number = Integer.parseInt(numbers[column]);
 
-                    mapTileNumbers[column][row] = number;
+                    mapTileNumbers[map][column][row] = number;
                     column++;
                 }
                 if (column == gamePanel.getMaxWorldColumns()) {
@@ -124,7 +128,7 @@ public class TileManager {
 
         while (worldColumn < gamePanel.getMaxWorldColumns() && worldRow < gamePanel.getMaxWorldRows()) {
 
-            int tileNumber = mapTileNumbers[worldColumn][worldRow];
+            int tileNumber = mapTileNumbers[gamePanel.getCurrentMap()][worldColumn][worldRow];
 
             int worldX = worldColumn * gamePanel.getTileSize();
             int worldY = worldRow * gamePanel.getTileSize();
@@ -187,7 +191,7 @@ public class TileManager {
         return tiles;
     }
 
-    public int[][] getMapTileNumbers() {
+    public int[][][] getMapTileNumbers() {
         return mapTileNumbers;
     }
 }

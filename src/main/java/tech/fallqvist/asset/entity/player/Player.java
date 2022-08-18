@@ -228,25 +228,26 @@ public class Player extends Entity {
 
     public void damageMonster(int index, int attackPower) {
         if (index != 999) {
-            if (!getGamePanel().getMonsters()[index].isInvincible()) {
+            if (!getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].isInvincible()) {
+
                 getGamePanel().playSoundEffect(5);
 
-                int damage = attackPower - getGamePanel().getMonsters()[index].getDefensePower();
+                int damage = attackPower - getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getDefensePower();
                 if (damage < 0) {
                     damage = 0;
                 }
 
-                getGamePanel().getMonsters()[index].setCurrentLife(getGamePanel().getMonsters()[index].getCurrentLife() - damage);
+                getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].setCurrentLife(getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getCurrentLife() - damage);
                 getGamePanel().getUi().addMessage(damage + " damage!");
 
-                getGamePanel().getMonsters()[index].setInvincible(true);
-                getGamePanel().getMonsters()[index].damageReaction();
+                getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].setInvincible(true);
+                getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].damageReaction();
 
-                if (getGamePanel().getMonsters()[index].getCurrentLife() <= 0) {
-                    getGamePanel().getMonsters()[index].setDying(true);
-                    getGamePanel().getUi().addMessage("Killed the " + getGamePanel().getMonsters()[index].getName() + "!");
-                    setExp(getExp() + getGamePanel().getMonsters()[index].getExp());
-                    getGamePanel().getUi().addMessage("Exp + " + getGamePanel().getMonsters()[index].getExp());
+                if (getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getCurrentLife() <= 0) {
+                    getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].setDying(true);
+                    getGamePanel().getUi().addMessage("Killed the " + getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getName() + "!");
+                    setExp(getExp() + getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getExp());
+                    getGamePanel().getUi().addMessage("Exp + " + getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getExp());
 
                     checkLevelUp();
                 }
@@ -256,18 +257,18 @@ public class Player extends Entity {
 
     private void damageInteractiveTile(int index) {
         if (index != 999
-                && getGamePanel().getInteractiveTiles()[index].isDestructible()
-                && getGamePanel().getInteractiveTiles()[index].isCorrectWeapon(getCurrentWeapon())
-                && !getGamePanel().getInteractiveTiles()[index].isInvincible()) {
+                && getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].isDestructible()
+                && getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].isCorrectWeapon(getCurrentWeapon())
+                && !getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].isInvincible()) {
 
-            getGamePanel().getInteractiveTiles()[index].playSoundEffect();
-            getGamePanel().getInteractiveTiles()[index].setCurrentLife(getGamePanel().getInteractiveTiles()[index].getCurrentLife() - 1);
-            getGamePanel().getInteractiveTiles()[index].setInvincible(true);
+            getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].playSoundEffect();
+            getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].setCurrentLife(getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].getCurrentLife() - 1);
+            getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].setInvincible(true);
 
-            generateParticle(getGamePanel().getInteractiveTiles()[index], getGamePanel().getInteractiveTiles()[index]);
+            generateParticle(getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index], getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index]);
 
-            if (getGamePanel().getInteractiveTiles()[index].getCurrentLife() == 0) {
-                getGamePanel().getInteractiveTiles()[index] = getGamePanel().getInteractiveTiles()[index].getDestroyedForm();
+            if (getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].getCurrentLife() == 0) {
+                getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index] = getGamePanel().getInteractiveTiles()[getGamePanel().getCurrentMap()][index].getDestroyedForm();
             }
         }
     }
@@ -323,8 +324,8 @@ public class Player extends Entity {
         if (index != 999) {
 
             // PICK-UP ONLY ITEMS
-            if (getGamePanel().getObjects()[index] instanceof PickUpOnlyObject) {
-                getGamePanel().getObjects()[index].use();
+            if (getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index] instanceof PickUpOnlyObject) {
+                getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index].use();
             }
 
             // INVENTORY ITEMS
@@ -332,9 +333,9 @@ public class Player extends Entity {
                 String text;
 
                 if (inventory.size() != maxInventorySize) {
-                    inventory.add(getGamePanel().getObjects()[index]);
+                    inventory.add(getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index]);
                     getGamePanel().playSoundEffect(1);
-                    text = "Got a " + getGamePanel().getObjects()[index].getName() + "!";
+                    text = "Got a " + getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index].getName() + "!";
                 } else {
                     text = "You cannot carry anymore!";
                 }
@@ -342,7 +343,7 @@ public class Player extends Entity {
                 getGamePanel().getUi().addMessage(text);
             }
 
-            getGamePanel().getObjects()[index] = null;
+            getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index] = null;
         }
     }
 
@@ -355,7 +356,7 @@ public class Player extends Entity {
         if (index != 999) {
             if (getGamePanel().getKeyHandler().isEnterPressed()) {
                 getGamePanel().setGameState(getGamePanel().getDialogueState());
-                getGamePanel().getNpcs()[index].speak();
+                getGamePanel().getNpcs()[getGamePanel().getCurrentMap()][index].speak();
             }
         }
     }
@@ -367,10 +368,10 @@ public class Player extends Entity {
 
     private void interactWithMonster(int index) {
         if (index != 999) {
-            if (!isInvincible() && !getGamePanel().getMonsters()[index].isDying()) {
+            if (!isInvincible() && !getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].isDying()) {
                 getGamePanel().playSoundEffect(6);
 
-                int damage = getGamePanel().getMonsters()[index].getAttackPower() - getDefensePower();
+                int damage = getGamePanel().getMonsters()[getGamePanel().getCurrentMap()][index].getAttackPower() - getDefensePower();
                 if (damage < 0) {
                     damage = 0;
                 }
