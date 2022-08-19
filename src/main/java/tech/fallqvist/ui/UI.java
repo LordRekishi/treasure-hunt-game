@@ -30,6 +30,7 @@ public class UI {
     private int slotCol;
     private int slotRow;
     private int subState;
+    private int counter;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -93,6 +94,10 @@ public class UI {
 
         if (gamePanel.getGameState() == gamePanel.getGameOverState()) {
             drawGameOverScreen();
+        }
+
+        if (gamePanel.getGameState() == gamePanel.getTransitionState()) {
+            drawTransitionScreen();
         }
     }
 
@@ -802,6 +807,22 @@ public class UI {
         }
 
         gamePanel.getKeyHandler().setEnterPressed(false);
+    }
+
+    private void drawTransitionScreen() {
+        counter++;
+        graphics2D.setColor(new Color(0, 0, 0, counter * 5));
+        graphics2D.fillRect(0, 0, gamePanel.getScreenWidth(), gamePanel.getScreenHeight());
+
+        if (counter == 50) {
+            counter = 0;
+            gamePanel.setGameState(gamePanel.getPlayState());
+            gamePanel.setCurrentMap(gamePanel.getEventHandler().getTempMap());
+            gamePanel.getPlayer().setWorldX(gamePanel.getTileSize() * gamePanel.getEventHandler().getTempCol());
+            gamePanel.getPlayer().setWorldY(gamePanel.getTileSize() * gamePanel.getEventHandler().getTempRow());
+            gamePanel.getEventHandler().setPreviousEventX(gamePanel.getPlayer().getWorldX());
+            gamePanel.getEventHandler().setPreviousEventY(gamePanel.getPlayer().getWorldY());
+        }
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {

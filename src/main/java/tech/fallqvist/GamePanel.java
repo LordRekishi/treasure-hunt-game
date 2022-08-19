@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final int worldWidth = tileSize * maxWorldColumns;
     private final int worldHeight = tileSize * maxWorldRows;
     private final int maxMaps = 10;
+
     // ENTITIES & OBJECTS
     private final List<Asset> assets = new ArrayList<>();
 
@@ -72,7 +73,9 @@ public class GamePanel extends JPanel implements Runnable {
     private final int dialogueState = 3;
     private final int characterState = 4;
     private final int optionState = 5;
+    private final int transitionState = 7;
     private boolean fullScreenOn;
+
 
     // GAME THREAD
     private Thread gameThread;
@@ -541,5 +544,9 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel setCurrentMap(int currentMap) {
         this.currentMap = currentMap;
         return this;
+    }
+
+    public int getTransitionState() {
+        return transitionState;
     }
 }
