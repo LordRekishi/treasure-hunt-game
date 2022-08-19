@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor in preparation for map transition">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add interactive tiles in preparation for map transition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/event/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/sound/SoundManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,13 +150,7 @@
       <workItem from="1660600839822" duration="3144000" />
       <workItem from="1660659943874" duration="12025000" />
       <workItem from="1660855231172" duration="4612000" />
-      <workItem from="1660902851759" duration="666000" />
-    </task>
-    <task id="LOCAL−00033" summary="Change to Asset interface">
-      <created>1656354484138</created>
-      <option name="number" value="LOCAL−00033" />
-      <option name="presentableId" value="LOCAL−00033" />
-      <updated>1656354484138</updated>
+      <workItem from="1660902851759" duration="3575000" />
     </task>
     <task id="LOCAL−00034" summary="Fix Old man npc collision">
       <created>1656356104584</created>
@@ -444,7 +440,13 @@
       <option name="presentableId" value="LOCAL−00081" />
       <updated>1660859522919</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL−00082" summary="Add interactive tiles in preparation for map transition">
+      <created>1660903820084</created>
+      <option name="number" value="LOCAL−00082" />
+      <option name="presentableId" value="LOCAL−00082" />
+      <updated>1660903820084</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +464,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix bug where receiving damage while monster is dying" />
     <MESSAGE value="Add Projectile mechanics" />
     <MESSAGE value="Add Monster Rock Projectile &amp; AI" />
     <MESSAGE value="Add Mana &amp; Ammo" />
@@ -487,7 +488,8 @@
     <MESSAGE value="Add Config file save/load" />
     <MESSAGE value="Add GameOver screen" />
     <MESSAGE value="Refactor in preparation for map transition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor in preparation for map transition" />
+    <MESSAGE value="Add interactive tiles in preparation for map transition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add interactive tiles in preparation for map transition" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
