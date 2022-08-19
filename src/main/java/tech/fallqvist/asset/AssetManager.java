@@ -40,12 +40,12 @@ public class AssetManager {
 
         gamePanel.getObjects()[map][3] = new OBJ_Axe(gamePanel);
         gamePanel.getObjects()[map][3].setWorldX(tileSize * 33);
-        gamePanel.getObjects()[map][3].setWorldY(tileSize * 21);
+        gamePanel.getObjects()[map][3].setWorldY(tileSize * 7);
         gamePanel.getObjects()[map][3].setIndex(3);
 
         gamePanel.getObjects()[map][4] = new OBJ_Shield_Blue(gamePanel);
-        gamePanel.getObjects()[map][4].setWorldX(tileSize * 35);
-        gamePanel.getObjects()[map][4].setWorldY(tileSize * 21);
+        gamePanel.getObjects()[map][4].setWorldX(tileSize * 39);
+        gamePanel.getObjects()[map][4].setWorldY(tileSize * 42);
         gamePanel.getObjects()[map][4].setIndex(4);
 
         gamePanel.getObjects()[map][5] = new OBJ_Potion_Red(gamePanel);
@@ -133,5 +133,75 @@ public class AssetManager {
         gamePanel.getInteractiveTiles()[map][6].setWorldX(tileSize * 33);
         gamePanel.getInteractiveTiles()[map][6].setWorldY(tileSize * 12);
         gamePanel.getInteractiveTiles()[map][6].setIndex(6);
+
+        gamePanel.getInteractiveTiles()[map][7] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][7].setWorldX(tileSize * 30);
+        gamePanel.getInteractiveTiles()[map][7].setWorldY(tileSize * 21);
+        gamePanel.getInteractiveTiles()[map][7].setIndex(7);
+
+        gamePanel.getInteractiveTiles()[map][8] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][8].setWorldX(tileSize * 31);
+        gamePanel.getInteractiveTiles()[map][8].setWorldY(tileSize * 21);
+        gamePanel.getInteractiveTiles()[map][8].setIndex(8);
+
+        gamePanel.getInteractiveTiles()[map][9] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][9].setWorldX(tileSize * 32);
+        gamePanel.getInteractiveTiles()[map][9].setWorldY(tileSize * 21);
+        gamePanel.getInteractiveTiles()[map][9].setIndex(9);
+
+        gamePanel.getInteractiveTiles()[map][10] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][10].setWorldX(tileSize * 18);
+        gamePanel.getInteractiveTiles()[map][10].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][10].setIndex(10);
+
+        gamePanel.getInteractiveTiles()[map][11] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][11].setWorldX(tileSize * 17);
+        gamePanel.getInteractiveTiles()[map][11].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][11].setIndex(11);
+
+        gamePanel.getInteractiveTiles()[map][12] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][12].setWorldX(tileSize * 16);
+        gamePanel.getInteractiveTiles()[map][12].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][12].setIndex(12);
+
+        gamePanel.getInteractiveTiles()[map][13] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][13].setWorldX(tileSize * 15);
+        gamePanel.getInteractiveTiles()[map][13].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][13].setIndex(13);
+
+        gamePanel.getInteractiveTiles()[map][14] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][14].setWorldX(tileSize * 14);
+        gamePanel.getInteractiveTiles()[map][14].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][14].setIndex(14);
+
+        gamePanel.getInteractiveTiles()[map][15] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][15].setWorldX(tileSize * 13);
+        gamePanel.getInteractiveTiles()[map][15].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][15].setIndex(15);
+
+        gamePanel.getInteractiveTiles()[map][16] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][16].setWorldX(tileSize * 13);
+        gamePanel.getInteractiveTiles()[map][16].setWorldY(tileSize * 41);
+        gamePanel.getInteractiveTiles()[map][16].setIndex(16);
+
+        gamePanel.getInteractiveTiles()[map][17] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][17].setWorldX(tileSize * 12);
+        gamePanel.getInteractiveTiles()[map][17].setWorldY(tileSize * 41);
+        gamePanel.getInteractiveTiles()[map][17].setIndex(17);
+
+        gamePanel.getInteractiveTiles()[map][18] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][18].setWorldX(tileSize * 11);
+        gamePanel.getInteractiveTiles()[map][18].setWorldY(tileSize * 41);
+        gamePanel.getInteractiveTiles()[map][18].setIndex(18);
+
+        gamePanel.getInteractiveTiles()[map][19] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][19].setWorldX(tileSize * 10);
+        gamePanel.getInteractiveTiles()[map][19].setWorldY(tileSize * 41);
+        gamePanel.getInteractiveTiles()[map][19].setIndex(19);
+
+        gamePanel.getInteractiveTiles()[map][20] = new IT_DryTree(gamePanel);
+        gamePanel.getInteractiveTiles()[map][20].setWorldX(tileSize * 10);
+        gamePanel.getInteractiveTiles()[map][20].setWorldY(tileSize * 40);
+        gamePanel.getInteractiveTiles()[map][20].setIndex(20);
     }
 }

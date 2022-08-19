@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add GameOver screen">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/interior01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/maps/worldV3.txt" afterDir="false" />
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Refactor in preparation for map transition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/AssetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/ability/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/tile/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/util/KeyHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "E:/JAVA/treasure-hunt-game/src/main/resources/maps",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/JAVA/treasure-hunt-game/src/main/resources/maps&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\JAVA\treasure-hunt-game\src\main\resources\maps" />
@@ -156,13 +147,8 @@
       <workItem from="1660568913558" duration="18061000" />
       <workItem from="1660600839822" duration="3144000" />
       <workItem from="1660659943874" duration="12025000" />
-      <workItem from="1660855231172" duration="4115000" />
-    </task>
-    <task id="LOCAL−00032" summary="Refactor EventHandler to include single use events and event not retriggering">
-      <created>1656274760957</created>
-      <option name="number" value="LOCAL−00032" />
-      <option name="presentableId" value="LOCAL−00032" />
-      <updated>1656274760957</updated>
+      <workItem from="1660855231172" duration="4612000" />
+      <workItem from="1660902851759" duration="666000" />
     </task>
     <task id="LOCAL−00033" summary="Change to Asset interface">
       <created>1656354484138</created>
@@ -452,7 +438,13 @@
       <option name="presentableId" value="LOCAL−00080" />
       <updated>1660603948428</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL−00081" summary="Refactor in preparation for map transition">
+      <created>1660859522919</created>
+      <option name="number" value="LOCAL−00081" />
+      <option name="presentableId" value="LOCAL−00081" />
+      <updated>1660859522919</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +462,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add item pickup and equip" />
     <MESSAGE value="Fix bug where receiving damage while monster is dying" />
     <MESSAGE value="Add Projectile mechanics" />
     <MESSAGE value="Add Monster Rock Projectile &amp; AI" />
@@ -495,7 +486,8 @@
     <MESSAGE value="Fix title menu bug" />
     <MESSAGE value="Add Config file save/load" />
     <MESSAGE value="Add GameOver screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GameOver screen" />
+    <MESSAGE value="Refactor in preparation for map transition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor in preparation for map transition" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
