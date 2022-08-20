@@ -2,6 +2,7 @@ package tech.fallqvist.asset;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.entity.monster.MON_GreenSlime;
+import tech.fallqvist.asset.entity.npc.NPC_Merchant;
 import tech.fallqvist.asset.entity.npc.NPC_OldMan;
 import tech.fallqvist.asset.object.equipment.OBJ_Axe;
 import tech.fallqvist.asset.object.equipment.OBJ_Shield_Blue;
@@ -78,10 +79,10 @@ public class AssetManager {
 
         // MAP 1
         map = 1;
-        gamePanel.getNpcs()[map][1] = new NPC_OldMan(gamePanel);
-        gamePanel.getNpcs()[map][1].setWorldX(tileSize * 12);
-        gamePanel.getNpcs()[map][1].setWorldY(tileSize * 7);
-        gamePanel.getNpcs()[map][1].setIndex(1);
+        gamePanel.getNpcs()[map][0] = new NPC_Merchant(gamePanel);
+        gamePanel.getNpcs()[map][0].setWorldX(tileSize * 12);
+        gamePanel.getNpcs()[map][0].setWorldY(tileSize * 7);
+        gamePanel.getNpcs()[map][0].setIndex(0);
     }
 
     public void setMonsters() {

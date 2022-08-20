@@ -16,6 +16,7 @@ public class OBJ_Shield_Blue extends Shield {
         setName("Blue Shield");
         setDescription("[" + getName() + "]\nPainted blue");
         setDefenseValue(2);
+        setPrice(250);
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/shield_blue.png")));

@@ -12,8 +12,6 @@ import tech.fallqvist.util.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Player extends Entity {
 
@@ -21,8 +19,6 @@ public class Player extends Entity {
     private final int screenX;
     private final int screenY;
     private int resetTimer;
-    private final int maxInventorySize = 20;
-    private List<Asset> inventory = new ArrayList<>();
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         super(gamePanel);
@@ -59,25 +55,25 @@ public class Player extends Entity {
     }
 
     public void setItems() {
-        inventory.clear();
+        getInventory().clear();
         setDefaultWeapon();
         setCurrentShield(new OBJ_Shield_Wood(getGamePanel()));
         setProjectile(new OBJ_Fireball(getGamePanel()));
-        inventory.add(getCurrentWeapon());
-        inventory.add(getCurrentShield());
-        inventory.add(new OBJ_Key(getGamePanel()));
-    }
-
-    private void setDefaultWeapon() {
-        setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
-        setPlayerAttackArea();
-        getAttackImages();
+        getInventory().add(getCurrentWeapon());
+        getInventory().add(getCurrentShield());
+        getInventory().add(new OBJ_Key(getGamePanel()));
     }
 
     public void setDefaultPosition() {
         setWorldX(getGamePanel().getTileSize() * 23);
         setWorldY(getGamePanel().getTileSize() * 21);
         setDirection("down");
+    }
+
+    private void setDefaultWeapon() {
+        setCurrentWeapon(new OBJ_Sword_Normal(getGamePanel()));
+        setPlayerAttackArea();
+        getAttackImages();
     }
 
     public void restoreLifeAndMana() {
@@ -332,8 +328,8 @@ public class Player extends Entity {
             else {
                 String text;
 
-                if (inventory.size() != maxInventorySize) {
-                    inventory.add(getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index]);
+                if (getInventory().size() != getMaxInventorySize()) {
+                    getInventory().add(getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index]);
                     getGamePanel().playSoundEffect(1);
                     text = "Got a " + getGamePanel().getObjects()[getGamePanel().getCurrentMap()][index].getName() + "!";
                 } else {
@@ -450,10 +446,10 @@ public class Player extends Entity {
     }
 
     public void selectItem() {
-        int itemIndex = getGamePanel().getUi().getItemIndexFromSlot();
+        int itemIndex = getGamePanel().getUi().getItemIndexFromSlot(getGamePanel().getUi().getPlayerSlotCol(), getGamePanel().getUi().getPlayerSlotRow());
 
-        if (itemIndex < inventory.size()) {
-            Asset selectedItem = inventory.get(itemIndex);
+        if (itemIndex < getInventory().size()) {
+            Asset selectedItem = getInventory().get(itemIndex);
 
             if (selectedItem instanceof Weapon) {
                 setCurrentWeapon((Weapon) selectedItem);
@@ -469,7 +465,7 @@ public class Player extends Entity {
 
             if (selectedItem instanceof OBJ_Potion_Red) {
                 selectedItem.use();
-                inventory.remove(itemIndex);
+                getInventory().remove(itemIndex);
             }
         }
     }
@@ -537,15 +533,6 @@ public class Player extends Entity {
     @Override
     public BufferedImage getImage1() {
         return getDown1();
-    }
-
-    public List<Asset> getInventory() {
-        return inventory;
-    }
-
-    public Player setInventory(List<Asset> inventory) {
-        this.inventory = inventory;
-        return this;
     }
 
 

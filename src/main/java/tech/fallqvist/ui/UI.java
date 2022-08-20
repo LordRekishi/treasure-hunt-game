@@ -2,7 +2,9 @@ package tech.fallqvist.ui;
 
 import tech.fallqvist.GamePanel;
 import tech.fallqvist.asset.Asset;
+import tech.fallqvist.asset.entity.Entity;
 import tech.fallqvist.asset.object.Object;
+import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Coin_Bronze;
 import tech.fallqvist.asset.object.usable.pickuponly.OBJ_Heart;
 import tech.fallqvist.asset.object.usable.pickuponly.OBJ_ManaCrystal;
 import tech.fallqvist.util.UtilityTool;
@@ -19,7 +21,7 @@ public class UI {
 
     private final GamePanel gamePanel;
     private Graphics2D graphics2D;
-    private final BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank;
+    private final BufferedImage heart_full, heart_half, heart_blank, crystal_full, crystal_blank, coin;
     private Font maruMonica;
     private List<String> messages = new ArrayList<>();
     private List<Integer> messageCounter = new ArrayList<>();
@@ -27,10 +29,13 @@ public class UI {
     private String currentDialogue;
     private int commandNumber;
     private int titleScreenState;
-    private int slotCol;
-    private int slotRow;
+    private int playerSlotCol;
+    private int playerSlotRow;
+    private int npcSlotCol;
+    private int npcSlotRow;
     private int subState;
     private int counter;
+    private Entity npc;
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -45,6 +50,9 @@ public class UI {
         Object manaCrystal = new OBJ_ManaCrystal(gamePanel);
         this.crystal_full = manaCrystal.getImage1();
         this.crystal_blank = manaCrystal.getImage2();
+
+        Object coin = new OBJ_Coin_Bronze(gamePanel);
+        this.coin = coin.getImage1();
     }
 
     private void setupFonts() {
@@ -78,14 +86,12 @@ public class UI {
         }
 
         if (gamePanel.getGameState() == gamePanel.getDialogueState()) {
-            drawPlayerLife();
-            drawPlayerMana();
             drawDialogueScreen();
         }
 
         if (gamePanel.getGameState() == gamePanel.getCharacterState()) {
             drawCharacterScreen();
-            drawInventoryScreen();
+            drawInventoryScreen(gamePanel.getPlayer(), true);
         }
 
         if (gamePanel.getGameState() == gamePanel.getOptionState()) {
@@ -99,7 +105,12 @@ public class UI {
         if (gamePanel.getGameState() == gamePanel.getTransitionState()) {
             drawTransitionScreen();
         }
+
+        if (gamePanel.getGameState() == gamePanel.getTradeState()) {
+            drawTradeScreen();
+        }
     }
+
 
     private void setupDefaultGraphics(Graphics2D graphics2D) {
         graphics2D.setFont(maruMonica);
@@ -325,9 +336,9 @@ public class UI {
     }
 
     private void drawDialogueScreen() {
-        int x = gamePanel.getTileSize() * 2;
+        int x = gamePanel.getTileSize() * 3;
         int y = gamePanel.getTileSize() / 2;
-        int width = gamePanel.getScreenWidth() - (gamePanel.getTileSize() * 4);
+        int width = gamePanel.getScreenWidth() - (gamePanel.getTileSize() * 6);
         int height = gamePanel.getTileSize() * 4;
 
         drawSubWindow(x, y, width, height);
@@ -451,13 +462,29 @@ public class UI {
         graphics2D.drawImage(gamePanel.getPlayer().getCurrentShield().getImage1(), tailX - gamePanel.getTileSize(), textY - 14, null);
     }
 
-    private void drawInventoryScreen() {
+    private void drawInventoryScreen(Entity entity, boolean cursor) {
+
+        int frameX = 0;
+        int frameY = 0;
+        int frameWidth = 0;
+        int frameHeight = 0;
+        int slotCol = 0;
+        int slotRow = 0;
 
         // ITEM FRAME BOX
-        int frameX = gamePanel.getTileSize() * 12;
-        int frameY = gamePanel.getTileSize();
-        int frameWidth = gamePanel.getTileSize() * 6;
-        int frameHeight = gamePanel.getTileSize() * 5;
+        if (entity == gamePanel.getPlayer()) {
+            frameX = gamePanel.getTileSize() * 12;
+            slotCol = playerSlotCol;
+            slotRow = playerSlotRow;
+        } else {
+            frameX = gamePanel.getTileSize() * 2;
+            slotCol = npcSlotCol;
+            slotRow = npcSlotRow;
+        }
+
+        frameY = gamePanel.getTileSize();
+        frameWidth = gamePanel.getTileSize() * 6;
+        frameHeight = gamePanel.getTileSize() * 5;
 
         drawSubWindow(frameX, frameY, frameWidth, frameHeight);
 
@@ -468,27 +495,30 @@ public class UI {
         int slotY = slotYStart;
         int slotSize = gamePanel.getTileSize() + 3;
 
-        List<Asset> inventory = gamePanel.getPlayer().getInventory();
+        List<Asset> inventory = entity.getInventory();
 
-        drawItemsInInventory(slotXStart, slotX, slotY, slotSize, inventory);
-        drawSelectionBox(slotXStart, slotYStart, slotSize);
+        drawItemsInInventory(entity, slotXStart, slotX, slotY, slotSize, inventory);
 
-        // DESCRIPTION FRAME
-        int descriptionFrameX = frameX;
-        int descriptionFrameY = frameY + frameHeight;
-        int descriptionFrameWidth = frameWidth;
-        int descriptionFrameHeight = gamePanel.getTileSize() * 3;
+        if (cursor) {
+            drawSelectionBox(slotXStart, slotYStart, slotSize, slotCol, slotRow);
 
-        drawItemDescriptionText(inventory, descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight);
+            // DESCRIPTION FRAME
+            int descriptionFrameX = frameX;
+            int descriptionFrameY = frameY + frameHeight;
+            int descriptionFrameWidth = frameWidth;
+            int descriptionFrameHeight = gamePanel.getTileSize() * 3;
+
+            drawItemDescriptionText(inventory, descriptionFrameX, descriptionFrameY, descriptionFrameWidth, descriptionFrameHeight, slotCol, slotRow);
+        }
     }
 
-    private void drawItemsInInventory(int slotXStart, int slotX, int slotY, int slotSize, List<Asset> inventory) {
+    private void drawItemsInInventory(Entity entity, int slotXStart, int slotX, int slotY, int slotSize, List<Asset> inventory) {
         for (int i = 0; i < inventory.size(); i++) {
             Asset object = inventory.get(i);
 
             // EQUIPPED BOX COLOR
-            if (object == gamePanel.getPlayer().getCurrentWeapon()
-                    || object == gamePanel.getPlayer().getCurrentShield()) {
+            if (object == entity.getCurrentWeapon()
+                    || object == entity.getCurrentShield()) {
                 graphics2D.setColor(new Color(240, 190, 90));
                 graphics2D.fillRoundRect(slotX, slotY, gamePanel.getTileSize(), gamePanel.getTileSize(), 10, 10);
             }
@@ -504,7 +534,7 @@ public class UI {
         }
     }
 
-    private void drawSelectionBox(int slotXStart, int slotYStart, int slotSize) {
+    private void drawSelectionBox(int slotXStart, int slotYStart, int slotSize, int slotCol, int slotRow) {
         // CURSOR selection box
         int cursorX = slotXStart + (slotSize * slotCol);
         int cursorY = slotYStart + (slotSize * slotRow);
@@ -516,14 +546,14 @@ public class UI {
         graphics2D.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight, 10, 10);
     }
 
-    private void drawItemDescriptionText(List<Asset> inventory, int descriptionFrameX, int descriptionFrameY, int descriptionFrameWidth, int descriptionFrameHeight) {
+    private void drawItemDescriptionText(List<Asset> inventory, int descriptionFrameX, int descriptionFrameY, int descriptionFrameWidth, int descriptionFrameHeight, int slotCol, int slotRow) {
         // DRAW DESCRIPTION TEXT
         int textX = descriptionFrameX + 20;
         int textY = descriptionFrameY + gamePanel.getTileSize();
 
         graphics2D.setFont(graphics2D.getFont().deriveFont(28F));
 
-        int itemIndex = getItemIndexFromSlot();
+        int itemIndex = getItemIndexFromSlot(slotCol, slotRow);
 
         if (itemIndex < inventory.size()) {
 
@@ -536,7 +566,7 @@ public class UI {
         }
     }
 
-    public int getItemIndexFromSlot() {
+    public int getItemIndexFromSlot(int slotCol, int slotRow) {
         int itemIndex = slotCol + (slotRow * 5);
         return itemIndex;
     }
@@ -825,6 +855,162 @@ public class UI {
         }
     }
 
+    private void drawTradeScreen() {
+        switch (subState) {
+            case 0 -> tradeSelect();
+            case 1 -> tradeBuy();
+            case 2 -> tradeSell();
+        }
+        gamePanel.getKeyHandler().setEnterPressed(false);
+    }
+
+    private void tradeSelect() {
+        drawDialogueScreen();
+
+        // DRAW WINDOW
+        int x = gamePanel.getTileSize() * 15;
+        int y = gamePanel.getTileSize() * 4;
+        int width = gamePanel.getTileSize() * 3;
+        int height = (int) (gamePanel.getTileSize() * 3.5);
+        drawSubWindow(x, y, width, height);
+
+        // DRAW TEXT
+        x += gamePanel.getTileSize();
+        y += gamePanel.getTileSize();
+        graphics2D.drawString("Buy", x, y);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", x - 24, y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                subState = 1;
+            }
+        }
+        y += gamePanel.getTileSize();
+        graphics2D.drawString("Sell", x, y);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", x - 24, y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                subState = 2;
+            }
+        }
+        y += gamePanel.getTileSize();
+        graphics2D.drawString("Leave", x, y);
+        if (commandNumber == 2) {
+            graphics2D.drawString(">", x - 24, y);
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                commandNumber = 0;
+                subState = 0;
+                gamePanel.setGameState(gamePanel.getDialogueState());
+                currentDialogue = "Come again, hehe!";
+            }
+        }
+
+    }
+
+    private void tradeBuy() {
+
+        // DRAW PLAYER INVENTORY
+        drawInventoryScreen(gamePanel.getPlayer(), false);
+
+        // DRAW NPC INVENTORY
+        drawInventoryScreen(npc, true);
+
+        // DRAW HINT WINDOW
+        int x = gamePanel.getTileSize() * 2;
+        int y = gamePanel.getTileSize() * 9;
+        int width = gamePanel.getTileSize() * 6;
+        int height = gamePanel.getTileSize() * 2;
+        drawSubWindow(x, y, width, height);
+        graphics2D.drawString("[ESC] Back", x + 24, y + 60);
+
+        // DRAW PLAYER COIN WINDOW
+        x = gamePanel.getTileSize() * 12;
+        drawSubWindow(x, y, width, height);
+        graphics2D.drawString("Your Coin: " + gamePanel.getPlayer().getCoins(), x + 24, y + 60);
+
+        // DRAW PRICE WINDOW
+        int itemIndex = getItemIndexFromSlot(npcSlotCol, npcSlotRow);
+
+        if (itemIndex < npc.getInventory().size()) {
+            x = (int) (gamePanel.getTileSize() * 5.5);
+            y = (int) (gamePanel.getTileSize() * 5.5);
+            width = (int) (gamePanel.getTileSize() * 2.5);
+            height = gamePanel.getTileSize();
+            drawSubWindow(x, y, width, height);
+            graphics2D.drawImage(coin, x + 10, y + 8, 32, 32, null);
+
+            int price = npc.getInventory().get(itemIndex).getPrice();
+            String text = String.valueOf(price);
+            x = UtilityTool.getXForAlightToRightOfText(text, gamePanel.getTileSize() * 8 - 20, gamePanel, graphics2D);
+            graphics2D.drawString(text, x, y + 34);
+
+            // BUY
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                if (npc.getInventory().get(itemIndex).getPrice() > gamePanel.getPlayer().getCoins()) {
+                    subState = 0;
+                    gamePanel.setGameState(gamePanel.getDialogueState());
+                    currentDialogue = "You need more coin to buy that!";
+                } else if (gamePanel.getPlayer().getInventory().size() == gamePanel.getPlayer().getMaxInventorySize()) {
+                    subState = 0;
+                    gamePanel.setGameState(gamePanel.getDialogueState());
+                    currentDialogue = "You cannot carry anymore!";
+                } else {
+                    gamePanel.getPlayer().setCoins(gamePanel.getPlayer().getCoins() - npc.getInventory().get(itemIndex).getPrice());
+                    gamePanel.getPlayer().getInventory().add(npc.getInventory().get(itemIndex));
+                }
+            }
+        }
+    }
+
+    private void tradeSell() {
+
+        // DRAW PLAYER INVENTORY
+        drawInventoryScreen(gamePanel.getPlayer(), true);
+
+        // DRAW HINT WINDOW
+        int x = gamePanel.getTileSize() * 2;
+        int y = gamePanel.getTileSize() * 9;
+        int width = gamePanel.getTileSize() * 6;
+        int height = gamePanel.getTileSize() * 2;
+        drawSubWindow(x, y, width, height);
+        graphics2D.drawString("[ESC] Back", x + 24, y + 60);
+
+        // DRAW PLAYER COIN WINDOW
+        x = gamePanel.getTileSize() * 12;
+        drawSubWindow(x, y, width, height);
+        graphics2D.drawString("Your Coin: " + gamePanel.getPlayer().getCoins(), x + 24, y + 60);
+
+        // DRAW PRICE WINDOW
+        int itemIndex = getItemIndexFromSlot(playerSlotCol, playerSlotRow);
+
+        if (itemIndex < gamePanel.getPlayer().getInventory().size()) {
+            x = (int) (gamePanel.getTileSize() * 15.5);
+            y = (int) (gamePanel.getTileSize() * 5.5);
+            width = (int) (gamePanel.getTileSize() * 2.5);
+            height = gamePanel.getTileSize();
+            drawSubWindow(x, y, width, height);
+            graphics2D.drawImage(coin, x + 10, y + 8, 32, 32, null);
+
+            int price = gamePanel.getPlayer().getInventory().get(itemIndex).getPrice() / 2;
+            String text = String.valueOf(price);
+            x = UtilityTool.getXForAlightToRightOfText(text, gamePanel.getTileSize() * 18 - 20, gamePanel, graphics2D);
+            graphics2D.drawString(text, x, y + 34);
+
+            // SELL
+            if (gamePanel.getKeyHandler().isEnterPressed()) {
+                if (gamePanel.getPlayer().getInventory().get(itemIndex) == gamePanel.getPlayer().getCurrentWeapon()
+                        || gamePanel.getPlayer().getInventory().get(itemIndex) == gamePanel.getPlayer().getCurrentShield()) {
+                    commandNumber = 0;
+                    subState = 0;
+                    gamePanel.setGameState(gamePanel.getDialogueState());
+                    currentDialogue = "You cannot sell an equipped item!";
+                } else {
+                    gamePanel.getPlayer().getInventory().remove(itemIndex);
+                    gamePanel.getPlayer().setCoins(gamePanel.getPlayer().getCoins() + price);
+                }
+            }
+        }
+    }
+
     public void drawSubWindow(int x, int y, int width, int height) {
         Color color = new Color(0, 0, 0, 210);
         graphics2D.setColor(color);
@@ -836,13 +1022,13 @@ public class UI {
         graphics2D.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
 
-
     private void splitAndDrawDialogue(int x, int y) {
         for (String line : currentDialogue.split("\n")) {
             graphics2D.drawString(line, x, y);
             y += 40;
         }
     }
+
 
     public UI setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
@@ -876,21 +1062,21 @@ public class UI {
         return this;
     }
 
-    public int getSlotCol() {
-        return slotCol;
+    public int getPlayerSlotCol() {
+        return playerSlotCol;
     }
 
-    public UI setSlotCol(int slotCol) {
-        this.slotCol = slotCol;
+    public UI setPlayerSlotCol(int playerSlotCol) {
+        this.playerSlotCol = playerSlotCol;
         return this;
     }
 
-    public int getSlotRow() {
-        return slotRow;
+    public int getPlayerSlotRow() {
+        return playerSlotRow;
     }
 
-    public UI setSlotRow(int slotRow) {
-        this.slotRow = slotRow;
+    public UI setPlayerSlotRow(int playerSlotRow) {
+        this.playerSlotRow = playerSlotRow;
         return this;
     }
 
@@ -902,4 +1088,33 @@ public class UI {
         this.subState = subState;
         return this;
     }
+
+    public Entity getNpc() {
+        return npc;
+    }
+
+    public UI setNpc(Entity npc) {
+        this.npc = npc;
+        return this;
+    }
+
+    public int getNpcSlotCol() {
+        return npcSlotCol;
+    }
+
+    public UI setNpcSlotCol(int npcSlotCol) {
+        this.npcSlotCol = npcSlotCol;
+        return this;
+    }
+
+    public int getNpcSlotRow() {
+        return npcSlotRow;
+    }
+
+    public UI setNpcSlotRow(int npcSlotRow) {
+        this.npcSlotRow = npcSlotRow;
+        return this;
+    }
+
+
 }

@@ -16,6 +16,7 @@ public class OBJ_Key extends Object {
 
         setName("Key");
         setDescription("[" + getName() + "]\nIt opens a door");
+        setPrice(100);
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/key.png")));

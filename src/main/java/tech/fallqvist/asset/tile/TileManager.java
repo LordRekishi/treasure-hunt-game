@@ -161,8 +161,6 @@ public class TileManager {
         }
     }
 
-
-
     private int checkIfAtEdgeOfXAxis(int worldX, int screenX, int rightOffset) {
         if (gamePanel.getPlayer().getScreenX() > gamePanel.getPlayer().getWorldX()) {
             return worldX;

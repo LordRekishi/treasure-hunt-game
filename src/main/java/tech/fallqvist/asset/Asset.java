@@ -95,4 +95,6 @@ public interface Asset {
     int getParticleSpeed();
 
     int getParticleMaxLife();
+
+    int getPrice();
 }

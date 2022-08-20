@@ -1,6 +1,7 @@
 package tech.fallqvist.event;
 
 import tech.fallqvist.GamePanel;
+import tech.fallqvist.asset.Asset;
 
 public class EventHandler {
 
@@ -61,6 +62,8 @@ public class EventHandler {
                 teleport(1, 12, 13);
             } else if (hit(1, 12, 13, "any")) {
                 teleport(0, 10, 39);
+            } else if (hit(1, 12, 9, "up")) {
+                speak(gamePanel.getNpcs()[1][0]);
             }
         }
     }
@@ -92,6 +95,13 @@ public class EventHandler {
         }
 
         return hit;
+    }
+
+    private void speak(Asset asset) {
+        if (gamePanel.getKeyHandler().isEnterPressed()) {
+            gamePanel.setGameState(gamePanel.getDialogueState());
+            asset.speak();
+        }
     }
 
     private void damagePit(int gameState) {

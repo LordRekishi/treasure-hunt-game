@@ -18,6 +18,7 @@ public class OBJ_Axe extends Weapon {
         setAttackValue(2);
         getAttackArea().width = 30;
         getAttackArea().height = 30;
+        setPrice(75);
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/axe.png")));

@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -42,6 +44,8 @@ public abstract class Entity implements Asset {
     private int nextLevelExp;
 
     // OBJECTS & ABILITIES
+    private final int maxInventorySize = 20;
+    private List<Asset> inventory = new ArrayList<>();
     private int coins;
     private Weapon currentWeapon;
     private Shield currentShield;
@@ -164,7 +168,7 @@ public abstract class Entity implements Asset {
 
     public void checkAndChangeSpriteAnimationImage() {
         spriteCounter++;
-        if (spriteCounter > 12) {
+        if (spriteCounter > 24) {
             if (spriteNumber == 1) {
                 setSpriteNumber(2);
             } else if (spriteNumber == 2) {
@@ -912,6 +916,18 @@ public abstract class Entity implements Asset {
         return this;
     }
 
+    public List<Asset> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<Asset> inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getMaxInventorySize() {
+        return maxInventorySize;
+    }
+
     // NOT USED
 
     @Override
@@ -959,6 +975,11 @@ public abstract class Entity implements Asset {
 
     @Override
     public int getParticleMaxLife() {
+        return 0;
+    }
+
+    @Override
+    public int getPrice() {
         return 0;
     }
 }

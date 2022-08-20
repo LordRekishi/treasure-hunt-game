@@ -18,6 +18,7 @@ public class OBJ_Sword_Normal extends Weapon {
         setAttackValue(1);
         getAttackArea().width = 36;
         getAttackArea().height = 36;
+        setPrice(20);
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/sword_normal.png")));

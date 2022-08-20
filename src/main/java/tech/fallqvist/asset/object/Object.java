@@ -17,6 +17,7 @@ public class Object implements Asset {
     private String description;
     private int value;
     private int worldX, worldY;
+    private int price;
 
     // IMAGES
     private BufferedImage image1, image2, image3;
@@ -156,6 +157,15 @@ public class Object implements Asset {
         return this;
     }
 
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    public Object setPrice(int price) {
+        this.price = price;
+        return this;
+    }
 
     // NOT USED
     @Override

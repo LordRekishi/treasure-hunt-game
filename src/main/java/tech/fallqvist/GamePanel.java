@@ -51,9 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final int worldWidth = tileSize * maxWorldColumns;
     private final int worldHeight = tileSize * maxWorldRows;
     private final int maxMaps = 10;
-
-    // ENTITIES & OBJECTS
-    private final List<Asset> assets = new ArrayList<>();
+    private final int tradeState = 8;
 
     // SYSTEM
     private final KeyHandler keyHandler = new KeyHandler(this);
@@ -73,18 +71,19 @@ public class GamePanel extends JPanel implements Runnable {
     private final int dialogueState = 3;
     private final int characterState = 4;
     private final int optionState = 5;
+    // ENTITIES & OBJECTS
+    private final List<Asset> assets = new ArrayList<>();
     private final int transitionState = 7;
     private boolean fullScreenOn;
 
-
     // GAME THREAD
     private Thread gameThread;
+    private int currentMap = 0;
     private final Asset[][] objects = new Object[maxMaps][20];
     private final Player player = new Player(this, keyHandler);
     private final Asset[][] npcs = new Entity[maxMaps][10];
     private final Asset[][] monsters = new Entity[maxMaps][20];
     private final InteractiveTile[][] interactiveTiles = new InteractiveTile[maxMaps][50];
-    private int currentMap = 0;
     private final List<Asset> projectiles = new ArrayList<>();
     private final List<Asset> particles = new ArrayList<>();
 
@@ -548,5 +547,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public int getTransitionState() {
         return transitionState;
+    }
+
+    public int getTradeState() {
+        return tradeState;
     }
 }

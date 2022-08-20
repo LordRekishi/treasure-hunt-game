@@ -16,6 +16,7 @@ public class OBJ_Shield_Wood extends Shield {
         setName("Wooden Shield");
         setDescription("[" + getName() + "]\nMade of wood");
         setDefenseValue(1);
+        setPrice(35);
 
         try {
             BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/objects/shield_wood.png")));
