@@ -9,7 +9,6 @@ public class NPC_OldMan extends NPC {
 
         setName("Old Man");
         setSpeed(1);
-        setDirection("Down");
 
         getAnimationImages();
         setDialogue();

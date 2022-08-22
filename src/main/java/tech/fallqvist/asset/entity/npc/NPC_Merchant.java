@@ -14,7 +14,6 @@ public class NPC_Merchant extends NPC {
         super(gamePanel);
 
         setName("Merchant");
-        setDirection("Down");
 
         getAnimationImages();
         setDialogue();
