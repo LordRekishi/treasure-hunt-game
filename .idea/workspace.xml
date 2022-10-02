@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Add merchant npc and mechanics (npc slow spawn bug)">
+    <list default="true" id="e2b080c4-3dde-4ac5-9ae4-87fa505ab04d" name="Changes" comment="Fix NPC not showing up bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_Merchant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/asset/entity/npc/NPC_OldMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/fallqvist/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,13 +150,10 @@
       <workItem from="1660855231172" duration="4612000" />
       <workItem from="1660902851759" duration="5897000" />
       <workItem from="1661021051395" duration="8711000" />
-      <workItem from="1661194460842" duration="673000" />
-    </task>
-    <task id="LOCAL−00037" summary="Add start dialog by pressing enter without moving">
-      <created>1656528755993</created>
-      <option name="number" value="LOCAL−00037" />
-      <option name="presentableId" value="LOCAL−00037" />
-      <updated>1656528755993</updated>
+      <workItem from="1661194460842" duration="2328000" />
+      <workItem from="1662286637660" duration="25000" />
+      <workItem from="1662286705691" duration="686000" />
+      <workItem from="1664725400116" duration="210000" />
     </task>
     <task id="LOCAL−00038" summary="Add Player attack animation">
       <created>1656531894954</created>
@@ -447,7 +443,13 @@
       <option name="presentableId" value="LOCAL−00085" />
       <updated>1661029565557</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL−00086" summary="Fix NPC not showing up bug">
+      <created>1661195147847</created>
+      <option name="number" value="LOCAL−00086" />
+      <option name="presentableId" value="LOCAL−00086" />
+      <updated>1661195147847</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +467,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor GamePanel" />
     <MESSAGE value="Refactor KeyHandler" />
     <MESSAGE value="Refactor UI" />
     <MESSAGE value="Refactor Objects" />
@@ -490,7 +491,8 @@
     <MESSAGE value="Add map transition" />
     <MESSAGE value="Add map transition effect" />
     <MESSAGE value="Add merchant npc and mechanics (npc slow spawn bug)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add merchant npc and mechanics (npc slow spawn bug)" />
+    <MESSAGE value="Fix NPC not showing up bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix NPC not showing up bug" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -40,8 +40,6 @@ public class GamePanel extends JPanel implements Runnable {
     private int fullScreenHeight = screenHeight;
     private BufferedImage tempScreen;
     private Graphics2D graphics2D;
-    private final Config config = new Config(this);
-    private final int gameOverState = 6;
 
     private final int FPS = 60;
 
@@ -51,7 +49,6 @@ public class GamePanel extends JPanel implements Runnable {
     private final int worldWidth = tileSize * maxWorldColumns;
     private final int worldHeight = tileSize * maxWorldRows;
     private final int maxMaps = 10;
-    private final int tradeState = 8;
 
     // SYSTEM
     private final KeyHandler keyHandler = new KeyHandler(this);
@@ -62,18 +59,21 @@ public class GamePanel extends JPanel implements Runnable {
     private final SoundManager soundEffect = new SoundManager();
     private final UI ui = new UI(this);
     private final EventHandler eventHandler = new EventHandler(this);
+    private final Config config = new Config(this);
     private final int titleState = 0;
-
-    // GAME STATE
-    private int gameState;
     private final int playState = 1;
     private final int pauseState = 2;
     private final int dialogueState = 3;
     private final int characterState = 4;
     private final int optionState = 5;
+    private final int transitionState = 7;
+    private final int gameOverState = 6;
+    // GAME STATE
+    private int gameState;
+    private final int tradeState = 8;
+
     // ENTITIES & OBJECTS
     private final List<Asset> assets = new ArrayList<>();
-    private final int transitionState = 7;
     private boolean fullScreenOn;
 
     // GAME THREAD
